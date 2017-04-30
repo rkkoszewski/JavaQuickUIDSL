@@ -7,9 +7,9 @@ import com.robertkoszewski.dsl.quickUI.Alias;
 import com.robertkoszewski.dsl.quickUI.Checked;
 import com.robertkoszewski.dsl.quickUI.Condition;
 import com.robertkoszewski.dsl.quickUI.ConditionType;
-import com.robertkoszewski.dsl.quickUI.Disabled;
 import com.robertkoszewski.dsl.quickUI.Element;
 import com.robertkoszewski.dsl.quickUI.Empty;
+import com.robertkoszewski.dsl.quickUI.Enabled;
 import com.robertkoszewski.dsl.quickUI.Filter;
 import com.robertkoszewski.dsl.quickUI.JavaElement;
 import com.robertkoszewski.dsl.quickUI.Label;
@@ -154,11 +154,11 @@ public class QuickUISwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case QuickUIPackage.DISABLED:
+      case QuickUIPackage.ENABLED:
       {
-        Disabled disabled = (Disabled)theEObject;
-        T result = caseDisabled(disabled);
-        if (result == null) result = caseOption(disabled);
+        Enabled enabled = (Enabled)theEObject;
+        T result = caseEnabled(enabled);
+        if (result == null) result = caseOption(enabled);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -365,17 +365,17 @@ public class QuickUISwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Disabled</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Enabled</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Disabled</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Enabled</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDisabled(Disabled object)
+  public T caseEnabled(Enabled object)
   {
     return null;
   }

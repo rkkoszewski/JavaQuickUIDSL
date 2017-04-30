@@ -7,9 +7,9 @@ import com.robertkoszewski.dsl.quickUI.Alias;
 import com.robertkoszewski.dsl.quickUI.Checked;
 import com.robertkoszewski.dsl.quickUI.Condition;
 import com.robertkoszewski.dsl.quickUI.ConditionType;
-import com.robertkoszewski.dsl.quickUI.Disabled;
 import com.robertkoszewski.dsl.quickUI.Element;
 import com.robertkoszewski.dsl.quickUI.Empty;
+import com.robertkoszewski.dsl.quickUI.Enabled;
 import com.robertkoszewski.dsl.quickUI.Filter;
 import com.robertkoszewski.dsl.quickUI.JavaElement;
 import com.robertkoszewski.dsl.quickUI.Label;
@@ -90,7 +90,7 @@ public class QuickUIFactoryImpl extends EFactoryImpl implements QuickUIFactory
       case QuickUIPackage.ROW: return createRow();
       case QuickUIPackage.OPTION: return createOption();
       case QuickUIPackage.LABEL: return createLabel();
-      case QuickUIPackage.DISABLED: return createDisabled();
+      case QuickUIPackage.ENABLED: return createEnabled();
       case QuickUIPackage.CONDITION: return createCondition();
       case QuickUIPackage.CONDITION_TYPE: return createConditionType();
       case QuickUIPackage.CHECKED: return createChecked();
@@ -207,10 +207,10 @@ public class QuickUIFactoryImpl extends EFactoryImpl implements QuickUIFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Disabled createDisabled()
+  public Enabled createEnabled()
   {
-    DisabledImpl disabled = new DisabledImpl();
-    return disabled;
+    EnabledImpl enabled = new EnabledImpl();
+    return enabled;
   }
 
   /**

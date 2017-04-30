@@ -376,7 +376,7 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.robertkoszewski.dsl.QuickUI.Option");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cLabelParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cDisabledParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cEnabledParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cCheckedParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cOnClickParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
@@ -389,17 +389,17 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		//// - Checked
 		//// - OnClick
 		//Option:
-		//	Label | Disabled | Checked | OnClick | {Filter} Filter;
+		//	Label | Enabled | Checked | OnClick | {Filter} Filter;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Label | Disabled | Checked | OnClick | {Filter} Filter
+		//Label | Enabled | Checked | OnClick | {Filter} Filter
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Label
 		public RuleCall getLabelParserRuleCall_0() { return cLabelParserRuleCall_0; }
 		
-		//Disabled
-		public RuleCall getDisabledParserRuleCall_1() { return cDisabledParserRuleCall_1; }
+		//Enabled
+		public RuleCall getEnabledParserRuleCall_1() { return cEnabledParserRuleCall_1; }
 		
 		//Checked
 		public RuleCall getCheckedParserRuleCall_2() { return cCheckedParserRuleCall_2; }
@@ -447,23 +447,23 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
 	}
-	public class DisabledElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.robertkoszewski.dsl.QuickUI.Disabled");
+	public class EnabledElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.robertkoszewski.dsl.QuickUI.Enabled");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cDisabledKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cEnabledKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cConditionAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cConditionConditionParserRuleCall_2_0 = (RuleCall)cConditionAssignment_2.eContents().get(0);
 		
-		//Disabled:
-		//	'Disabled' ':' condition=Condition;
+		//Enabled:
+		//	'Enabled' ':' condition=Condition;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Disabled' ':' condition=Condition
+		//'Enabled' ':' condition=Condition
 		public Group getGroup() { return cGroup; }
 		
-		//'Disabled'
-		public Keyword getDisabledKeyword_0() { return cDisabledKeyword_0; }
+		//'Enabled'
+		public Keyword getEnabledKeyword_0() { return cEnabledKeyword_0; }
 		
 		//':'
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
@@ -702,7 +702,7 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 	private final RowElements pRow;
 	private final OptionElements pOption;
 	private final LabelElements pLabel;
-	private final DisabledElements pDisabled;
+	private final EnabledElements pEnabled;
 	private final ConditionElements pCondition;
 	private final ConditionTypeElements pConditionType;
 	private final CheckedElements pChecked;
@@ -729,7 +729,7 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		this.pRow = new RowElements();
 		this.pOption = new OptionElements();
 		this.pLabel = new LabelElements();
-		this.pDisabled = new DisabledElements();
+		this.pEnabled = new EnabledElements();
 		this.pCondition = new ConditionElements();
 		this.pConditionType = new ConditionTypeElements();
 		this.pChecked = new CheckedElements();
@@ -844,7 +844,7 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 	//// - Checked
 	//// - OnClick
 	//Option:
-	//	Label | Disabled | Checked | OnClick | {Filter} Filter;
+	//	Label | Enabled | Checked | OnClick | {Filter} Filter;
 	public OptionElements getOptionAccess() {
 		return pOption;
 	}
@@ -867,14 +867,14 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		return getLabelAccess().getRule();
 	}
 	
-	//Disabled:
-	//	'Disabled' ':' condition=Condition;
-	public DisabledElements getDisabledAccess() {
-		return pDisabled;
+	//Enabled:
+	//	'Enabled' ':' condition=Condition;
+	public EnabledElements getEnabledAccess() {
+		return pEnabled;
 	}
 	
-	public ParserRule getDisabledRule() {
-		return getDisabledAccess().getRule();
+	public ParserRule getEnabledRule() {
+		return getEnabledAccess().getRule();
 	}
 	
 	//Condition:

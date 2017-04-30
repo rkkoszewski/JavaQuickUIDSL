@@ -6,21 +6,21 @@ package com.robertkoszewski.dsl.quickUI;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Disabled</b></em>'.
+ * A representation of the model object '<em><b>Enabled</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.robertkoszewski.dsl.quickUI.Disabled#getCondition <em>Condition</em>}</li>
+ *   <li>{@link com.robertkoszewski.dsl.quickUI.Enabled#getCondition <em>Condition</em>}</li>
  * </ul>
  *
- * @see com.robertkoszewski.dsl.quickUI.QuickUIPackage#getDisabled()
+ * @see com.robertkoszewski.dsl.quickUI.QuickUIPackage#getEnabled()
  * @model
  * @generated
  */
-public interface Disabled extends Option
+public interface Enabled extends Option
 {
   /**
    * Returns the value of the '<em><b>Condition</b></em>' containment reference.
@@ -32,14 +32,14 @@ public interface Disabled extends Option
    * <!-- end-user-doc -->
    * @return the value of the '<em>Condition</em>' containment reference.
    * @see #setCondition(Condition)
-   * @see com.robertkoszewski.dsl.quickUI.QuickUIPackage#getDisabled_Condition()
+   * @see com.robertkoszewski.dsl.quickUI.QuickUIPackage#getEnabled_Condition()
    * @model containment="true"
    * @generated
    */
   Condition getCondition();
 
   /**
-   * Sets the value of the '{@link com.robertkoszewski.dsl.quickUI.Disabled#getCondition <em>Condition</em>}' containment reference.
+   * Sets the value of the '{@link com.robertkoszewski.dsl.quickUI.Enabled#getCondition <em>Condition</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Condition</em>' containment reference.
@@ -48,4 +48,4 @@ public interface Disabled extends Option
    */
   void setCondition(Condition value);
 
-} // Disabled
+} // Enabled

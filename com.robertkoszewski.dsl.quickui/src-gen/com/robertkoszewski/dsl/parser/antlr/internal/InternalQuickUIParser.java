@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalQuickUIParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'use'", "':'", "'.'", "'Main'", "'{'", "'Menu'", "'}'", "'Content'", "'Row'", "'Label'", "'Disabled'", "'if'", "'is'", "'not'", "'and'", "'empty'", "'checked'", "'Checked'", "'OnClick'", "'Filter'", "'TODO'", "'true'", "'false'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'use'", "':'", "'.'", "'Main'", "'{'", "'Menu'", "'}'", "'Content'", "'Row'", "'Label'", "'Enabled'", "'if'", "'is'", "'not'", "'and'", "'empty'", "'checked'", "'Checked'", "'OnClick'", "'Filter'", "'TODO'", "'true'", "'false'"
     };
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=8;
@@ -1617,13 +1617,13 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOption"
-    // InternalQuickUI.g:645:1: ruleOption returns [EObject current=null] : (this_Label_0= ruleLabel | this_Disabled_1= ruleDisabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick | ( () ruleFilter ) ) ;
+    // InternalQuickUI.g:645:1: ruleOption returns [EObject current=null] : (this_Label_0= ruleLabel | this_Enabled_1= ruleEnabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick | ( () ruleFilter ) ) ;
     public final EObject ruleOption() throws RecognitionException {
         EObject current = null;
 
         EObject this_Label_0 = null;
 
-        EObject this_Disabled_1 = null;
+        EObject this_Enabled_1 = null;
 
         EObject this_Checked_2 = null;
 
@@ -1634,10 +1634,10 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalQuickUI.g:651:2: ( (this_Label_0= ruleLabel | this_Disabled_1= ruleDisabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick | ( () ruleFilter ) ) )
-            // InternalQuickUI.g:652:2: (this_Label_0= ruleLabel | this_Disabled_1= ruleDisabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick | ( () ruleFilter ) )
+            // InternalQuickUI.g:651:2: ( (this_Label_0= ruleLabel | this_Enabled_1= ruleEnabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick | ( () ruleFilter ) ) )
+            // InternalQuickUI.g:652:2: (this_Label_0= ruleLabel | this_Enabled_1= ruleEnabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick | ( () ruleFilter ) )
             {
-            // InternalQuickUI.g:652:2: (this_Label_0= ruleLabel | this_Disabled_1= ruleDisabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick | ( () ruleFilter ) )
+            // InternalQuickUI.g:652:2: (this_Label_0= ruleLabel | this_Enabled_1= ruleEnabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick | ( () ruleFilter ) )
             int alt16=5;
             switch ( input.LA(1) ) {
             case 20:
@@ -1692,18 +1692,18 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalQuickUI.g:662:3: this_Disabled_1= ruleDisabled
+                    // InternalQuickUI.g:662:3: this_Enabled_1= ruleEnabled
                     {
 
-                    			newCompositeNode(grammarAccess.getOptionAccess().getDisabledParserRuleCall_1());
+                    			newCompositeNode(grammarAccess.getOptionAccess().getEnabledParserRuleCall_1());
                     		
                     pushFollow(FOLLOW_2);
-                    this_Disabled_1=ruleDisabled();
+                    this_Enabled_1=ruleEnabled();
 
                     state._fsp--;
 
 
-                    			current = this_Disabled_1;
+                    			current = this_Enabled_1;
                     			afterParserOrEnumRuleCall();
                     		
 
@@ -1912,25 +1912,25 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleLabel"
 
 
-    // $ANTLR start "entryRuleDisabled"
-    // InternalQuickUI.g:754:1: entryRuleDisabled returns [EObject current=null] : iv_ruleDisabled= ruleDisabled EOF ;
-    public final EObject entryRuleDisabled() throws RecognitionException {
+    // $ANTLR start "entryRuleEnabled"
+    // InternalQuickUI.g:754:1: entryRuleEnabled returns [EObject current=null] : iv_ruleEnabled= ruleEnabled EOF ;
+    public final EObject entryRuleEnabled() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleDisabled = null;
+        EObject iv_ruleEnabled = null;
 
 
         try {
-            // InternalQuickUI.g:754:49: (iv_ruleDisabled= ruleDisabled EOF )
-            // InternalQuickUI.g:755:2: iv_ruleDisabled= ruleDisabled EOF
+            // InternalQuickUI.g:754:48: (iv_ruleEnabled= ruleEnabled EOF )
+            // InternalQuickUI.g:755:2: iv_ruleEnabled= ruleEnabled EOF
             {
-             newCompositeNode(grammarAccess.getDisabledRule()); 
+             newCompositeNode(grammarAccess.getEnabledRule()); 
             pushFollow(FOLLOW_1);
-            iv_ruleDisabled=ruleDisabled();
+            iv_ruleEnabled=ruleEnabled();
 
             state._fsp--;
 
-             current =iv_ruleDisabled; 
+             current =iv_ruleEnabled; 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -1945,12 +1945,12 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleDisabled"
+    // $ANTLR end "entryRuleEnabled"
 
 
-    // $ANTLR start "ruleDisabled"
-    // InternalQuickUI.g:761:1: ruleDisabled returns [EObject current=null] : (otherlv_0= 'Disabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) ) ) ;
-    public final EObject ruleDisabled() throws RecognitionException {
+    // $ANTLR start "ruleEnabled"
+    // InternalQuickUI.g:761:1: ruleEnabled returns [EObject current=null] : (otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) ) ) ;
+    public final EObject ruleEnabled() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
@@ -1962,19 +1962,19 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalQuickUI.g:767:2: ( (otherlv_0= 'Disabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) ) ) )
-            // InternalQuickUI.g:768:2: (otherlv_0= 'Disabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) ) )
+            // InternalQuickUI.g:767:2: ( (otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) ) ) )
+            // InternalQuickUI.g:768:2: (otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) ) )
             {
-            // InternalQuickUI.g:768:2: (otherlv_0= 'Disabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) ) )
-            // InternalQuickUI.g:769:3: otherlv_0= 'Disabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) )
+            // InternalQuickUI.g:768:2: (otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) ) )
+            // InternalQuickUI.g:769:3: otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) )
             {
             otherlv_0=(Token)match(input,21,FOLLOW_6); 
 
-            			newLeafNode(otherlv_0, grammarAccess.getDisabledAccess().getDisabledKeyword_0());
+            			newLeafNode(otherlv_0, grammarAccess.getEnabledAccess().getEnabledKeyword_0());
             		
             otherlv_1=(Token)match(input,12,FOLLOW_17); 
 
-            			newLeafNode(otherlv_1, grammarAccess.getDisabledAccess().getColonKeyword_1());
+            			newLeafNode(otherlv_1, grammarAccess.getEnabledAccess().getColonKeyword_1());
             		
             // InternalQuickUI.g:777:3: ( (lv_condition_2_0= ruleCondition ) )
             // InternalQuickUI.g:778:4: (lv_condition_2_0= ruleCondition )
@@ -1983,7 +1983,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
             // InternalQuickUI.g:779:5: lv_condition_2_0= ruleCondition
             {
 
-            					newCompositeNode(grammarAccess.getDisabledAccess().getConditionConditionParserRuleCall_2_0());
+            					newCompositeNode(grammarAccess.getEnabledAccess().getConditionConditionParserRuleCall_2_0());
             				
             pushFollow(FOLLOW_2);
             lv_condition_2_0=ruleCondition();
@@ -1992,7 +1992,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
             					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getDisabledRule());
+            						current = createModelElementForParent(grammarAccess.getEnabledRule());
             					}
             					set(
             						current,
@@ -2026,7 +2026,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleDisabled"
+    // $ANTLR end "ruleEnabled"
 
 
     // $ANTLR start "entryRuleCondition"

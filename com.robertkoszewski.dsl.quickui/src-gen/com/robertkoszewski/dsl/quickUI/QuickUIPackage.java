@@ -400,14 +400,14 @@ public interface QuickUIPackage extends EPackage
   int LABEL_FEATURE_COUNT = OPTION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link com.robertkoszewski.dsl.quickUI.impl.DisabledImpl <em>Disabled</em>}' class.
+   * The meta object id for the '{@link com.robertkoszewski.dsl.quickUI.impl.EnabledImpl <em>Enabled</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.robertkoszewski.dsl.quickUI.impl.DisabledImpl
-   * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getDisabled()
+   * @see com.robertkoszewski.dsl.quickUI.impl.EnabledImpl
+   * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getEnabled()
    * @generated
    */
-  int DISABLED = 9;
+  int ENABLED = 9;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -416,16 +416,16 @@ public interface QuickUIPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DISABLED__CONDITION = OPTION_FEATURE_COUNT + 0;
+  int ENABLED__CONDITION = OPTION_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Disabled</em>' class.
+   * The number of structural features of the '<em>Enabled</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DISABLED_FEATURE_COUNT = OPTION_FEATURE_COUNT + 1;
+  int ENABLED_FEATURE_COUNT = OPTION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.robertkoszewski.dsl.quickUI.impl.ConditionImpl <em>Condition</em>}' class.
@@ -880,25 +880,25 @@ public interface QuickUIPackage extends EPackage
   EAttribute getLabel_Value();
 
   /**
-   * Returns the meta object for class '{@link com.robertkoszewski.dsl.quickUI.Disabled <em>Disabled</em>}'.
+   * Returns the meta object for class '{@link com.robertkoszewski.dsl.quickUI.Enabled <em>Enabled</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Disabled</em>'.
-   * @see com.robertkoszewski.dsl.quickUI.Disabled
+   * @return the meta object for class '<em>Enabled</em>'.
+   * @see com.robertkoszewski.dsl.quickUI.Enabled
    * @generated
    */
-  EClass getDisabled();
+  EClass getEnabled();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robertkoszewski.dsl.quickUI.Disabled#getCondition <em>Condition</em>}'.
+   * Returns the meta object for the containment reference '{@link com.robertkoszewski.dsl.quickUI.Enabled#getCondition <em>Condition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Condition</em>'.
-   * @see com.robertkoszewski.dsl.quickUI.Disabled#getCondition()
-   * @see #getDisabled()
+   * @see com.robertkoszewski.dsl.quickUI.Enabled#getCondition()
+   * @see #getEnabled()
    * @generated
    */
-  EReference getDisabled_Condition();
+  EReference getEnabled_Condition();
 
   /**
    * Returns the meta object for class '{@link com.robertkoszewski.dsl.quickUI.Condition <em>Condition</em>}'.
@@ -1281,14 +1281,14 @@ public interface QuickUIPackage extends EPackage
     EAttribute LABEL__VALUE = eINSTANCE.getLabel_Value();
 
     /**
-     * The meta object literal for the '{@link com.robertkoszewski.dsl.quickUI.impl.DisabledImpl <em>Disabled</em>}' class.
+     * The meta object literal for the '{@link com.robertkoszewski.dsl.quickUI.impl.EnabledImpl <em>Enabled</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.robertkoszewski.dsl.quickUI.impl.DisabledImpl
-     * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getDisabled()
+     * @see com.robertkoszewski.dsl.quickUI.impl.EnabledImpl
+     * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getEnabled()
      * @generated
      */
-    EClass DISABLED = eINSTANCE.getDisabled();
+    EClass ENABLED = eINSTANCE.getEnabled();
 
     /**
      * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
@@ -1296,7 +1296,7 @@ public interface QuickUIPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DISABLED__CONDITION = eINSTANCE.getDisabled_Condition();
+    EReference ENABLED__CONDITION = eINSTANCE.getEnabled_Condition();
 
     /**
      * The meta object literal for the '{@link com.robertkoszewski.dsl.quickUI.impl.ConditionImpl <em>Condition</em>}' class.

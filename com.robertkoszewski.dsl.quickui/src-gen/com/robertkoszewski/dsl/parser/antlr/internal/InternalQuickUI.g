@@ -660,11 +660,11 @@ ruleOption returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getOptionAccess().getDisabledParserRuleCall_1());
+			newCompositeNode(grammarAccess.getOptionAccess().getEnabledParserRuleCall_1());
 		}
-		this_Disabled_1=ruleDisabled
+		this_Enabled_1=ruleEnabled
 		{
-			$current = $this_Disabled_1.current;
+			$current = $this_Enabled_1.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
@@ -750,15 +750,15 @@ ruleLabel returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleDisabled
-entryRuleDisabled returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getDisabledRule()); }
-	iv_ruleDisabled=ruleDisabled
-	{ $current=$iv_ruleDisabled.current; }
+// Entry rule entryRuleEnabled
+entryRuleEnabled returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getEnabledRule()); }
+	iv_ruleEnabled=ruleEnabled
+	{ $current=$iv_ruleEnabled.current; }
 	EOF;
 
-// Rule Disabled
-ruleDisabled returns [EObject current=null]
+// Rule Enabled
+ruleEnabled returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -766,23 +766,23 @@ ruleDisabled returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Disabled'
+		otherlv_0='Enabled'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getDisabledAccess().getDisabledKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getEnabledAccess().getEnabledKeyword_0());
 		}
 		otherlv_1=':'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getDisabledAccess().getColonKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getEnabledAccess().getColonKeyword_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getDisabledAccess().getConditionConditionParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getEnabledAccess().getConditionConditionParserRuleCall_2_0());
 				}
 				lv_condition_2_0=ruleCondition
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getDisabledRule());
+						$current = createModelElementForParent(grammarAccess.getEnabledRule());
 					}
 					set(
 						$current,

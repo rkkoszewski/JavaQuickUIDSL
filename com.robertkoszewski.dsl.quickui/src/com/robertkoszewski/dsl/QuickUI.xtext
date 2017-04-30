@@ -40,7 +40,7 @@ Row:
 // - OnClick
 
 Option:
-	Label|Disabled|Checked|OnClick|{Filter}Filter
+	Label|Enabled|Checked|OnClick|{Filter}Filter
 ;
 
 /* 
@@ -53,8 +53,8 @@ Label:
 	'Label' ':' value=STRING
 ;
 
-Disabled:
-	'Disabled' ':' condition=Condition
+Enabled:
+	'Enabled' ':' condition=Condition
 ;
 
 Condition:

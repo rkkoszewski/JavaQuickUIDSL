@@ -52,7 +52,7 @@ public class QuickUIParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRowAccess().getGroup_1(), "rule__Row__Group_1__0");
 					put(grammarAccess.getOptionAccess().getGroup_4(), "rule__Option__Group_4__0");
 					put(grammarAccess.getLabelAccess().getGroup(), "rule__Label__Group__0");
-					put(grammarAccess.getDisabledAccess().getGroup(), "rule__Disabled__Group__0");
+					put(grammarAccess.getEnabledAccess().getGroup(), "rule__Enabled__Group__0");
 					put(grammarAccess.getConditionAccess().getGroup(), "rule__Condition__Group__0");
 					put(grammarAccess.getConditionAccess().getGroup_5(), "rule__Condition__Group_5__0");
 					put(grammarAccess.getConditionTypeAccess().getGroup_0(), "rule__ConditionType__Group_0__0");
@@ -78,7 +78,7 @@ public class QuickUIParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRowAccess().getNameAssignment_1_1(), "rule__Row__NameAssignment_1_1");
 					put(grammarAccess.getRowAccess().getSubelementAssignment_3(), "rule__Row__SubelementAssignment_3");
 					put(grammarAccess.getLabelAccess().getValueAssignment_2(), "rule__Label__ValueAssignment_2");
-					put(grammarAccess.getDisabledAccess().getConditionAssignment_2(), "rule__Disabled__ConditionAssignment_2");
+					put(grammarAccess.getEnabledAccess().getConditionAssignment_2(), "rule__Enabled__ConditionAssignment_2");
 					put(grammarAccess.getConditionAccess().getElementAssignment_1(), "rule__Condition__ElementAssignment_1");
 					put(grammarAccess.getConditionAccess().getNegationAssignment_3(), "rule__Condition__NegationAssignment_3");
 					put(grammarAccess.getConditionAccess().getConditionAssignment_4(), "rule__Condition__ConditionAssignment_4");

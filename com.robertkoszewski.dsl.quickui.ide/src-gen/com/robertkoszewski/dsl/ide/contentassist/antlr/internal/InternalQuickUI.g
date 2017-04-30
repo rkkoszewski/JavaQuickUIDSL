@@ -274,25 +274,25 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-// Entry rule entryRuleDisabled
-entryRuleDisabled
+// Entry rule entryRuleEnabled
+entryRuleEnabled
 :
-{ before(grammarAccess.getDisabledRule()); }
-	 ruleDisabled
-{ after(grammarAccess.getDisabledRule()); } 
+{ before(grammarAccess.getEnabledRule()); }
+	 ruleEnabled
+{ after(grammarAccess.getEnabledRule()); } 
 	 EOF 
 ;
 
-// Rule Disabled
-ruleDisabled 
+// Rule Enabled
+ruleEnabled 
 	@init {
 		int stackSize = keepStackSize();
 	}
 	:
 	(
-		{ before(grammarAccess.getDisabledAccess().getGroup()); }
-		(rule__Disabled__Group__0)
-		{ after(grammarAccess.getDisabledAccess().getGroup()); }
+		{ before(grammarAccess.getEnabledAccess().getGroup()); }
+		(rule__Enabled__Group__0)
+		{ after(grammarAccess.getEnabledAccess().getGroup()); }
 	)
 ;
 finally {
@@ -549,9 +549,9 @@ rule__Option__Alternatives
 	)
 	|
 	(
-		{ before(grammarAccess.getOptionAccess().getDisabledParserRuleCall_1()); }
-		ruleDisabled
-		{ after(grammarAccess.getOptionAccess().getDisabledParserRuleCall_1()); }
+		{ before(grammarAccess.getOptionAccess().getEnabledParserRuleCall_1()); }
+		ruleEnabled
+		{ after(grammarAccess.getOptionAccess().getEnabledParserRuleCall_1()); }
 	)
 	|
 	(
@@ -1955,80 +1955,80 @@ finally {
 }
 
 
-rule__Disabled__Group__0
+rule__Enabled__Group__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Disabled__Group__0__Impl
-	rule__Disabled__Group__1
+	rule__Enabled__Group__0__Impl
+	rule__Enabled__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Disabled__Group__0__Impl
+rule__Enabled__Group__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getDisabledAccess().getDisabledKeyword_0()); }
-	'Disabled'
-	{ after(grammarAccess.getDisabledAccess().getDisabledKeyword_0()); }
+	{ before(grammarAccess.getEnabledAccess().getEnabledKeyword_0()); }
+	'Enabled'
+	{ after(grammarAccess.getEnabledAccess().getEnabledKeyword_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Disabled__Group__1
+rule__Enabled__Group__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Disabled__Group__1__Impl
-	rule__Disabled__Group__2
+	rule__Enabled__Group__1__Impl
+	rule__Enabled__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Disabled__Group__1__Impl
+rule__Enabled__Group__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getDisabledAccess().getColonKeyword_1()); }
+	{ before(grammarAccess.getEnabledAccess().getColonKeyword_1()); }
 	':'
-	{ after(grammarAccess.getDisabledAccess().getColonKeyword_1()); }
+	{ after(grammarAccess.getEnabledAccess().getColonKeyword_1()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Disabled__Group__2
+rule__Enabled__Group__2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Disabled__Group__2__Impl
+	rule__Enabled__Group__2__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Disabled__Group__2__Impl
+rule__Enabled__Group__2__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getDisabledAccess().getConditionAssignment_2()); }
-	(rule__Disabled__ConditionAssignment_2)
-	{ after(grammarAccess.getDisabledAccess().getConditionAssignment_2()); }
+	{ before(grammarAccess.getEnabledAccess().getConditionAssignment_2()); }
+	(rule__Enabled__ConditionAssignment_2)
+	{ after(grammarAccess.getEnabledAccess().getConditionAssignment_2()); }
 )
 ;
 finally {
@@ -2920,15 +2920,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Disabled__ConditionAssignment_2
+rule__Enabled__ConditionAssignment_2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getDisabledAccess().getConditionConditionParserRuleCall_2_0()); }
+		{ before(grammarAccess.getEnabledAccess().getConditionConditionParserRuleCall_2_0()); }
 		ruleCondition
-		{ after(grammarAccess.getDisabledAccess().getConditionConditionParserRuleCall_2_0()); }
+		{ after(grammarAccess.getEnabledAccess().getConditionConditionParserRuleCall_2_0()); }
 	)
 ;
 finally {

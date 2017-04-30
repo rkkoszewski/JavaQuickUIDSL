@@ -37,8 +37,8 @@
     <genClasses ecoreClass="QuickUI.ecore#//Label">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute QuickUI.ecore#//Label/value"/>
     </genClasses>
-    <genClasses ecoreClass="QuickUI.ecore#//Disabled">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference QuickUI.ecore#//Disabled/condition"/>
+    <genClasses ecoreClass="QuickUI.ecore#//Enabled">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference QuickUI.ecore#//Enabled/condition"/>
     </genClasses>
     <genClasses ecoreClass="QuickUI.ecore#//Condition">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference QuickUI.ecore#//Condition/element"/>

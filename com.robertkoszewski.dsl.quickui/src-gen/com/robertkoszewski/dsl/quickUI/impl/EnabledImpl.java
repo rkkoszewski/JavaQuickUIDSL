@@ -4,7 +4,7 @@
 package com.robertkoszewski.dsl.quickUI.impl;
 
 import com.robertkoszewski.dsl.quickUI.Condition;
-import com.robertkoszewski.dsl.quickUI.Disabled;
+import com.robertkoszewski.dsl.quickUI.Enabled;
 import com.robertkoszewski.dsl.quickUI.QuickUIPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -17,18 +17,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Disabled</b></em>'.
+ * An implementation of the model object '<em><b>Enabled</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.robertkoszewski.dsl.quickUI.impl.DisabledImpl#getCondition <em>Condition</em>}</li>
+ *   <li>{@link com.robertkoszewski.dsl.quickUI.impl.EnabledImpl#getCondition <em>Condition</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DisabledImpl extends OptionImpl implements Disabled
+public class EnabledImpl extends OptionImpl implements Enabled
 {
   /**
    * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
@@ -45,7 +45,7 @@ public class DisabledImpl extends OptionImpl implements Disabled
    * <!-- end-user-doc -->
    * @generated
    */
-  protected DisabledImpl()
+  protected EnabledImpl()
   {
     super();
   }
@@ -58,7 +58,7 @@ public class DisabledImpl extends OptionImpl implements Disabled
   @Override
   protected EClass eStaticClass()
   {
-    return QuickUIPackage.Literals.DISABLED;
+    return QuickUIPackage.Literals.ENABLED;
   }
 
   /**
@@ -82,7 +82,7 @@ public class DisabledImpl extends OptionImpl implements Disabled
     condition = newCondition;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QuickUIPackage.DISABLED__CONDITION, oldCondition, newCondition);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QuickUIPackage.ENABLED__CONDITION, oldCondition, newCondition);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -99,14 +99,14 @@ public class DisabledImpl extends OptionImpl implements Disabled
     {
       NotificationChain msgs = null;
       if (condition != null)
-        msgs = ((InternalEObject)condition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QuickUIPackage.DISABLED__CONDITION, null, msgs);
+        msgs = ((InternalEObject)condition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QuickUIPackage.ENABLED__CONDITION, null, msgs);
       if (newCondition != null)
-        msgs = ((InternalEObject)newCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QuickUIPackage.DISABLED__CONDITION, null, msgs);
+        msgs = ((InternalEObject)newCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QuickUIPackage.ENABLED__CONDITION, null, msgs);
       msgs = basicSetCondition(newCondition, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, QuickUIPackage.DISABLED__CONDITION, newCondition, newCondition));
+      eNotify(new ENotificationImpl(this, Notification.SET, QuickUIPackage.ENABLED__CONDITION, newCondition, newCondition));
   }
 
   /**
@@ -119,7 +119,7 @@ public class DisabledImpl extends OptionImpl implements Disabled
   {
     switch (featureID)
     {
-      case QuickUIPackage.DISABLED__CONDITION:
+      case QuickUIPackage.ENABLED__CONDITION:
         return basicSetCondition(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -135,7 +135,7 @@ public class DisabledImpl extends OptionImpl implements Disabled
   {
     switch (featureID)
     {
-      case QuickUIPackage.DISABLED__CONDITION:
+      case QuickUIPackage.ENABLED__CONDITION:
         return getCondition();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -151,7 +151,7 @@ public class DisabledImpl extends OptionImpl implements Disabled
   {
     switch (featureID)
     {
-      case QuickUIPackage.DISABLED__CONDITION:
+      case QuickUIPackage.ENABLED__CONDITION:
         setCondition((Condition)newValue);
         return;
     }
@@ -168,7 +168,7 @@ public class DisabledImpl extends OptionImpl implements Disabled
   {
     switch (featureID)
     {
-      case QuickUIPackage.DISABLED__CONDITION:
+      case QuickUIPackage.ENABLED__CONDITION:
         setCondition((Condition)null);
         return;
     }
@@ -185,10 +185,10 @@ public class DisabledImpl extends OptionImpl implements Disabled
   {
     switch (featureID)
     {
-      case QuickUIPackage.DISABLED__CONDITION:
+      case QuickUIPackage.ENABLED__CONDITION:
         return condition != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //DisabledImpl
+} //EnabledImpl

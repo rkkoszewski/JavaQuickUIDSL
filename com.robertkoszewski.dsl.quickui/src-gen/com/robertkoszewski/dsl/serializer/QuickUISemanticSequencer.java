@@ -7,8 +7,8 @@ import com.google.inject.Inject;
 import com.robertkoszewski.dsl.quickUI.Alias;
 import com.robertkoszewski.dsl.quickUI.Checked;
 import com.robertkoszewski.dsl.quickUI.Condition;
-import com.robertkoszewski.dsl.quickUI.Disabled;
 import com.robertkoszewski.dsl.quickUI.Empty;
+import com.robertkoszewski.dsl.quickUI.Enabled;
 import com.robertkoszewski.dsl.quickUI.Filter;
 import com.robertkoszewski.dsl.quickUI.JavaElement;
 import com.robertkoszewski.dsl.quickUI.Label;
@@ -63,11 +63,11 @@ public class QuickUISemanticSequencer extends AbstractDelegatingSemanticSequence
 			case QuickUIPackage.CONDITION:
 				sequence_Condition(context, (Condition) semanticObject); 
 				return; 
-			case QuickUIPackage.DISABLED:
-				sequence_Disabled(context, (Disabled) semanticObject); 
-				return; 
 			case QuickUIPackage.EMPTY:
 				sequence_ConditionType(context, (Empty) semanticObject); 
+				return; 
+			case QuickUIPackage.ENABLED:
+				sequence_Enabled(context, (Enabled) semanticObject); 
 				return; 
 			case QuickUIPackage.FILTER:
 				sequence_Option(context, (Filter) semanticObject); 
@@ -188,19 +188,19 @@ public class QuickUISemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
-	 *     Option returns Disabled
-	 *     Disabled returns Disabled
+	 *     Option returns Enabled
+	 *     Enabled returns Enabled
 	 *
 	 * Constraint:
 	 *     condition=Condition
 	 */
-	protected void sequence_Disabled(ISerializationContext context, Disabled semanticObject) {
+	protected void sequence_Enabled(ISerializationContext context, Enabled semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, QuickUIPackage.Literals.DISABLED__CONDITION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QuickUIPackage.Literals.DISABLED__CONDITION));
+			if (transientValues.isValueTransient(semanticObject, QuickUIPackage.Literals.ENABLED__CONDITION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QuickUIPackage.Literals.ENABLED__CONDITION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDisabledAccess().getConditionConditionParserRuleCall_2_0(), semanticObject.getCondition());
+		feeder.accept(grammarAccess.getEnabledAccess().getConditionConditionParserRuleCall_2_0(), semanticObject.getCondition());
 		feeder.finish();
 	}
 	

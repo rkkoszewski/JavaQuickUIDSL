@@ -105,13 +105,13 @@ public interface QuickUIFactory extends EFactory
   Label createLabel();
 
   /**
-   * Returns a new object of class '<em>Disabled</em>'.
+   * Returns a new object of class '<em>Enabled</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Disabled</em>'.
+   * @return a new object of class '<em>Enabled</em>'.
    * @generated
    */
-  Disabled createDisabled();
+  Enabled createEnabled();
 
   /**
    * Returns a new object of class '<em>Condition</em>'.

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'TODO'", "'false'", "'use'", "':'", "'.'", "'{'", "'}'", "'Menu'", "'Content'", "'Row'", "'Label'", "'Disabled'", "'if'", "'is'", "'and'", "'empty'", "'checked'", "'Checked'", "'OnClick'", "'Filter'", "'Main'", "'not'", "'true'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'TODO'", "'false'", "'use'", "':'", "'.'", "'{'", "'}'", "'Menu'", "'Content'", "'Row'", "'Label'", "'Enabled'", "'if'", "'is'", "'and'", "'empty'", "'checked'", "'Checked'", "'OnClick'", "'Filter'", "'Main'", "'not'", "'true'"
     };
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=8;
@@ -784,20 +784,20 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleLabel"
 
 
-    // $ANTLR start "entryRuleDisabled"
-    // InternalQuickUI.g:278:1: entryRuleDisabled : ruleDisabled EOF ;
-    public final void entryRuleDisabled() throws RecognitionException {
+    // $ANTLR start "entryRuleEnabled"
+    // InternalQuickUI.g:278:1: entryRuleEnabled : ruleEnabled EOF ;
+    public final void entryRuleEnabled() throws RecognitionException {
         try {
-            // InternalQuickUI.g:279:1: ( ruleDisabled EOF )
-            // InternalQuickUI.g:280:1: ruleDisabled EOF
+            // InternalQuickUI.g:279:1: ( ruleEnabled EOF )
+            // InternalQuickUI.g:280:1: ruleEnabled EOF
             {
-             before(grammarAccess.getDisabledRule()); 
+             before(grammarAccess.getEnabledRule()); 
             pushFollow(FOLLOW_1);
-            ruleDisabled();
+            ruleEnabled();
 
             state._fsp--;
 
-             after(grammarAccess.getDisabledRule()); 
+             after(grammarAccess.getEnabledRule()); 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -811,35 +811,35 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleDisabled"
+    // $ANTLR end "entryRuleEnabled"
 
 
-    // $ANTLR start "ruleDisabled"
-    // InternalQuickUI.g:287:1: ruleDisabled : ( ( rule__Disabled__Group__0 ) ) ;
-    public final void ruleDisabled() throws RecognitionException {
+    // $ANTLR start "ruleEnabled"
+    // InternalQuickUI.g:287:1: ruleEnabled : ( ( rule__Enabled__Group__0 ) ) ;
+    public final void ruleEnabled() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalQuickUI.g:291:2: ( ( ( rule__Disabled__Group__0 ) ) )
-            // InternalQuickUI.g:292:2: ( ( rule__Disabled__Group__0 ) )
+            // InternalQuickUI.g:291:2: ( ( ( rule__Enabled__Group__0 ) ) )
+            // InternalQuickUI.g:292:2: ( ( rule__Enabled__Group__0 ) )
             {
-            // InternalQuickUI.g:292:2: ( ( rule__Disabled__Group__0 ) )
-            // InternalQuickUI.g:293:3: ( rule__Disabled__Group__0 )
+            // InternalQuickUI.g:292:2: ( ( rule__Enabled__Group__0 ) )
+            // InternalQuickUI.g:293:3: ( rule__Enabled__Group__0 )
             {
-             before(grammarAccess.getDisabledAccess().getGroup()); 
-            // InternalQuickUI.g:294:3: ( rule__Disabled__Group__0 )
-            // InternalQuickUI.g:294:4: rule__Disabled__Group__0
+             before(grammarAccess.getEnabledAccess().getGroup()); 
+            // InternalQuickUI.g:294:3: ( rule__Enabled__Group__0 )
+            // InternalQuickUI.g:294:4: rule__Enabled__Group__0
             {
             pushFollow(FOLLOW_2);
-            rule__Disabled__Group__0();
+            rule__Enabled__Group__0();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getDisabledAccess().getGroup()); 
+             after(grammarAccess.getEnabledAccess().getGroup()); 
 
             }
 
@@ -858,7 +858,7 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleDisabled"
+    // $ANTLR end "ruleEnabled"
 
 
     // $ANTLR start "entryRuleCondition"
@@ -1628,13 +1628,13 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Option__Alternatives"
-    // InternalQuickUI.g:540:1: rule__Option__Alternatives : ( ( ruleLabel ) | ( ruleDisabled ) | ( ruleChecked ) | ( ruleOnClick ) | ( ( rule__Option__Group_4__0 ) ) );
+    // InternalQuickUI.g:540:1: rule__Option__Alternatives : ( ( ruleLabel ) | ( ruleEnabled ) | ( ruleChecked ) | ( ruleOnClick ) | ( ( rule__Option__Group_4__0 ) ) );
     public final void rule__Option__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalQuickUI.g:544:1: ( ( ruleLabel ) | ( ruleDisabled ) | ( ruleChecked ) | ( ruleOnClick ) | ( ( rule__Option__Group_4__0 ) ) )
+            // InternalQuickUI.g:544:1: ( ( ruleLabel ) | ( ruleEnabled ) | ( ruleChecked ) | ( ruleOnClick ) | ( ( rule__Option__Group_4__0 ) ) )
             int alt4=5;
             switch ( input.LA(1) ) {
             case 21:
@@ -1690,18 +1690,18 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalQuickUI.g:551:2: ( ruleDisabled )
+                    // InternalQuickUI.g:551:2: ( ruleEnabled )
                     {
-                    // InternalQuickUI.g:551:2: ( ruleDisabled )
-                    // InternalQuickUI.g:552:3: ruleDisabled
+                    // InternalQuickUI.g:551:2: ( ruleEnabled )
+                    // InternalQuickUI.g:552:3: ruleEnabled
                     {
-                     before(grammarAccess.getOptionAccess().getDisabledParserRuleCall_1()); 
+                     before(grammarAccess.getOptionAccess().getEnabledParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
-                    ruleDisabled();
+                    ruleEnabled();
 
                     state._fsp--;
 
-                     after(grammarAccess.getOptionAccess().getDisabledParserRuleCall_1()); 
+                     after(grammarAccess.getOptionAccess().getEnabledParserRuleCall_1()); 
 
                     }
 
@@ -6028,23 +6028,23 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Label__Group__2__Impl"
 
 
-    // $ANTLR start "rule__Disabled__Group__0"
-    // InternalQuickUI.g:1958:1: rule__Disabled__Group__0 : rule__Disabled__Group__0__Impl rule__Disabled__Group__1 ;
-    public final void rule__Disabled__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__Enabled__Group__0"
+    // InternalQuickUI.g:1958:1: rule__Enabled__Group__0 : rule__Enabled__Group__0__Impl rule__Enabled__Group__1 ;
+    public final void rule__Enabled__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalQuickUI.g:1962:1: ( rule__Disabled__Group__0__Impl rule__Disabled__Group__1 )
-            // InternalQuickUI.g:1963:2: rule__Disabled__Group__0__Impl rule__Disabled__Group__1
+            // InternalQuickUI.g:1962:1: ( rule__Enabled__Group__0__Impl rule__Enabled__Group__1 )
+            // InternalQuickUI.g:1963:2: rule__Enabled__Group__0__Impl rule__Enabled__Group__1
             {
             pushFollow(FOLLOW_7);
-            rule__Disabled__Group__0__Impl();
+            rule__Enabled__Group__0__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__Disabled__Group__1();
+            rule__Enabled__Group__1();
 
             state._fsp--;
 
@@ -6063,25 +6063,25 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Disabled__Group__0"
+    // $ANTLR end "rule__Enabled__Group__0"
 
 
-    // $ANTLR start "rule__Disabled__Group__0__Impl"
-    // InternalQuickUI.g:1970:1: rule__Disabled__Group__0__Impl : ( 'Disabled' ) ;
-    public final void rule__Disabled__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Enabled__Group__0__Impl"
+    // InternalQuickUI.g:1970:1: rule__Enabled__Group__0__Impl : ( 'Enabled' ) ;
+    public final void rule__Enabled__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalQuickUI.g:1974:1: ( ( 'Disabled' ) )
-            // InternalQuickUI.g:1975:1: ( 'Disabled' )
+            // InternalQuickUI.g:1974:1: ( ( 'Enabled' ) )
+            // InternalQuickUI.g:1975:1: ( 'Enabled' )
             {
-            // InternalQuickUI.g:1975:1: ( 'Disabled' )
-            // InternalQuickUI.g:1976:2: 'Disabled'
+            // InternalQuickUI.g:1975:1: ( 'Enabled' )
+            // InternalQuickUI.g:1976:2: 'Enabled'
             {
-             before(grammarAccess.getDisabledAccess().getDisabledKeyword_0()); 
+             before(grammarAccess.getEnabledAccess().getEnabledKeyword_0()); 
             match(input,22,FOLLOW_2); 
-             after(grammarAccess.getDisabledAccess().getDisabledKeyword_0()); 
+             after(grammarAccess.getEnabledAccess().getEnabledKeyword_0()); 
 
             }
 
@@ -6100,26 +6100,26 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Disabled__Group__0__Impl"
+    // $ANTLR end "rule__Enabled__Group__0__Impl"
 
 
-    // $ANTLR start "rule__Disabled__Group__1"
-    // InternalQuickUI.g:1985:1: rule__Disabled__Group__1 : rule__Disabled__Group__1__Impl rule__Disabled__Group__2 ;
-    public final void rule__Disabled__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__Enabled__Group__1"
+    // InternalQuickUI.g:1985:1: rule__Enabled__Group__1 : rule__Enabled__Group__1__Impl rule__Enabled__Group__2 ;
+    public final void rule__Enabled__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalQuickUI.g:1989:1: ( rule__Disabled__Group__1__Impl rule__Disabled__Group__2 )
-            // InternalQuickUI.g:1990:2: rule__Disabled__Group__1__Impl rule__Disabled__Group__2
+            // InternalQuickUI.g:1989:1: ( rule__Enabled__Group__1__Impl rule__Enabled__Group__2 )
+            // InternalQuickUI.g:1990:2: rule__Enabled__Group__1__Impl rule__Enabled__Group__2
             {
             pushFollow(FOLLOW_19);
-            rule__Disabled__Group__1__Impl();
+            rule__Enabled__Group__1__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__Disabled__Group__2();
+            rule__Enabled__Group__2();
 
             state._fsp--;
 
@@ -6138,12 +6138,12 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Disabled__Group__1"
+    // $ANTLR end "rule__Enabled__Group__1"
 
 
-    // $ANTLR start "rule__Disabled__Group__1__Impl"
-    // InternalQuickUI.g:1997:1: rule__Disabled__Group__1__Impl : ( ':' ) ;
-    public final void rule__Disabled__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Enabled__Group__1__Impl"
+    // InternalQuickUI.g:1997:1: rule__Enabled__Group__1__Impl : ( ':' ) ;
+    public final void rule__Enabled__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -6154,9 +6154,9 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
             // InternalQuickUI.g:2002:1: ( ':' )
             // InternalQuickUI.g:2003:2: ':'
             {
-             before(grammarAccess.getDisabledAccess().getColonKeyword_1()); 
+             before(grammarAccess.getEnabledAccess().getColonKeyword_1()); 
             match(input,14,FOLLOW_2); 
-             after(grammarAccess.getDisabledAccess().getColonKeyword_1()); 
+             after(grammarAccess.getEnabledAccess().getColonKeyword_1()); 
 
             }
 
@@ -6175,21 +6175,21 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Disabled__Group__1__Impl"
+    // $ANTLR end "rule__Enabled__Group__1__Impl"
 
 
-    // $ANTLR start "rule__Disabled__Group__2"
-    // InternalQuickUI.g:2012:1: rule__Disabled__Group__2 : rule__Disabled__Group__2__Impl ;
-    public final void rule__Disabled__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__Enabled__Group__2"
+    // InternalQuickUI.g:2012:1: rule__Enabled__Group__2 : rule__Enabled__Group__2__Impl ;
+    public final void rule__Enabled__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalQuickUI.g:2016:1: ( rule__Disabled__Group__2__Impl )
-            // InternalQuickUI.g:2017:2: rule__Disabled__Group__2__Impl
+            // InternalQuickUI.g:2016:1: ( rule__Enabled__Group__2__Impl )
+            // InternalQuickUI.g:2017:2: rule__Enabled__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
-            rule__Disabled__Group__2__Impl();
+            rule__Enabled__Group__2__Impl();
 
             state._fsp--;
 
@@ -6208,35 +6208,35 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Disabled__Group__2"
+    // $ANTLR end "rule__Enabled__Group__2"
 
 
-    // $ANTLR start "rule__Disabled__Group__2__Impl"
-    // InternalQuickUI.g:2023:1: rule__Disabled__Group__2__Impl : ( ( rule__Disabled__ConditionAssignment_2 ) ) ;
-    public final void rule__Disabled__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Enabled__Group__2__Impl"
+    // InternalQuickUI.g:2023:1: rule__Enabled__Group__2__Impl : ( ( rule__Enabled__ConditionAssignment_2 ) ) ;
+    public final void rule__Enabled__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalQuickUI.g:2027:1: ( ( ( rule__Disabled__ConditionAssignment_2 ) ) )
-            // InternalQuickUI.g:2028:1: ( ( rule__Disabled__ConditionAssignment_2 ) )
+            // InternalQuickUI.g:2027:1: ( ( ( rule__Enabled__ConditionAssignment_2 ) ) )
+            // InternalQuickUI.g:2028:1: ( ( rule__Enabled__ConditionAssignment_2 ) )
             {
-            // InternalQuickUI.g:2028:1: ( ( rule__Disabled__ConditionAssignment_2 ) )
-            // InternalQuickUI.g:2029:2: ( rule__Disabled__ConditionAssignment_2 )
+            // InternalQuickUI.g:2028:1: ( ( rule__Enabled__ConditionAssignment_2 ) )
+            // InternalQuickUI.g:2029:2: ( rule__Enabled__ConditionAssignment_2 )
             {
-             before(grammarAccess.getDisabledAccess().getConditionAssignment_2()); 
-            // InternalQuickUI.g:2030:2: ( rule__Disabled__ConditionAssignment_2 )
-            // InternalQuickUI.g:2030:3: rule__Disabled__ConditionAssignment_2
+             before(grammarAccess.getEnabledAccess().getConditionAssignment_2()); 
+            // InternalQuickUI.g:2030:2: ( rule__Enabled__ConditionAssignment_2 )
+            // InternalQuickUI.g:2030:3: rule__Enabled__ConditionAssignment_2
             {
             pushFollow(FOLLOW_2);
-            rule__Disabled__ConditionAssignment_2();
+            rule__Enabled__ConditionAssignment_2();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getDisabledAccess().getConditionAssignment_2()); 
+             after(grammarAccess.getEnabledAccess().getConditionAssignment_2()); 
 
             }
 
@@ -6255,7 +6255,7 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Disabled__Group__2__Impl"
+    // $ANTLR end "rule__Enabled__Group__2__Impl"
 
 
     // $ANTLR start "rule__Condition__Group__0"
@@ -8772,9 +8772,9 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Label__ValueAssignment_2"
 
 
-    // $ANTLR start "rule__Disabled__ConditionAssignment_2"
-    // InternalQuickUI.g:2923:1: rule__Disabled__ConditionAssignment_2 : ( ruleCondition ) ;
-    public final void rule__Disabled__ConditionAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__Enabled__ConditionAssignment_2"
+    // InternalQuickUI.g:2923:1: rule__Enabled__ConditionAssignment_2 : ( ruleCondition ) ;
+    public final void rule__Enabled__ConditionAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -8785,13 +8785,13 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
             // InternalQuickUI.g:2928:2: ( ruleCondition )
             // InternalQuickUI.g:2929:3: ruleCondition
             {
-             before(grammarAccess.getDisabledAccess().getConditionConditionParserRuleCall_2_0()); 
+             before(grammarAccess.getEnabledAccess().getConditionConditionParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
             ruleCondition();
 
             state._fsp--;
 
-             after(grammarAccess.getDisabledAccess().getConditionConditionParserRuleCall_2_0()); 
+             after(grammarAccess.getEnabledAccess().getConditionConditionParserRuleCall_2_0()); 
 
             }
 
@@ -8810,7 +8810,7 @@ public class InternalQuickUIParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Disabled__ConditionAssignment_2"
+    // $ANTLR end "rule__Enabled__ConditionAssignment_2"
 
 
     // $ANTLR start "rule__Condition__ElementAssignment_1"

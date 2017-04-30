@@ -7,9 +7,9 @@ import com.robertkoszewski.dsl.quickUI.Alias;
 import com.robertkoszewski.dsl.quickUI.Checked;
 import com.robertkoszewski.dsl.quickUI.Condition;
 import com.robertkoszewski.dsl.quickUI.ConditionType;
-import com.robertkoszewski.dsl.quickUI.Disabled;
 import com.robertkoszewski.dsl.quickUI.Element;
 import com.robertkoszewski.dsl.quickUI.Empty;
+import com.robertkoszewski.dsl.quickUI.Enabled;
 import com.robertkoszewski.dsl.quickUI.Filter;
 import com.robertkoszewski.dsl.quickUI.JavaElement;
 import com.robertkoszewski.dsl.quickUI.Label;
@@ -136,9 +136,9 @@ public class QuickUIAdapterFactory extends AdapterFactoryImpl
         return createLabelAdapter();
       }
       @Override
-      public Adapter caseDisabled(Disabled object)
+      public Adapter caseEnabled(Enabled object)
       {
-        return createDisabledAdapter();
+        return createEnabledAdapter();
       }
       @Override
       public Adapter caseCondition(Condition object)
@@ -333,16 +333,16 @@ public class QuickUIAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robertkoszewski.dsl.quickUI.Disabled <em>Disabled</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robertkoszewski.dsl.quickUI.Enabled <em>Enabled</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robertkoszewski.dsl.quickUI.Disabled
+   * @see com.robertkoszewski.dsl.quickUI.Enabled
    * @generated
    */
-  public Adapter createDisabledAdapter()
+  public Adapter createEnabledAdapter()
   {
     return null;
   }

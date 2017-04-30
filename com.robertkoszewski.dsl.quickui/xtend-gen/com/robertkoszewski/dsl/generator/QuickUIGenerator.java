@@ -8,8 +8,8 @@ import com.google.common.collect.Iterators;
 import com.robertkoszewski.dsl.quickUI.Alias;
 import com.robertkoszewski.dsl.quickUI.Checked;
 import com.robertkoszewski.dsl.quickUI.Condition;
-import com.robertkoszewski.dsl.quickUI.Disabled;
 import com.robertkoszewski.dsl.quickUI.Element;
+import com.robertkoszewski.dsl.quickUI.Enabled;
 import com.robertkoszewski.dsl.quickUI.JavaElement;
 import com.robertkoszewski.dsl.quickUI.Label;
 import com.robertkoszewski.dsl.quickUI.OnClick;
@@ -528,7 +528,7 @@ public class QuickUIGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  protected CharSequence _buildElement(final Disabled dis, final CharSequence parent_var) {
+  protected CharSequence _buildElement(final Enabled dis, final CharSequence parent_var) {
     StringConcatenation _builder = new StringConcatenation();
     Condition _put = this.conditionMap.put(parent_var, dis.getCondition());
     _builder.append(_put);
@@ -713,7 +713,7 @@ public class QuickUIGenerator extends AbstractGenerator {
     _builder.append("public void run() {");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("boolean disabled = false;");
+    _builder.append("boolean enabled = true;");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("java.util.Iterator<java.util.Map.Entry<Object, Condition>> it = conditions.entrySet().iterator();");
@@ -753,7 +753,7 @@ public class QuickUIGenerator extends AbstractGenerator {
     _builder.append("case EMPTY:");
     _builder.newLine();
     _builder.append("\t\t\t\t\t");
-    _builder.append("disabled = (empty?true:disabled);");
+    _builder.append("enabled = (empty?false:enabled);");
     _builder.newLine();
     _builder.append("\t\t\t\t\t");
     _builder.append("break;");
@@ -762,7 +762,7 @@ public class QuickUIGenerator extends AbstractGenerator {
     _builder.append("case NONEMPTY:");
     _builder.newLine();
     _builder.append("\t\t\t\t\t");
-    _builder.append("disabled = (!empty?true:disabled);");
+    _builder.append("enabled = (!empty?false:enabled);");
     _builder.newLine();
     _builder.append("\t\t\t\t\t");
     _builder.append("break;");
@@ -777,7 +777,7 @@ public class QuickUIGenerator extends AbstractGenerator {
     _builder.append("// Set Enabled");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("component.setEnabled(!disabled); // Set Enabled State");
+    _builder.append("component.setEnabled(enabled); // Set Enabled State");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("}");
@@ -924,8 +924,8 @@ public class QuickUIGenerator extends AbstractGenerator {
   public CharSequence buildElement(final Object check, final CharSequence parent_var) {
     if (check instanceof Checked) {
       return _buildElement((Checked)check, parent_var);
-    } else if (check instanceof Disabled) {
-      return _buildElement((Disabled)check, parent_var);
+    } else if (check instanceof Enabled) {
+      return _buildElement((Enabled)check, parent_var);
     } else if (check instanceof JavaElement) {
       return _buildElement((JavaElement)check, parent_var);
     } else if (check instanceof Label) {

@@ -7,9 +7,9 @@ import com.robertkoszewski.dsl.quickUI.Alias;
 import com.robertkoszewski.dsl.quickUI.Checked;
 import com.robertkoszewski.dsl.quickUI.Condition;
 import com.robertkoszewski.dsl.quickUI.ConditionType;
-import com.robertkoszewski.dsl.quickUI.Disabled;
 import com.robertkoszewski.dsl.quickUI.Element;
 import com.robertkoszewski.dsl.quickUI.Empty;
+import com.robertkoszewski.dsl.quickUI.Enabled;
 import com.robertkoszewski.dsl.quickUI.Filter;
 import com.robertkoszewski.dsl.quickUI.JavaElement;
 import com.robertkoszewski.dsl.quickUI.Label;
@@ -104,7 +104,7 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass disabledEClass = null;
+  private EClass enabledEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -463,9 +463,9 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDisabled()
+  public EClass getEnabled()
   {
-    return disabledEClass;
+    return enabledEClass;
   }
 
   /**
@@ -473,9 +473,9 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDisabled_Condition()
+  public EReference getEnabled_Condition()
   {
-    return (EReference)disabledEClass.getEStructuralFeatures().get(0);
+    return (EReference)enabledEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -681,8 +681,8 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
     labelEClass = createEClass(LABEL);
     createEAttribute(labelEClass, LABEL__VALUE);
 
-    disabledEClass = createEClass(DISABLED);
-    createEReference(disabledEClass, DISABLED__CONDITION);
+    enabledEClass = createEClass(ENABLED);
+    createEReference(enabledEClass, ENABLED__CONDITION);
 
     conditionEClass = createEClass(CONDITION);
     createEReference(conditionEClass, CONDITION__ELEMENT);
@@ -738,7 +738,7 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
     javaElementEClass.getESuperTypes().add(this.getElement());
     rowEClass.getESuperTypes().add(this.getElement());
     labelEClass.getESuperTypes().add(this.getOption());
-    disabledEClass.getESuperTypes().add(this.getOption());
+    enabledEClass.getESuperTypes().add(this.getOption());
     checkedEClass.getESuperTypes().add(this.getOption());
     checkedEClass.getESuperTypes().add(this.getConditionType());
     onClickEClass.getESuperTypes().add(this.getOption());
@@ -779,8 +779,8 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
     initEClass(labelEClass, Label.class, "Label", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLabel_Value(), ecorePackage.getEString(), "value", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(disabledEClass, Disabled.class, "Disabled", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDisabled_Condition(), this.getCondition(), null, "condition", null, 0, 1, Disabled.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(enabledEClass, Enabled.class, "Enabled", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEnabled_Condition(), this.getCondition(), null, "condition", null, 0, 1, Enabled.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(conditionEClass, Condition.class, "Condition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCondition_Element(), this.getElement(), null, "element", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

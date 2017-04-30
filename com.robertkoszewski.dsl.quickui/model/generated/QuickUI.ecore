@@ -40,7 +40,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Label" eSuperTypes="#//Option">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Disabled" eSuperTypes="#//Option">
+  <eClassifiers xsi:type="ecore:EClass" name="Enabled" eSuperTypes="#//Option">
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"
         containment="true"/>
   </eClassifiers>

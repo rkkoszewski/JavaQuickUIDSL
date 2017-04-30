@@ -14,13 +14,13 @@ import com.robertkoszewski.dsl.quickUI.Alias
 import com.robertkoszewski.dsl.quickUI.JavaElement
 import com.robertkoszewski.dsl.quickUI.Row
 import com.robertkoszewski.dsl.quickUI.Label
-import com.robertkoszewski.dsl.quickUI.Disabled
 import com.robertkoszewski.dsl.quickUI.Checked
 import com.robertkoszewski.dsl.quickUI.OnClick
+import com.robertkoszewski.dsl.quickUI.Condition
+import com.robertkoszewski.dsl.quickUI.Enabled
 import java.util.logging.Filter
 import java.util.Set
 import java.util.HashSet
-import com.robertkoszewski.dsl.quickUI.Condition
 
 /**
  * Generates code from your model files on save.
@@ -224,8 +224,8 @@ class QuickUIGenerator extends AbstractGenerator {
 	«parent_var».setSelected(«IF check.checked.isIsTrue == true»true«ELSE»false«ENDIF»);
 	'''
 	
-	// Build Option - Disabled
-	def dispatch CharSequence buildElement(Disabled dis, CharSequence parent_var) '''
+	// Build Option - Enabled
+	def dispatch CharSequence buildElement(Enabled dis, CharSequence parent_var) '''
 	«conditionMap.put(parent_var, dis.condition)»
 	'''
 	
@@ -299,7 +299,7 @@ class QuickUIGenerator extends AbstractGenerator {
 		Runnable callback = new Runnable(){
 			@Override
 			public void run() {
-				boolean disabled = false;
+				boolean enabled = true;
 				java.util.Iterator<java.util.Map.Entry<Object, Condition>> it = conditions.entrySet().iterator();
 				while(it.hasNext()){ // Check all Conditions
 					java.util.Map.Entry<Object, Condition> cond = it.next();
@@ -313,15 +313,15 @@ class QuickUIGenerator extends AbstractGenerator {
 					
 					switch(cond.getValue()){
 					case EMPTY:
-						disabled = (empty?true:disabled);
+						enabled = (empty?false:enabled);
 						break;
 					case NONEMPTY:
-						disabled = (!empty?true:disabled);
+						enabled = (!empty?false:enabled);
 						break;
 					}
 				}
 				// Set Enabled
-				component.setEnabled(!disabled); // Set Enabled State
+				component.setEnabled(enabled); // Set Enabled State
 			}
 		};
 		
