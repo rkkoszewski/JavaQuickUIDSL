@@ -58,7 +58,7 @@ Enabled:
 ;
 
 Condition:
-	('if')? element=[Element] 'is'? negation?='not'?  condition=ConditionType ('and' subcondition=Condition)?
+	('if')? element=[Element] 'is'? negation?='not'?  condition=ConditionType ('and' subcondition=Condition)? /* OR implementation? */
 ;
 
 ConditionType:
