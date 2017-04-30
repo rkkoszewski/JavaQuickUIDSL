@@ -1,0 +1,98 @@
+grammar com.robertkoszewski.dsl.QuickUI with org.eclipse.xtext.common.Terminals
+
+generate quickUI "http://www.robertkoszewski.com/dsl/QuickUI"
+
+UIModel:
+	alias+=Alias* window+=Window+
+;
+
+Alias:
+	'use' name=ID ':' package=Package
+;
+
+Package:
+	pname=ID ('.' subp=Package)?
+;
+
+Window:
+	{Window} (main?='Main' ':')? name=ID (':' title=STRING)? '{' 
+		('Menu' '{' menu_elements+=Element* '}')?
+		('Content' '{' content_elements+=Element* '}' )
+	'}'
+;
+
+Element:
+	Row|JavaElement
+;
+
+JavaElement:
+	alias=[Alias] (':' name=ID)? '{' subelement+=(Element|Option)* '}'
+;
+
+Row:
+	'Row' (':' name=ID)? '{' subelement+=(Element|Option)+ '}'
+;
+
+// Static Options
+// - Filter
+// - Disabled
+// - Checked
+// - OnClick
+
+Option:
+	Label|Disabled|Checked|OnClick|{Filter}Filter
+;
+
+/* 
+Value:
+	{OptionValue} optname=ID ':' value=STRING
+;
+*/
+
+Label:
+	'Label' ':' value=STRING
+;
+
+Disabled:
+	'Disabled' ':' condition=Condition
+;
+
+Condition:
+	('if')? element=[Element] 'is'? negation?='not'?  condition=ConditionType ('and' subcondition=Condition)?
+;
+
+ConditionType:
+	{Empty} 'empty' | {Checked} 'checked'
+;
+
+Checked:
+	'Checked' ':' checked=Boolean
+;
+
+OnClick:
+	'OnClick' ':' callback=ID
+;
+
+Filter:
+	'Filter' ':' FilterExpression
+;
+
+FilterExpression:
+	'TODO'
+;
+
+Boolean:
+	{Boolean} (isTrue?='true' | 'false')
+;
+
+
+// Notes
+/* 
+Enabled:
+	enabled?='true' // SAVES AS BOOLEAN
+;
+
+OnOff:
+	{OnOff} 'on' | {OnOff} 'off' // SAVES AS OBJECT
+;
+*/

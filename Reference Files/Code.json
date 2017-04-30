@@ -1,0 +1,53 @@
+use Menu:	com.widget.Menu
+use Label:	com.widget.Label
+use Content:com.widget.Content
+use Item:	com.3rdparty.widget.Item
+
+
+Window:"Window Title"{
+	Menu{
+		Item:ItemID1{
+			Label:"Item 1"
+		}
+		
+		Item:Save{
+			Label:"Save"
+			Disabled: Name not empty and Surname not empty
+		}
+	}                                                             
+	Content{
+		Row{
+			Label{
+				Label:"Write your name:"
+			}
+			Input:Name{
+				Filter: a-zA-Z
+			}
+		}
+		Row{
+			Label{
+				Label:"Write your surname:"
+			}
+			Input:Surname{
+				Disabled: if Name empty 
+				Filter: a-zA-Z
+			}
+		}
+		Row{
+			Checkbox:PhoneCheckbox{
+				Checked: false
+			}
+			Label{
+				Label:"Phone Number:"
+			}
+			Input:PhoneNumber{
+				Filter: 0-9
+				Disabled: if PhoneCheckbox checked
+			}
+			Button{
+				Label: "Save"
+				OnClick: com.MyClass.method
+			}
+		}
+	}
+}
