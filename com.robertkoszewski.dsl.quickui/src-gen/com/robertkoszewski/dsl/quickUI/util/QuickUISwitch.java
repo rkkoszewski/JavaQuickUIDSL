@@ -6,11 +6,13 @@ package com.robertkoszewski.dsl.quickUI.util;
 import com.robertkoszewski.dsl.quickUI.Alias;
 import com.robertkoszewski.dsl.quickUI.Checked;
 import com.robertkoszewski.dsl.quickUI.Condition;
+import com.robertkoszewski.dsl.quickUI.ConditionBranch;
+import com.robertkoszewski.dsl.quickUI.ConditionConcatenation;
+import com.robertkoszewski.dsl.quickUI.ConditionDefinition;
 import com.robertkoszewski.dsl.quickUI.ConditionType;
 import com.robertkoszewski.dsl.quickUI.Element;
 import com.robertkoszewski.dsl.quickUI.Empty;
 import com.robertkoszewski.dsl.quickUI.Enabled;
-import com.robertkoszewski.dsl.quickUI.Filter;
 import com.robertkoszewski.dsl.quickUI.JavaElement;
 import com.robertkoszewski.dsl.quickUI.Label;
 import com.robertkoszewski.dsl.quickUI.OnClick;
@@ -162,10 +164,18 @@ public class QuickUISwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case QuickUIPackage.CONDITION_DEFINITION:
+      {
+        ConditionDefinition conditionDefinition = (ConditionDefinition)theEObject;
+        T result = caseConditionDefinition(conditionDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case QuickUIPackage.CONDITION:
       {
         Condition condition = (Condition)theEObject;
         T result = caseCondition(condition);
+        if (result == null) result = caseConditionDefinition(condition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -200,11 +210,19 @@ public class QuickUISwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case QuickUIPackage.FILTER:
+      case QuickUIPackage.CONDITION_BRANCH:
       {
-        Filter filter = (Filter)theEObject;
-        T result = caseFilter(filter);
-        if (result == null) result = caseOption(filter);
+        ConditionBranch conditionBranch = (ConditionBranch)theEObject;
+        T result = caseConditionBranch(conditionBranch);
+        if (result == null) result = caseConditionDefinition(conditionBranch);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case QuickUIPackage.CONDITION_CONCATENATION:
+      {
+        ConditionConcatenation conditionConcatenation = (ConditionConcatenation)theEObject;
+        T result = caseConditionConcatenation(conditionConcatenation);
+        if (result == null) result = caseConditionDefinition(conditionConcatenation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -381,6 +399,22 @@ public class QuickUISwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Condition Definition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Condition Definition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConditionDefinition(ConditionDefinition object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Condition</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -461,17 +495,33 @@ public class QuickUISwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Filter</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Condition Branch</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Filter</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Condition Branch</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFilter(Filter object)
+  public T caseConditionBranch(ConditionBranch object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Condition Concatenation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Condition Concatenation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConditionConcatenation(ConditionConcatenation object)
   {
     return null;
   }

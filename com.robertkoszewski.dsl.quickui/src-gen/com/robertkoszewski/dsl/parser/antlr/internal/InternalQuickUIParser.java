@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalQuickUIParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'use'", "':'", "'.'", "'Main'", "'{'", "'Menu'", "'}'", "'Content'", "'Row'", "'Label'", "'Enabled'", "'if'", "'is'", "'not'", "'and'", "'empty'", "'checked'", "'Checked'", "'OnClick'", "'Filter'", "'TODO'", "'true'", "'false'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'use'", "':'", "'.'", "'Main'", "'{'", "'Menu'", "'}'", "'Content'", "'Row'", "'Label'", "'Enabled'", "'or'", "'and'", "'if'", "'is'", "'not'", "'empty'", "'checked'", "'Checked'", "'OnClick'", "'true'", "'false'"
     };
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=8;
@@ -31,7 +31,6 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
     public static final int T__17=17;
     public static final int T__18=18;
     public static final int T__11=11;
-    public static final int T__33=33;
     public static final int T__12=12;
     public static final int T__13=13;
     public static final int T__14=14;
@@ -1213,7 +1212,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
                 int alt12=2;
                 int LA12_0 = input.LA(1);
 
-                if ( (LA12_0==RULE_ID||(LA12_0>=19 && LA12_0<=21)||(LA12_0>=28 && LA12_0<=30)) ) {
+                if ( (LA12_0==RULE_ID||(LA12_0>=19 && LA12_0<=21)||(LA12_0>=29 && LA12_0<=30)) ) {
                     alt12=1;
                 }
 
@@ -1232,7 +1231,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
             	    if ( (LA11_0==RULE_ID||LA11_0==19) ) {
             	        alt11=1;
             	    }
-            	    else if ( ((LA11_0>=20 && LA11_0<=21)||(LA11_0>=28 && LA11_0<=30)) ) {
+            	    else if ( ((LA11_0>=20 && LA11_0<=21)||(LA11_0>=29 && LA11_0<=30)) ) {
             	        alt11=2;
             	    }
             	    else {
@@ -1456,7 +1455,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
                 int alt15=2;
                 int LA15_0 = input.LA(1);
 
-                if ( (LA15_0==RULE_ID||(LA15_0>=19 && LA15_0<=21)||(LA15_0>=28 && LA15_0<=30)) ) {
+                if ( (LA15_0==RULE_ID||(LA15_0>=19 && LA15_0<=21)||(LA15_0>=29 && LA15_0<=30)) ) {
                     alt15=1;
                 }
 
@@ -1475,7 +1474,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
             	    if ( (LA14_0==RULE_ID||LA14_0==19) ) {
             	        alt14=1;
             	    }
-            	    else if ( ((LA14_0>=20 && LA14_0<=21)||(LA14_0>=28 && LA14_0<=30)) ) {
+            	    else if ( ((LA14_0>=20 && LA14_0<=21)||(LA14_0>=29 && LA14_0<=30)) ) {
             	        alt14=2;
             	    }
             	    else {
@@ -1617,7 +1616,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOption"
-    // InternalQuickUI.g:645:1: ruleOption returns [EObject current=null] : (this_Label_0= ruleLabel | this_Enabled_1= ruleEnabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick | ( () ruleFilter ) ) ;
+    // InternalQuickUI.g:645:1: ruleOption returns [EObject current=null] : (this_Label_0= ruleLabel | this_Enabled_1= ruleEnabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick ) ;
     public final EObject ruleOption() throws RecognitionException {
         EObject current = null;
 
@@ -1634,11 +1633,11 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalQuickUI.g:651:2: ( (this_Label_0= ruleLabel | this_Enabled_1= ruleEnabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick | ( () ruleFilter ) ) )
-            // InternalQuickUI.g:652:2: (this_Label_0= ruleLabel | this_Enabled_1= ruleEnabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick | ( () ruleFilter ) )
+            // InternalQuickUI.g:651:2: ( (this_Label_0= ruleLabel | this_Enabled_1= ruleEnabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick ) )
+            // InternalQuickUI.g:652:2: (this_Label_0= ruleLabel | this_Enabled_1= ruleEnabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick )
             {
-            // InternalQuickUI.g:652:2: (this_Label_0= ruleLabel | this_Enabled_1= ruleEnabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick | ( () ruleFilter ) )
-            int alt16=5;
+            // InternalQuickUI.g:652:2: (this_Label_0= ruleLabel | this_Enabled_1= ruleEnabled | this_Checked_2= ruleChecked | this_OnClick_3= ruleOnClick )
+            int alt16=4;
             switch ( input.LA(1) ) {
             case 20:
                 {
@@ -1650,19 +1649,14 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
                 alt16=2;
                 }
                 break;
-            case 28:
+            case 29:
                 {
                 alt16=3;
                 }
                 break;
-            case 29:
-                {
-                alt16=4;
-                }
-                break;
             case 30:
                 {
-                alt16=5;
+                alt16=4;
                 }
                 break;
             default:
@@ -1745,40 +1739,6 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
-                case 5 :
-                    // InternalQuickUI.g:689:3: ( () ruleFilter )
-                    {
-                    // InternalQuickUI.g:689:3: ( () ruleFilter )
-                    // InternalQuickUI.g:690:4: () ruleFilter
-                    {
-                    // InternalQuickUI.g:690:4: ()
-                    // InternalQuickUI.g:691:5: 
-                    {
-
-                    					current = forceCreateModelElement(
-                    						grammarAccess.getOptionAccess().getFilterAction_4_0(),
-                    						current);
-                    				
-
-                    }
-
-
-                    				newCompositeNode(grammarAccess.getOptionAccess().getFilterParserRuleCall_4_1());
-                    			
-                    pushFollow(FOLLOW_2);
-                    ruleFilter();
-
-                    state._fsp--;
-
-
-                    				afterParserOrEnumRuleCall();
-                    			
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -1802,7 +1762,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLabel"
-    // InternalQuickUI.g:709:1: entryRuleLabel returns [EObject current=null] : iv_ruleLabel= ruleLabel EOF ;
+    // InternalQuickUI.g:692:1: entryRuleLabel returns [EObject current=null] : iv_ruleLabel= ruleLabel EOF ;
     public final EObject entryRuleLabel() throws RecognitionException {
         EObject current = null;
 
@@ -1810,8 +1770,8 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalQuickUI.g:709:46: (iv_ruleLabel= ruleLabel EOF )
-            // InternalQuickUI.g:710:2: iv_ruleLabel= ruleLabel EOF
+            // InternalQuickUI.g:692:46: (iv_ruleLabel= ruleLabel EOF )
+            // InternalQuickUI.g:693:2: iv_ruleLabel= ruleLabel EOF
             {
              newCompositeNode(grammarAccess.getLabelRule()); 
             pushFollow(FOLLOW_1);
@@ -1838,7 +1798,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLabel"
-    // InternalQuickUI.g:716:1: ruleLabel returns [EObject current=null] : (otherlv_0= 'Label' otherlv_1= ':' ( (lv_value_2_0= RULE_STRING ) ) ) ;
+    // InternalQuickUI.g:699:1: ruleLabel returns [EObject current=null] : (otherlv_0= 'Label' otherlv_1= ':' ( (lv_value_2_0= RULE_STRING ) ) ) ;
     public final EObject ruleLabel() throws RecognitionException {
         EObject current = null;
 
@@ -1850,11 +1810,11 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalQuickUI.g:722:2: ( (otherlv_0= 'Label' otherlv_1= ':' ( (lv_value_2_0= RULE_STRING ) ) ) )
-            // InternalQuickUI.g:723:2: (otherlv_0= 'Label' otherlv_1= ':' ( (lv_value_2_0= RULE_STRING ) ) )
+            // InternalQuickUI.g:705:2: ( (otherlv_0= 'Label' otherlv_1= ':' ( (lv_value_2_0= RULE_STRING ) ) ) )
+            // InternalQuickUI.g:706:2: (otherlv_0= 'Label' otherlv_1= ':' ( (lv_value_2_0= RULE_STRING ) ) )
             {
-            // InternalQuickUI.g:723:2: (otherlv_0= 'Label' otherlv_1= ':' ( (lv_value_2_0= RULE_STRING ) ) )
-            // InternalQuickUI.g:724:3: otherlv_0= 'Label' otherlv_1= ':' ( (lv_value_2_0= RULE_STRING ) )
+            // InternalQuickUI.g:706:2: (otherlv_0= 'Label' otherlv_1= ':' ( (lv_value_2_0= RULE_STRING ) ) )
+            // InternalQuickUI.g:707:3: otherlv_0= 'Label' otherlv_1= ':' ( (lv_value_2_0= RULE_STRING ) )
             {
             otherlv_0=(Token)match(input,20,FOLLOW_6); 
 
@@ -1864,11 +1824,11 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getLabelAccess().getColonKeyword_1());
             		
-            // InternalQuickUI.g:732:3: ( (lv_value_2_0= RULE_STRING ) )
-            // InternalQuickUI.g:733:4: (lv_value_2_0= RULE_STRING )
+            // InternalQuickUI.g:715:3: ( (lv_value_2_0= RULE_STRING ) )
+            // InternalQuickUI.g:716:4: (lv_value_2_0= RULE_STRING )
             {
-            // InternalQuickUI.g:733:4: (lv_value_2_0= RULE_STRING )
-            // InternalQuickUI.g:734:5: lv_value_2_0= RULE_STRING
+            // InternalQuickUI.g:716:4: (lv_value_2_0= RULE_STRING )
+            // InternalQuickUI.g:717:5: lv_value_2_0= RULE_STRING
             {
             lv_value_2_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
@@ -1913,7 +1873,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEnabled"
-    // InternalQuickUI.g:754:1: entryRuleEnabled returns [EObject current=null] : iv_ruleEnabled= ruleEnabled EOF ;
+    // InternalQuickUI.g:737:1: entryRuleEnabled returns [EObject current=null] : iv_ruleEnabled= ruleEnabled EOF ;
     public final EObject entryRuleEnabled() throws RecognitionException {
         EObject current = null;
 
@@ -1921,8 +1881,8 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalQuickUI.g:754:48: (iv_ruleEnabled= ruleEnabled EOF )
-            // InternalQuickUI.g:755:2: iv_ruleEnabled= ruleEnabled EOF
+            // InternalQuickUI.g:737:48: (iv_ruleEnabled= ruleEnabled EOF )
+            // InternalQuickUI.g:738:2: iv_ruleEnabled= ruleEnabled EOF
             {
              newCompositeNode(grammarAccess.getEnabledRule()); 
             pushFollow(FOLLOW_1);
@@ -1949,7 +1909,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnabled"
-    // InternalQuickUI.g:761:1: ruleEnabled returns [EObject current=null] : (otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) ) ) ;
+    // InternalQuickUI.g:744:1: ruleEnabled returns [EObject current=null] : (otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleConditionBranch ) ) ) ;
     public final EObject ruleEnabled() throws RecognitionException {
         EObject current = null;
 
@@ -1962,11 +1922,11 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalQuickUI.g:767:2: ( (otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) ) ) )
-            // InternalQuickUI.g:768:2: (otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) ) )
+            // InternalQuickUI.g:750:2: ( (otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleConditionBranch ) ) ) )
+            // InternalQuickUI.g:751:2: (otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleConditionBranch ) ) )
             {
-            // InternalQuickUI.g:768:2: (otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) ) )
-            // InternalQuickUI.g:769:3: otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleCondition ) )
+            // InternalQuickUI.g:751:2: (otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleConditionBranch ) ) )
+            // InternalQuickUI.g:752:3: otherlv_0= 'Enabled' otherlv_1= ':' ( (lv_condition_2_0= ruleConditionBranch ) )
             {
             otherlv_0=(Token)match(input,21,FOLLOW_6); 
 
@@ -1976,17 +1936,17 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getEnabledAccess().getColonKeyword_1());
             		
-            // InternalQuickUI.g:777:3: ( (lv_condition_2_0= ruleCondition ) )
-            // InternalQuickUI.g:778:4: (lv_condition_2_0= ruleCondition )
+            // InternalQuickUI.g:760:3: ( (lv_condition_2_0= ruleConditionBranch ) )
+            // InternalQuickUI.g:761:4: (lv_condition_2_0= ruleConditionBranch )
             {
-            // InternalQuickUI.g:778:4: (lv_condition_2_0= ruleCondition )
-            // InternalQuickUI.g:779:5: lv_condition_2_0= ruleCondition
+            // InternalQuickUI.g:761:4: (lv_condition_2_0= ruleConditionBranch )
+            // InternalQuickUI.g:762:5: lv_condition_2_0= ruleConditionBranch
             {
 
-            					newCompositeNode(grammarAccess.getEnabledAccess().getConditionConditionParserRuleCall_2_0());
+            					newCompositeNode(grammarAccess.getEnabledAccess().getConditionConditionBranchParserRuleCall_2_0());
             				
             pushFollow(FOLLOW_2);
-            lv_condition_2_0=ruleCondition();
+            lv_condition_2_0=ruleConditionBranch();
 
             state._fsp--;
 
@@ -1998,7 +1958,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
             						current,
             						"condition",
             						lv_condition_2_0,
-            						"com.robertkoszewski.dsl.QuickUI.Condition");
+            						"com.robertkoszewski.dsl.QuickUI.ConditionBranch");
             					afterParserOrEnumRuleCall();
             				
 
@@ -2029,8 +1989,412 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleEnabled"
 
 
+    // $ANTLR start "entryRuleConditionBranch"
+    // InternalQuickUI.g:783:1: entryRuleConditionBranch returns [EObject current=null] : iv_ruleConditionBranch= ruleConditionBranch EOF ;
+    public final EObject entryRuleConditionBranch() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleConditionBranch = null;
+
+
+        try {
+            // InternalQuickUI.g:783:56: (iv_ruleConditionBranch= ruleConditionBranch EOF )
+            // InternalQuickUI.g:784:2: iv_ruleConditionBranch= ruleConditionBranch EOF
+            {
+             newCompositeNode(grammarAccess.getConditionBranchRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleConditionBranch=ruleConditionBranch();
+
+            state._fsp--;
+
+             current =iv_ruleConditionBranch; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleConditionBranch"
+
+
+    // $ANTLR start "ruleConditionBranch"
+    // InternalQuickUI.g:790:1: ruleConditionBranch returns [EObject current=null] : (this_ConditionConcatenation_0= ruleConditionConcatenation ( () otherlv_2= 'or' ( (lv_right_3_0= ruleConditionConcatenation ) ) )* ) ;
+    public final EObject ruleConditionBranch() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_2=null;
+        EObject this_ConditionConcatenation_0 = null;
+
+        EObject lv_right_3_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalQuickUI.g:796:2: ( (this_ConditionConcatenation_0= ruleConditionConcatenation ( () otherlv_2= 'or' ( (lv_right_3_0= ruleConditionConcatenation ) ) )* ) )
+            // InternalQuickUI.g:797:2: (this_ConditionConcatenation_0= ruleConditionConcatenation ( () otherlv_2= 'or' ( (lv_right_3_0= ruleConditionConcatenation ) ) )* )
+            {
+            // InternalQuickUI.g:797:2: (this_ConditionConcatenation_0= ruleConditionConcatenation ( () otherlv_2= 'or' ( (lv_right_3_0= ruleConditionConcatenation ) ) )* )
+            // InternalQuickUI.g:798:3: this_ConditionConcatenation_0= ruleConditionConcatenation ( () otherlv_2= 'or' ( (lv_right_3_0= ruleConditionConcatenation ) ) )*
+            {
+
+            			newCompositeNode(grammarAccess.getConditionBranchAccess().getConditionConcatenationParserRuleCall_0());
+            		
+            pushFollow(FOLLOW_18);
+            this_ConditionConcatenation_0=ruleConditionConcatenation();
+
+            state._fsp--;
+
+
+            			current = this_ConditionConcatenation_0;
+            			afterParserOrEnumRuleCall();
+            		
+            // InternalQuickUI.g:806:3: ( () otherlv_2= 'or' ( (lv_right_3_0= ruleConditionConcatenation ) ) )*
+            loop17:
+            do {
+                int alt17=2;
+                int LA17_0 = input.LA(1);
+
+                if ( (LA17_0==22) ) {
+                    alt17=1;
+                }
+
+
+                switch (alt17) {
+            	case 1 :
+            	    // InternalQuickUI.g:807:4: () otherlv_2= 'or' ( (lv_right_3_0= ruleConditionConcatenation ) )
+            	    {
+            	    // InternalQuickUI.g:807:4: ()
+            	    // InternalQuickUI.g:808:5: 
+            	    {
+
+            	    					current = forceCreateModelElementAndSet(
+            	    						grammarAccess.getConditionBranchAccess().getConditionBranchLeftAction_1_0(),
+            	    						current);
+            	    				
+
+            	    }
+
+            	    otherlv_2=(Token)match(input,22,FOLLOW_17); 
+
+            	    				newLeafNode(otherlv_2, grammarAccess.getConditionBranchAccess().getOrKeyword_1_1());
+            	    			
+            	    // InternalQuickUI.g:818:4: ( (lv_right_3_0= ruleConditionConcatenation ) )
+            	    // InternalQuickUI.g:819:5: (lv_right_3_0= ruleConditionConcatenation )
+            	    {
+            	    // InternalQuickUI.g:819:5: (lv_right_3_0= ruleConditionConcatenation )
+            	    // InternalQuickUI.g:820:6: lv_right_3_0= ruleConditionConcatenation
+            	    {
+
+            	    						newCompositeNode(grammarAccess.getConditionBranchAccess().getRightConditionConcatenationParserRuleCall_1_2_0());
+            	    					
+            	    pushFollow(FOLLOW_18);
+            	    lv_right_3_0=ruleConditionConcatenation();
+
+            	    state._fsp--;
+
+
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getConditionBranchRule());
+            	    						}
+            	    						set(
+            	    							current,
+            	    							"right",
+            	    							lv_right_3_0,
+            	    							"com.robertkoszewski.dsl.QuickUI.ConditionConcatenation");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop17;
+                }
+            } while (true);
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleConditionBranch"
+
+
+    // $ANTLR start "entryRuleConditionConcatenation"
+    // InternalQuickUI.g:842:1: entryRuleConditionConcatenation returns [EObject current=null] : iv_ruleConditionConcatenation= ruleConditionConcatenation EOF ;
+    public final EObject entryRuleConditionConcatenation() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleConditionConcatenation = null;
+
+
+        try {
+            // InternalQuickUI.g:842:63: (iv_ruleConditionConcatenation= ruleConditionConcatenation EOF )
+            // InternalQuickUI.g:843:2: iv_ruleConditionConcatenation= ruleConditionConcatenation EOF
+            {
+             newCompositeNode(grammarAccess.getConditionConcatenationRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleConditionConcatenation=ruleConditionConcatenation();
+
+            state._fsp--;
+
+             current =iv_ruleConditionConcatenation; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleConditionConcatenation"
+
+
+    // $ANTLR start "ruleConditionConcatenation"
+    // InternalQuickUI.g:849:1: ruleConditionConcatenation returns [EObject current=null] : (this_Condition_0= ruleCondition ( () otherlv_2= 'and' ( (lv_right_3_0= ruleConditionValue ) ) )* ) ;
+    public final EObject ruleConditionConcatenation() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_2=null;
+        EObject this_Condition_0 = null;
+
+        EObject lv_right_3_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalQuickUI.g:855:2: ( (this_Condition_0= ruleCondition ( () otherlv_2= 'and' ( (lv_right_3_0= ruleConditionValue ) ) )* ) )
+            // InternalQuickUI.g:856:2: (this_Condition_0= ruleCondition ( () otherlv_2= 'and' ( (lv_right_3_0= ruleConditionValue ) ) )* )
+            {
+            // InternalQuickUI.g:856:2: (this_Condition_0= ruleCondition ( () otherlv_2= 'and' ( (lv_right_3_0= ruleConditionValue ) ) )* )
+            // InternalQuickUI.g:857:3: this_Condition_0= ruleCondition ( () otherlv_2= 'and' ( (lv_right_3_0= ruleConditionValue ) ) )*
+            {
+
+            			newCompositeNode(grammarAccess.getConditionConcatenationAccess().getConditionParserRuleCall_0());
+            		
+            pushFollow(FOLLOW_19);
+            this_Condition_0=ruleCondition();
+
+            state._fsp--;
+
+
+            			current = this_Condition_0;
+            			afterParserOrEnumRuleCall();
+            		
+            // InternalQuickUI.g:865:3: ( () otherlv_2= 'and' ( (lv_right_3_0= ruleConditionValue ) ) )*
+            loop18:
+            do {
+                int alt18=2;
+                int LA18_0 = input.LA(1);
+
+                if ( (LA18_0==23) ) {
+                    alt18=1;
+                }
+
+
+                switch (alt18) {
+            	case 1 :
+            	    // InternalQuickUI.g:866:4: () otherlv_2= 'and' ( (lv_right_3_0= ruleConditionValue ) )
+            	    {
+            	    // InternalQuickUI.g:866:4: ()
+            	    // InternalQuickUI.g:867:5: 
+            	    {
+
+            	    					current = forceCreateModelElementAndSet(
+            	    						grammarAccess.getConditionConcatenationAccess().getConditionConcatenationLeftAction_1_0(),
+            	    						current);
+            	    				
+
+            	    }
+
+            	    otherlv_2=(Token)match(input,23,FOLLOW_17); 
+
+            	    				newLeafNode(otherlv_2, grammarAccess.getConditionConcatenationAccess().getAndKeyword_1_1());
+            	    			
+            	    // InternalQuickUI.g:877:4: ( (lv_right_3_0= ruleConditionValue ) )
+            	    // InternalQuickUI.g:878:5: (lv_right_3_0= ruleConditionValue )
+            	    {
+            	    // InternalQuickUI.g:878:5: (lv_right_3_0= ruleConditionValue )
+            	    // InternalQuickUI.g:879:6: lv_right_3_0= ruleConditionValue
+            	    {
+
+            	    						newCompositeNode(grammarAccess.getConditionConcatenationAccess().getRightConditionValueParserRuleCall_1_2_0());
+            	    					
+            	    pushFollow(FOLLOW_19);
+            	    lv_right_3_0=ruleConditionValue();
+
+            	    state._fsp--;
+
+
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getConditionConcatenationRule());
+            	    						}
+            	    						set(
+            	    							current,
+            	    							"right",
+            	    							lv_right_3_0,
+            	    							"com.robertkoszewski.dsl.QuickUI.ConditionValue");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop18;
+                }
+            } while (true);
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleConditionConcatenation"
+
+
+    // $ANTLR start "entryRuleConditionValue"
+    // InternalQuickUI.g:901:1: entryRuleConditionValue returns [EObject current=null] : iv_ruleConditionValue= ruleConditionValue EOF ;
+    public final EObject entryRuleConditionValue() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleConditionValue = null;
+
+
+        try {
+            // InternalQuickUI.g:901:55: (iv_ruleConditionValue= ruleConditionValue EOF )
+            // InternalQuickUI.g:902:2: iv_ruleConditionValue= ruleConditionValue EOF
+            {
+             newCompositeNode(grammarAccess.getConditionValueRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleConditionValue=ruleConditionValue();
+
+            state._fsp--;
+
+             current =iv_ruleConditionValue; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleConditionValue"
+
+
+    // $ANTLR start "ruleConditionValue"
+    // InternalQuickUI.g:908:1: ruleConditionValue returns [EObject current=null] : this_Condition_0= ruleCondition ;
+    public final EObject ruleConditionValue() throws RecognitionException {
+        EObject current = null;
+
+        EObject this_Condition_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalQuickUI.g:914:2: (this_Condition_0= ruleCondition )
+            // InternalQuickUI.g:915:2: this_Condition_0= ruleCondition
+            {
+
+            		newCompositeNode(grammarAccess.getConditionValueAccess().getConditionParserRuleCall());
+            	
+            pushFollow(FOLLOW_2);
+            this_Condition_0=ruleCondition();
+
+            state._fsp--;
+
+
+            		current = this_Condition_0;
+            		afterParserOrEnumRuleCall();
+            	
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleConditionValue"
+
+
     // $ANTLR start "entryRuleCondition"
-    // InternalQuickUI.g:800:1: entryRuleCondition returns [EObject current=null] : iv_ruleCondition= ruleCondition EOF ;
+    // InternalQuickUI.g:926:1: entryRuleCondition returns [EObject current=null] : iv_ruleCondition= ruleCondition EOF ;
     public final EObject entryRuleCondition() throws RecognitionException {
         EObject current = null;
 
@@ -2038,8 +2402,8 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalQuickUI.g:800:50: (iv_ruleCondition= ruleCondition EOF )
-            // InternalQuickUI.g:801:2: iv_ruleCondition= ruleCondition EOF
+            // InternalQuickUI.g:926:50: (iv_ruleCondition= ruleCondition EOF )
+            // InternalQuickUI.g:927:2: iv_ruleCondition= ruleCondition EOF
             {
              newCompositeNode(grammarAccess.getConditionRule()); 
             pushFollow(FOLLOW_1);
@@ -2066,7 +2430,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCondition"
-    // InternalQuickUI.g:807:1: ruleCondition returns [EObject current=null] : ( (otherlv_0= 'if' )? ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'is' )? ( (lv_negation_3_0= 'not' ) )? ( (lv_condition_4_0= ruleConditionType ) ) (otherlv_5= 'and' ( (lv_subcondition_6_0= ruleCondition ) ) )? ) ;
+    // InternalQuickUI.g:933:1: ruleCondition returns [EObject current=null] : ( (otherlv_0= 'if' )? ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'is' )? ( (lv_negation_3_0= 'not' ) )? ( (lv_condition_4_0= ruleConditionType ) ) ) ;
     public final EObject ruleCondition() throws RecognitionException {
         EObject current = null;
 
@@ -2074,34 +2438,31 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
         Token otherlv_1=null;
         Token otherlv_2=null;
         Token lv_negation_3_0=null;
-        Token otherlv_5=null;
         EObject lv_condition_4_0 = null;
-
-        EObject lv_subcondition_6_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalQuickUI.g:813:2: ( ( (otherlv_0= 'if' )? ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'is' )? ( (lv_negation_3_0= 'not' ) )? ( (lv_condition_4_0= ruleConditionType ) ) (otherlv_5= 'and' ( (lv_subcondition_6_0= ruleCondition ) ) )? ) )
-            // InternalQuickUI.g:814:2: ( (otherlv_0= 'if' )? ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'is' )? ( (lv_negation_3_0= 'not' ) )? ( (lv_condition_4_0= ruleConditionType ) ) (otherlv_5= 'and' ( (lv_subcondition_6_0= ruleCondition ) ) )? )
+            // InternalQuickUI.g:939:2: ( ( (otherlv_0= 'if' )? ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'is' )? ( (lv_negation_3_0= 'not' ) )? ( (lv_condition_4_0= ruleConditionType ) ) ) )
+            // InternalQuickUI.g:940:2: ( (otherlv_0= 'if' )? ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'is' )? ( (lv_negation_3_0= 'not' ) )? ( (lv_condition_4_0= ruleConditionType ) ) )
             {
-            // InternalQuickUI.g:814:2: ( (otherlv_0= 'if' )? ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'is' )? ( (lv_negation_3_0= 'not' ) )? ( (lv_condition_4_0= ruleConditionType ) ) (otherlv_5= 'and' ( (lv_subcondition_6_0= ruleCondition ) ) )? )
-            // InternalQuickUI.g:815:3: (otherlv_0= 'if' )? ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'is' )? ( (lv_negation_3_0= 'not' ) )? ( (lv_condition_4_0= ruleConditionType ) ) (otherlv_5= 'and' ( (lv_subcondition_6_0= ruleCondition ) ) )?
+            // InternalQuickUI.g:940:2: ( (otherlv_0= 'if' )? ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'is' )? ( (lv_negation_3_0= 'not' ) )? ( (lv_condition_4_0= ruleConditionType ) ) )
+            // InternalQuickUI.g:941:3: (otherlv_0= 'if' )? ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'is' )? ( (lv_negation_3_0= 'not' ) )? ( (lv_condition_4_0= ruleConditionType ) )
             {
-            // InternalQuickUI.g:815:3: (otherlv_0= 'if' )?
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            // InternalQuickUI.g:941:3: (otherlv_0= 'if' )?
+            int alt19=2;
+            int LA19_0 = input.LA(1);
 
-            if ( (LA17_0==22) ) {
-                alt17=1;
+            if ( (LA19_0==24) ) {
+                alt19=1;
             }
-            switch (alt17) {
+            switch (alt19) {
                 case 1 :
-                    // InternalQuickUI.g:816:4: otherlv_0= 'if'
+                    // InternalQuickUI.g:942:4: otherlv_0= 'if'
                     {
-                    otherlv_0=(Token)match(input,22,FOLLOW_5); 
+                    otherlv_0=(Token)match(input,24,FOLLOW_5); 
 
                     				newLeafNode(otherlv_0, grammarAccess.getConditionAccess().getIfKeyword_0());
                     			
@@ -2111,18 +2472,18 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalQuickUI.g:821:3: ( (otherlv_1= RULE_ID ) )
-            // InternalQuickUI.g:822:4: (otherlv_1= RULE_ID )
+            // InternalQuickUI.g:947:3: ( (otherlv_1= RULE_ID ) )
+            // InternalQuickUI.g:948:4: (otherlv_1= RULE_ID )
             {
-            // InternalQuickUI.g:822:4: (otherlv_1= RULE_ID )
-            // InternalQuickUI.g:823:5: otherlv_1= RULE_ID
+            // InternalQuickUI.g:948:4: (otherlv_1= RULE_ID )
+            // InternalQuickUI.g:949:5: otherlv_1= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getConditionRule());
             					}
             				
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_18); 
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_20); 
 
             					newLeafNode(otherlv_1, grammarAccess.getConditionAccess().getElementElementCrossReference_1_0());
             				
@@ -2132,18 +2493,18 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalQuickUI.g:834:3: (otherlv_2= 'is' )?
-            int alt18=2;
-            int LA18_0 = input.LA(1);
+            // InternalQuickUI.g:960:3: (otherlv_2= 'is' )?
+            int alt20=2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA18_0==23) ) {
-                alt18=1;
+            if ( (LA20_0==25) ) {
+                alt20=1;
             }
-            switch (alt18) {
+            switch (alt20) {
                 case 1 :
-                    // InternalQuickUI.g:835:4: otherlv_2= 'is'
+                    // InternalQuickUI.g:961:4: otherlv_2= 'is'
                     {
-                    otherlv_2=(Token)match(input,23,FOLLOW_18); 
+                    otherlv_2=(Token)match(input,25,FOLLOW_20); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getConditionAccess().getIsKeyword_2());
                     			
@@ -2153,21 +2514,21 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalQuickUI.g:840:3: ( (lv_negation_3_0= 'not' ) )?
-            int alt19=2;
-            int LA19_0 = input.LA(1);
+            // InternalQuickUI.g:966:3: ( (lv_negation_3_0= 'not' ) )?
+            int alt21=2;
+            int LA21_0 = input.LA(1);
 
-            if ( (LA19_0==24) ) {
-                alt19=1;
+            if ( (LA21_0==26) ) {
+                alt21=1;
             }
-            switch (alt19) {
+            switch (alt21) {
                 case 1 :
-                    // InternalQuickUI.g:841:4: (lv_negation_3_0= 'not' )
+                    // InternalQuickUI.g:967:4: (lv_negation_3_0= 'not' )
                     {
-                    // InternalQuickUI.g:841:4: (lv_negation_3_0= 'not' )
-                    // InternalQuickUI.g:842:5: lv_negation_3_0= 'not'
+                    // InternalQuickUI.g:967:4: (lv_negation_3_0= 'not' )
+                    // InternalQuickUI.g:968:5: lv_negation_3_0= 'not'
                     {
-                    lv_negation_3_0=(Token)match(input,24,FOLLOW_18); 
+                    lv_negation_3_0=(Token)match(input,26,FOLLOW_20); 
 
                     					newLeafNode(lv_negation_3_0, grammarAccess.getConditionAccess().getNegationNotKeyword_3_0());
                     				
@@ -2186,16 +2547,16 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalQuickUI.g:854:3: ( (lv_condition_4_0= ruleConditionType ) )
-            // InternalQuickUI.g:855:4: (lv_condition_4_0= ruleConditionType )
+            // InternalQuickUI.g:980:3: ( (lv_condition_4_0= ruleConditionType ) )
+            // InternalQuickUI.g:981:4: (lv_condition_4_0= ruleConditionType )
             {
-            // InternalQuickUI.g:855:4: (lv_condition_4_0= ruleConditionType )
-            // InternalQuickUI.g:856:5: lv_condition_4_0= ruleConditionType
+            // InternalQuickUI.g:981:4: (lv_condition_4_0= ruleConditionType )
+            // InternalQuickUI.g:982:5: lv_condition_4_0= ruleConditionType
             {
 
             					newCompositeNode(grammarAccess.getConditionAccess().getConditionConditionTypeParserRuleCall_4_0());
             				
-            pushFollow(FOLLOW_19);
+            pushFollow(FOLLOW_2);
             lv_condition_4_0=ruleConditionType();
 
             state._fsp--;
@@ -2214,58 +2575,6 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
             }
 
-
-            }
-
-            // InternalQuickUI.g:873:3: (otherlv_5= 'and' ( (lv_subcondition_6_0= ruleCondition ) ) )?
-            int alt20=2;
-            int LA20_0 = input.LA(1);
-
-            if ( (LA20_0==25) ) {
-                alt20=1;
-            }
-            switch (alt20) {
-                case 1 :
-                    // InternalQuickUI.g:874:4: otherlv_5= 'and' ( (lv_subcondition_6_0= ruleCondition ) )
-                    {
-                    otherlv_5=(Token)match(input,25,FOLLOW_17); 
-
-                    				newLeafNode(otherlv_5, grammarAccess.getConditionAccess().getAndKeyword_5_0());
-                    			
-                    // InternalQuickUI.g:878:4: ( (lv_subcondition_6_0= ruleCondition ) )
-                    // InternalQuickUI.g:879:5: (lv_subcondition_6_0= ruleCondition )
-                    {
-                    // InternalQuickUI.g:879:5: (lv_subcondition_6_0= ruleCondition )
-                    // InternalQuickUI.g:880:6: lv_subcondition_6_0= ruleCondition
-                    {
-
-                    						newCompositeNode(grammarAccess.getConditionAccess().getSubconditionConditionParserRuleCall_5_1_0());
-                    					
-                    pushFollow(FOLLOW_2);
-                    lv_subcondition_6_0=ruleCondition();
-
-                    state._fsp--;
-
-
-                    						if (current==null) {
-                    							current = createModelElementForParent(grammarAccess.getConditionRule());
-                    						}
-                    						set(
-                    							current,
-                    							"subcondition",
-                    							lv_subcondition_6_0,
-                    							"com.robertkoszewski.dsl.QuickUI.Condition");
-                    						afterParserOrEnumRuleCall();
-                    					
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -2292,7 +2601,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleConditionType"
-    // InternalQuickUI.g:902:1: entryRuleConditionType returns [EObject current=null] : iv_ruleConditionType= ruleConditionType EOF ;
+    // InternalQuickUI.g:1003:1: entryRuleConditionType returns [EObject current=null] : iv_ruleConditionType= ruleConditionType EOF ;
     public final EObject entryRuleConditionType() throws RecognitionException {
         EObject current = null;
 
@@ -2300,8 +2609,8 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalQuickUI.g:902:54: (iv_ruleConditionType= ruleConditionType EOF )
-            // InternalQuickUI.g:903:2: iv_ruleConditionType= ruleConditionType EOF
+            // InternalQuickUI.g:1003:54: (iv_ruleConditionType= ruleConditionType EOF )
+            // InternalQuickUI.g:1004:2: iv_ruleConditionType= ruleConditionType EOF
             {
              newCompositeNode(grammarAccess.getConditionTypeRule()); 
             pushFollow(FOLLOW_1);
@@ -2328,7 +2637,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConditionType"
-    // InternalQuickUI.g:909:1: ruleConditionType returns [EObject current=null] : ( ( () otherlv_1= 'empty' ) | ( () otherlv_3= 'checked' ) ) ;
+    // InternalQuickUI.g:1010:1: ruleConditionType returns [EObject current=null] : ( ( () otherlv_1= 'empty' ) | ( () otherlv_3= 'checked' ) ) ;
     public final EObject ruleConditionType() throws RecognitionException {
         EObject current = null;
 
@@ -2339,34 +2648,34 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalQuickUI.g:915:2: ( ( ( () otherlv_1= 'empty' ) | ( () otherlv_3= 'checked' ) ) )
-            // InternalQuickUI.g:916:2: ( ( () otherlv_1= 'empty' ) | ( () otherlv_3= 'checked' ) )
+            // InternalQuickUI.g:1016:2: ( ( ( () otherlv_1= 'empty' ) | ( () otherlv_3= 'checked' ) ) )
+            // InternalQuickUI.g:1017:2: ( ( () otherlv_1= 'empty' ) | ( () otherlv_3= 'checked' ) )
             {
-            // InternalQuickUI.g:916:2: ( ( () otherlv_1= 'empty' ) | ( () otherlv_3= 'checked' ) )
-            int alt21=2;
-            int LA21_0 = input.LA(1);
+            // InternalQuickUI.g:1017:2: ( ( () otherlv_1= 'empty' ) | ( () otherlv_3= 'checked' ) )
+            int alt22=2;
+            int LA22_0 = input.LA(1);
 
-            if ( (LA21_0==26) ) {
-                alt21=1;
+            if ( (LA22_0==27) ) {
+                alt22=1;
             }
-            else if ( (LA21_0==27) ) {
-                alt21=2;
+            else if ( (LA22_0==28) ) {
+                alt22=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 21, 0, input);
+                    new NoViableAltException("", 22, 0, input);
 
                 throw nvae;
             }
-            switch (alt21) {
+            switch (alt22) {
                 case 1 :
-                    // InternalQuickUI.g:917:3: ( () otherlv_1= 'empty' )
+                    // InternalQuickUI.g:1018:3: ( () otherlv_1= 'empty' )
                     {
-                    // InternalQuickUI.g:917:3: ( () otherlv_1= 'empty' )
-                    // InternalQuickUI.g:918:4: () otherlv_1= 'empty'
+                    // InternalQuickUI.g:1018:3: ( () otherlv_1= 'empty' )
+                    // InternalQuickUI.g:1019:4: () otherlv_1= 'empty'
                     {
-                    // InternalQuickUI.g:918:4: ()
-                    // InternalQuickUI.g:919:5: 
+                    // InternalQuickUI.g:1019:4: ()
+                    // InternalQuickUI.g:1020:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -2376,7 +2685,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,26,FOLLOW_2); 
+                    otherlv_1=(Token)match(input,27,FOLLOW_2); 
 
                     				newLeafNode(otherlv_1, grammarAccess.getConditionTypeAccess().getEmptyKeyword_0_1());
                     			
@@ -2387,13 +2696,13 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalQuickUI.g:931:3: ( () otherlv_3= 'checked' )
+                    // InternalQuickUI.g:1032:3: ( () otherlv_3= 'checked' )
                     {
-                    // InternalQuickUI.g:931:3: ( () otherlv_3= 'checked' )
-                    // InternalQuickUI.g:932:4: () otherlv_3= 'checked'
+                    // InternalQuickUI.g:1032:3: ( () otherlv_3= 'checked' )
+                    // InternalQuickUI.g:1033:4: () otherlv_3= 'checked'
                     {
-                    // InternalQuickUI.g:932:4: ()
-                    // InternalQuickUI.g:933:5: 
+                    // InternalQuickUI.g:1033:4: ()
+                    // InternalQuickUI.g:1034:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -2403,7 +2712,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,27,FOLLOW_2); 
+                    otherlv_3=(Token)match(input,28,FOLLOW_2); 
 
                     				newLeafNode(otherlv_3, grammarAccess.getConditionTypeAccess().getCheckedKeyword_1_1());
                     			
@@ -2436,7 +2745,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleChecked"
-    // InternalQuickUI.g:948:1: entryRuleChecked returns [EObject current=null] : iv_ruleChecked= ruleChecked EOF ;
+    // InternalQuickUI.g:1049:1: entryRuleChecked returns [EObject current=null] : iv_ruleChecked= ruleChecked EOF ;
     public final EObject entryRuleChecked() throws RecognitionException {
         EObject current = null;
 
@@ -2444,8 +2753,8 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalQuickUI.g:948:48: (iv_ruleChecked= ruleChecked EOF )
-            // InternalQuickUI.g:949:2: iv_ruleChecked= ruleChecked EOF
+            // InternalQuickUI.g:1049:48: (iv_ruleChecked= ruleChecked EOF )
+            // InternalQuickUI.g:1050:2: iv_ruleChecked= ruleChecked EOF
             {
              newCompositeNode(grammarAccess.getCheckedRule()); 
             pushFollow(FOLLOW_1);
@@ -2472,7 +2781,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleChecked"
-    // InternalQuickUI.g:955:1: ruleChecked returns [EObject current=null] : (otherlv_0= 'Checked' otherlv_1= ':' ( (lv_checked_2_0= ruleBoolean ) ) ) ;
+    // InternalQuickUI.g:1056:1: ruleChecked returns [EObject current=null] : (otherlv_0= 'Checked' otherlv_1= ':' ( (lv_checked_2_0= ruleBoolean ) ) ) ;
     public final EObject ruleChecked() throws RecognitionException {
         EObject current = null;
 
@@ -2485,25 +2794,25 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalQuickUI.g:961:2: ( (otherlv_0= 'Checked' otherlv_1= ':' ( (lv_checked_2_0= ruleBoolean ) ) ) )
-            // InternalQuickUI.g:962:2: (otherlv_0= 'Checked' otherlv_1= ':' ( (lv_checked_2_0= ruleBoolean ) ) )
+            // InternalQuickUI.g:1062:2: ( (otherlv_0= 'Checked' otherlv_1= ':' ( (lv_checked_2_0= ruleBoolean ) ) ) )
+            // InternalQuickUI.g:1063:2: (otherlv_0= 'Checked' otherlv_1= ':' ( (lv_checked_2_0= ruleBoolean ) ) )
             {
-            // InternalQuickUI.g:962:2: (otherlv_0= 'Checked' otherlv_1= ':' ( (lv_checked_2_0= ruleBoolean ) ) )
-            // InternalQuickUI.g:963:3: otherlv_0= 'Checked' otherlv_1= ':' ( (lv_checked_2_0= ruleBoolean ) )
+            // InternalQuickUI.g:1063:2: (otherlv_0= 'Checked' otherlv_1= ':' ( (lv_checked_2_0= ruleBoolean ) ) )
+            // InternalQuickUI.g:1064:3: otherlv_0= 'Checked' otherlv_1= ':' ( (lv_checked_2_0= ruleBoolean ) )
             {
-            otherlv_0=(Token)match(input,28,FOLLOW_6); 
+            otherlv_0=(Token)match(input,29,FOLLOW_6); 
 
             			newLeafNode(otherlv_0, grammarAccess.getCheckedAccess().getCheckedKeyword_0());
             		
-            otherlv_1=(Token)match(input,12,FOLLOW_20); 
+            otherlv_1=(Token)match(input,12,FOLLOW_21); 
 
             			newLeafNode(otherlv_1, grammarAccess.getCheckedAccess().getColonKeyword_1());
             		
-            // InternalQuickUI.g:971:3: ( (lv_checked_2_0= ruleBoolean ) )
-            // InternalQuickUI.g:972:4: (lv_checked_2_0= ruleBoolean )
+            // InternalQuickUI.g:1072:3: ( (lv_checked_2_0= ruleBoolean ) )
+            // InternalQuickUI.g:1073:4: (lv_checked_2_0= ruleBoolean )
             {
-            // InternalQuickUI.g:972:4: (lv_checked_2_0= ruleBoolean )
-            // InternalQuickUI.g:973:5: lv_checked_2_0= ruleBoolean
+            // InternalQuickUI.g:1073:4: (lv_checked_2_0= ruleBoolean )
+            // InternalQuickUI.g:1074:5: lv_checked_2_0= ruleBoolean
             {
 
             					newCompositeNode(grammarAccess.getCheckedAccess().getCheckedBooleanParserRuleCall_2_0());
@@ -2553,7 +2862,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOnClick"
-    // InternalQuickUI.g:994:1: entryRuleOnClick returns [EObject current=null] : iv_ruleOnClick= ruleOnClick EOF ;
+    // InternalQuickUI.g:1095:1: entryRuleOnClick returns [EObject current=null] : iv_ruleOnClick= ruleOnClick EOF ;
     public final EObject entryRuleOnClick() throws RecognitionException {
         EObject current = null;
 
@@ -2561,8 +2870,8 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalQuickUI.g:994:48: (iv_ruleOnClick= ruleOnClick EOF )
-            // InternalQuickUI.g:995:2: iv_ruleOnClick= ruleOnClick EOF
+            // InternalQuickUI.g:1095:48: (iv_ruleOnClick= ruleOnClick EOF )
+            // InternalQuickUI.g:1096:2: iv_ruleOnClick= ruleOnClick EOF
             {
              newCompositeNode(grammarAccess.getOnClickRule()); 
             pushFollow(FOLLOW_1);
@@ -2589,7 +2898,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOnClick"
-    // InternalQuickUI.g:1001:1: ruleOnClick returns [EObject current=null] : (otherlv_0= 'OnClick' otherlv_1= ':' ( (lv_callback_2_0= RULE_ID ) ) ) ;
+    // InternalQuickUI.g:1102:1: ruleOnClick returns [EObject current=null] : (otherlv_0= 'OnClick' otherlv_1= ':' ( (lv_callback_2_0= RULE_ID ) ) ) ;
     public final EObject ruleOnClick() throws RecognitionException {
         EObject current = null;
 
@@ -2601,13 +2910,13 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalQuickUI.g:1007:2: ( (otherlv_0= 'OnClick' otherlv_1= ':' ( (lv_callback_2_0= RULE_ID ) ) ) )
-            // InternalQuickUI.g:1008:2: (otherlv_0= 'OnClick' otherlv_1= ':' ( (lv_callback_2_0= RULE_ID ) ) )
+            // InternalQuickUI.g:1108:2: ( (otherlv_0= 'OnClick' otherlv_1= ':' ( (lv_callback_2_0= RULE_ID ) ) ) )
+            // InternalQuickUI.g:1109:2: (otherlv_0= 'OnClick' otherlv_1= ':' ( (lv_callback_2_0= RULE_ID ) ) )
             {
-            // InternalQuickUI.g:1008:2: (otherlv_0= 'OnClick' otherlv_1= ':' ( (lv_callback_2_0= RULE_ID ) ) )
-            // InternalQuickUI.g:1009:3: otherlv_0= 'OnClick' otherlv_1= ':' ( (lv_callback_2_0= RULE_ID ) )
+            // InternalQuickUI.g:1109:2: (otherlv_0= 'OnClick' otherlv_1= ':' ( (lv_callback_2_0= RULE_ID ) ) )
+            // InternalQuickUI.g:1110:3: otherlv_0= 'OnClick' otherlv_1= ':' ( (lv_callback_2_0= RULE_ID ) )
             {
-            otherlv_0=(Token)match(input,29,FOLLOW_6); 
+            otherlv_0=(Token)match(input,30,FOLLOW_6); 
 
             			newLeafNode(otherlv_0, grammarAccess.getOnClickAccess().getOnClickKeyword_0());
             		
@@ -2615,11 +2924,11 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getOnClickAccess().getColonKeyword_1());
             		
-            // InternalQuickUI.g:1017:3: ( (lv_callback_2_0= RULE_ID ) )
-            // InternalQuickUI.g:1018:4: (lv_callback_2_0= RULE_ID )
+            // InternalQuickUI.g:1118:3: ( (lv_callback_2_0= RULE_ID ) )
+            // InternalQuickUI.g:1119:4: (lv_callback_2_0= RULE_ID )
             {
-            // InternalQuickUI.g:1018:4: (lv_callback_2_0= RULE_ID )
-            // InternalQuickUI.g:1019:5: lv_callback_2_0= RULE_ID
+            // InternalQuickUI.g:1119:4: (lv_callback_2_0= RULE_ID )
+            // InternalQuickUI.g:1120:5: lv_callback_2_0= RULE_ID
             {
             lv_callback_2_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -2663,183 +2972,8 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleOnClick"
 
 
-    // $ANTLR start "entryRuleFilter"
-    // InternalQuickUI.g:1039:1: entryRuleFilter returns [String current=null] : iv_ruleFilter= ruleFilter EOF ;
-    public final String entryRuleFilter() throws RecognitionException {
-        String current = null;
-
-        AntlrDatatypeRuleToken iv_ruleFilter = null;
-
-
-        try {
-            // InternalQuickUI.g:1039:46: (iv_ruleFilter= ruleFilter EOF )
-            // InternalQuickUI.g:1040:2: iv_ruleFilter= ruleFilter EOF
-            {
-             newCompositeNode(grammarAccess.getFilterRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleFilter=ruleFilter();
-
-            state._fsp--;
-
-             current =iv_ruleFilter.getText(); 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleFilter"
-
-
-    // $ANTLR start "ruleFilter"
-    // InternalQuickUI.g:1046:1: ruleFilter returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'Filter' kw= ':' this_FilterExpression_2= ruleFilterExpression ) ;
-    public final AntlrDatatypeRuleToken ruleFilter() throws RecognitionException {
-        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
-
-        Token kw=null;
-        AntlrDatatypeRuleToken this_FilterExpression_2 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalQuickUI.g:1052:2: ( (kw= 'Filter' kw= ':' this_FilterExpression_2= ruleFilterExpression ) )
-            // InternalQuickUI.g:1053:2: (kw= 'Filter' kw= ':' this_FilterExpression_2= ruleFilterExpression )
-            {
-            // InternalQuickUI.g:1053:2: (kw= 'Filter' kw= ':' this_FilterExpression_2= ruleFilterExpression )
-            // InternalQuickUI.g:1054:3: kw= 'Filter' kw= ':' this_FilterExpression_2= ruleFilterExpression
-            {
-            kw=(Token)match(input,30,FOLLOW_6); 
-
-            			current.merge(kw);
-            			newLeafNode(kw, grammarAccess.getFilterAccess().getFilterKeyword_0());
-            		
-            kw=(Token)match(input,12,FOLLOW_21); 
-
-            			current.merge(kw);
-            			newLeafNode(kw, grammarAccess.getFilterAccess().getColonKeyword_1());
-            		
-
-            			newCompositeNode(grammarAccess.getFilterAccess().getFilterExpressionParserRuleCall_2());
-            		
-            pushFollow(FOLLOW_2);
-            this_FilterExpression_2=ruleFilterExpression();
-
-            state._fsp--;
-
-
-            			current.merge(this_FilterExpression_2);
-            		
-
-            			afterParserOrEnumRuleCall();
-            		
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleFilter"
-
-
-    // $ANTLR start "entryRuleFilterExpression"
-    // InternalQuickUI.g:1078:1: entryRuleFilterExpression returns [String current=null] : iv_ruleFilterExpression= ruleFilterExpression EOF ;
-    public final String entryRuleFilterExpression() throws RecognitionException {
-        String current = null;
-
-        AntlrDatatypeRuleToken iv_ruleFilterExpression = null;
-
-
-        try {
-            // InternalQuickUI.g:1078:56: (iv_ruleFilterExpression= ruleFilterExpression EOF )
-            // InternalQuickUI.g:1079:2: iv_ruleFilterExpression= ruleFilterExpression EOF
-            {
-             newCompositeNode(grammarAccess.getFilterExpressionRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleFilterExpression=ruleFilterExpression();
-
-            state._fsp--;
-
-             current =iv_ruleFilterExpression.getText(); 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleFilterExpression"
-
-
-    // $ANTLR start "ruleFilterExpression"
-    // InternalQuickUI.g:1085:1: ruleFilterExpression returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'TODO' ;
-    public final AntlrDatatypeRuleToken ruleFilterExpression() throws RecognitionException {
-        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
-
-        Token kw=null;
-
-
-        	enterRule();
-
-        try {
-            // InternalQuickUI.g:1091:2: (kw= 'TODO' )
-            // InternalQuickUI.g:1092:2: kw= 'TODO'
-            {
-            kw=(Token)match(input,31,FOLLOW_2); 
-
-            		current.merge(kw);
-            		newLeafNode(kw, grammarAccess.getFilterExpressionAccess().getTODOKeyword());
-            	
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleFilterExpression"
-
-
     // $ANTLR start "entryRuleBoolean"
-    // InternalQuickUI.g:1100:1: entryRuleBoolean returns [EObject current=null] : iv_ruleBoolean= ruleBoolean EOF ;
+    // InternalQuickUI.g:1140:1: entryRuleBoolean returns [EObject current=null] : iv_ruleBoolean= ruleBoolean EOF ;
     public final EObject entryRuleBoolean() throws RecognitionException {
         EObject current = null;
 
@@ -2847,8 +2981,8 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalQuickUI.g:1100:48: (iv_ruleBoolean= ruleBoolean EOF )
-            // InternalQuickUI.g:1101:2: iv_ruleBoolean= ruleBoolean EOF
+            // InternalQuickUI.g:1140:48: (iv_ruleBoolean= ruleBoolean EOF )
+            // InternalQuickUI.g:1141:2: iv_ruleBoolean= ruleBoolean EOF
             {
              newCompositeNode(grammarAccess.getBooleanRule()); 
             pushFollow(FOLLOW_1);
@@ -2875,7 +3009,7 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBoolean"
-    // InternalQuickUI.g:1107:1: ruleBoolean returns [EObject current=null] : ( () ( ( (lv_isTrue_1_0= 'true' ) ) | otherlv_2= 'false' ) ) ;
+    // InternalQuickUI.g:1147:1: ruleBoolean returns [EObject current=null] : ( () ( ( (lv_isTrue_1_0= 'true' ) ) | otherlv_2= 'false' ) ) ;
     public final EObject ruleBoolean() throws RecognitionException {
         EObject current = null;
 
@@ -2886,14 +3020,14 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalQuickUI.g:1113:2: ( ( () ( ( (lv_isTrue_1_0= 'true' ) ) | otherlv_2= 'false' ) ) )
-            // InternalQuickUI.g:1114:2: ( () ( ( (lv_isTrue_1_0= 'true' ) ) | otherlv_2= 'false' ) )
+            // InternalQuickUI.g:1153:2: ( ( () ( ( (lv_isTrue_1_0= 'true' ) ) | otherlv_2= 'false' ) ) )
+            // InternalQuickUI.g:1154:2: ( () ( ( (lv_isTrue_1_0= 'true' ) ) | otherlv_2= 'false' ) )
             {
-            // InternalQuickUI.g:1114:2: ( () ( ( (lv_isTrue_1_0= 'true' ) ) | otherlv_2= 'false' ) )
-            // InternalQuickUI.g:1115:3: () ( ( (lv_isTrue_1_0= 'true' ) ) | otherlv_2= 'false' )
+            // InternalQuickUI.g:1154:2: ( () ( ( (lv_isTrue_1_0= 'true' ) ) | otherlv_2= 'false' ) )
+            // InternalQuickUI.g:1155:3: () ( ( (lv_isTrue_1_0= 'true' ) ) | otherlv_2= 'false' )
             {
-            // InternalQuickUI.g:1115:3: ()
-            // InternalQuickUI.g:1116:4: 
+            // InternalQuickUI.g:1155:3: ()
+            // InternalQuickUI.g:1156:4: 
             {
 
             				current = forceCreateModelElement(
@@ -2903,33 +3037,33 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalQuickUI.g:1122:3: ( ( (lv_isTrue_1_0= 'true' ) ) | otherlv_2= 'false' )
-            int alt22=2;
-            int LA22_0 = input.LA(1);
+            // InternalQuickUI.g:1162:3: ( ( (lv_isTrue_1_0= 'true' ) ) | otherlv_2= 'false' )
+            int alt23=2;
+            int LA23_0 = input.LA(1);
 
-            if ( (LA22_0==32) ) {
-                alt22=1;
+            if ( (LA23_0==31) ) {
+                alt23=1;
             }
-            else if ( (LA22_0==33) ) {
-                alt22=2;
+            else if ( (LA23_0==32) ) {
+                alt23=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 22, 0, input);
+                    new NoViableAltException("", 23, 0, input);
 
                 throw nvae;
             }
-            switch (alt22) {
+            switch (alt23) {
                 case 1 :
-                    // InternalQuickUI.g:1123:4: ( (lv_isTrue_1_0= 'true' ) )
+                    // InternalQuickUI.g:1163:4: ( (lv_isTrue_1_0= 'true' ) )
                     {
-                    // InternalQuickUI.g:1123:4: ( (lv_isTrue_1_0= 'true' ) )
-                    // InternalQuickUI.g:1124:5: (lv_isTrue_1_0= 'true' )
+                    // InternalQuickUI.g:1163:4: ( (lv_isTrue_1_0= 'true' ) )
+                    // InternalQuickUI.g:1164:5: (lv_isTrue_1_0= 'true' )
                     {
-                    // InternalQuickUI.g:1124:5: (lv_isTrue_1_0= 'true' )
-                    // InternalQuickUI.g:1125:6: lv_isTrue_1_0= 'true'
+                    // InternalQuickUI.g:1164:5: (lv_isTrue_1_0= 'true' )
+                    // InternalQuickUI.g:1165:6: lv_isTrue_1_0= 'true'
                     {
-                    lv_isTrue_1_0=(Token)match(input,32,FOLLOW_2); 
+                    lv_isTrue_1_0=(Token)match(input,31,FOLLOW_2); 
 
                     						newLeafNode(lv_isTrue_1_0, grammarAccess.getBooleanAccess().getIsTrueTrueKeyword_1_0_0());
                     					
@@ -2949,9 +3083,9 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalQuickUI.g:1138:4: otherlv_2= 'false'
+                    // InternalQuickUI.g:1178:4: otherlv_2= 'false'
                     {
-                    otherlv_2=(Token)match(input,33,FOLLOW_2); 
+                    otherlv_2=(Token)match(input,32,FOLLOW_2); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getBooleanAccess().getFalseKeyword_1_1());
                     			
@@ -3001,12 +3135,12 @@ public class InternalQuickUIParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x00000000000A0010L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000040000L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x00000000703A0010L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000070380010L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000400010L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x000000000D800000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000300000000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x00000000603A0010L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000060380010L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000001000010L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000400002L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x000000001E000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000180000000L});
 
 }

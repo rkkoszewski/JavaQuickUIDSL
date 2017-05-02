@@ -3,26 +3,28 @@
  */
 package com.robertkoszewski.dsl.quickUI.impl;
 
-import com.robertkoszewski.dsl.quickUI.Filter;
+import com.robertkoszewski.dsl.quickUI.ConditionDefinition;
 import com.robertkoszewski.dsl.quickUI.QuickUIPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Filter</b></em>'.
+ * An implementation of the model object '<em><b>Condition Definition</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class FilterImpl extends OptionImpl implements Filter
+public class ConditionDefinitionImpl extends MinimalEObjectImpl.Container implements ConditionDefinition
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected FilterImpl()
+  protected ConditionDefinitionImpl()
   {
     super();
   }
@@ -35,7 +37,7 @@ public class FilterImpl extends OptionImpl implements Filter
   @Override
   protected EClass eStaticClass()
   {
-    return QuickUIPackage.Literals.FILTER;
+    return QuickUIPackage.Literals.CONDITION_DEFINITION;
   }
 
-} //FilterImpl
+} //ConditionDefinitionImpl

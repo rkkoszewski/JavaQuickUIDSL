@@ -6,11 +6,13 @@ package com.robertkoszewski.dsl.quickUI.impl;
 import com.robertkoszewski.dsl.quickUI.Alias;
 import com.robertkoszewski.dsl.quickUI.Checked;
 import com.robertkoszewski.dsl.quickUI.Condition;
+import com.robertkoszewski.dsl.quickUI.ConditionBranch;
+import com.robertkoszewski.dsl.quickUI.ConditionConcatenation;
+import com.robertkoszewski.dsl.quickUI.ConditionDefinition;
 import com.robertkoszewski.dsl.quickUI.ConditionType;
 import com.robertkoszewski.dsl.quickUI.Element;
 import com.robertkoszewski.dsl.quickUI.Empty;
 import com.robertkoszewski.dsl.quickUI.Enabled;
-import com.robertkoszewski.dsl.quickUI.Filter;
 import com.robertkoszewski.dsl.quickUI.JavaElement;
 import com.robertkoszewski.dsl.quickUI.Label;
 import com.robertkoszewski.dsl.quickUI.OnClick;
@@ -91,12 +93,14 @@ public class QuickUIFactoryImpl extends EFactoryImpl implements QuickUIFactory
       case QuickUIPackage.OPTION: return createOption();
       case QuickUIPackage.LABEL: return createLabel();
       case QuickUIPackage.ENABLED: return createEnabled();
+      case QuickUIPackage.CONDITION_DEFINITION: return createConditionDefinition();
       case QuickUIPackage.CONDITION: return createCondition();
       case QuickUIPackage.CONDITION_TYPE: return createConditionType();
       case QuickUIPackage.CHECKED: return createChecked();
       case QuickUIPackage.ON_CLICK: return createOnClick();
       case QuickUIPackage.BOOLEAN: return createBoolean();
-      case QuickUIPackage.FILTER: return createFilter();
+      case QuickUIPackage.CONDITION_BRANCH: return createConditionBranch();
+      case QuickUIPackage.CONDITION_CONCATENATION: return createConditionConcatenation();
       case QuickUIPackage.EMPTY: return createEmpty();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -218,6 +222,17 @@ public class QuickUIFactoryImpl extends EFactoryImpl implements QuickUIFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public ConditionDefinition createConditionDefinition()
+  {
+    ConditionDefinitionImpl conditionDefinition = new ConditionDefinitionImpl();
+    return conditionDefinition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Condition createCondition()
   {
     ConditionImpl condition = new ConditionImpl();
@@ -273,10 +288,21 @@ public class QuickUIFactoryImpl extends EFactoryImpl implements QuickUIFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Filter createFilter()
+  public ConditionBranch createConditionBranch()
   {
-    FilterImpl filter = new FilterImpl();
-    return filter;
+    ConditionBranchImpl conditionBranch = new ConditionBranchImpl();
+    return conditionBranch;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ConditionConcatenation createConditionConcatenation()
+  {
+    ConditionConcatenationImpl conditionConcatenation = new ConditionConcatenationImpl();
+    return conditionConcatenation;
   }
 
   /**

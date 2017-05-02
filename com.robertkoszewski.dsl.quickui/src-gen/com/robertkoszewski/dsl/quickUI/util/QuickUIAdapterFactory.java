@@ -6,11 +6,13 @@ package com.robertkoszewski.dsl.quickUI.util;
 import com.robertkoszewski.dsl.quickUI.Alias;
 import com.robertkoszewski.dsl.quickUI.Checked;
 import com.robertkoszewski.dsl.quickUI.Condition;
+import com.robertkoszewski.dsl.quickUI.ConditionBranch;
+import com.robertkoszewski.dsl.quickUI.ConditionConcatenation;
+import com.robertkoszewski.dsl.quickUI.ConditionDefinition;
 import com.robertkoszewski.dsl.quickUI.ConditionType;
 import com.robertkoszewski.dsl.quickUI.Element;
 import com.robertkoszewski.dsl.quickUI.Empty;
 import com.robertkoszewski.dsl.quickUI.Enabled;
-import com.robertkoszewski.dsl.quickUI.Filter;
 import com.robertkoszewski.dsl.quickUI.JavaElement;
 import com.robertkoszewski.dsl.quickUI.Label;
 import com.robertkoszewski.dsl.quickUI.OnClick;
@@ -141,6 +143,11 @@ public class QuickUIAdapterFactory extends AdapterFactoryImpl
         return createEnabledAdapter();
       }
       @Override
+      public Adapter caseConditionDefinition(ConditionDefinition object)
+      {
+        return createConditionDefinitionAdapter();
+      }
+      @Override
       public Adapter caseCondition(Condition object)
       {
         return createConditionAdapter();
@@ -166,9 +173,14 @@ public class QuickUIAdapterFactory extends AdapterFactoryImpl
         return createBooleanAdapter();
       }
       @Override
-      public Adapter caseFilter(Filter object)
+      public Adapter caseConditionBranch(ConditionBranch object)
       {
-        return createFilterAdapter();
+        return createConditionBranchAdapter();
+      }
+      @Override
+      public Adapter caseConditionConcatenation(ConditionConcatenation object)
+      {
+        return createConditionConcatenationAdapter();
       }
       @Override
       public Adapter caseEmpty(Empty object)
@@ -348,6 +360,21 @@ public class QuickUIAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.robertkoszewski.dsl.quickUI.ConditionDefinition <em>Condition Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robertkoszewski.dsl.quickUI.ConditionDefinition
+   * @generated
+   */
+  public Adapter createConditionDefinitionAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.robertkoszewski.dsl.quickUI.Condition <em>Condition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -423,16 +450,31 @@ public class QuickUIAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robertkoszewski.dsl.quickUI.Filter <em>Filter</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robertkoszewski.dsl.quickUI.ConditionBranch <em>Condition Branch</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robertkoszewski.dsl.quickUI.Filter
+   * @see com.robertkoszewski.dsl.quickUI.ConditionBranch
    * @generated
    */
-  public Adapter createFilterAdapter()
+  public Adapter createConditionBranchAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robertkoszewski.dsl.quickUI.ConditionConcatenation <em>Condition Concatenation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robertkoszewski.dsl.quickUI.ConditionConcatenation
+   * @generated
+   */
+  public Adapter createConditionConcatenationAdapter()
   {
     return null;
   }

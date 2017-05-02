@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,12 +29,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link com.robertkoszewski.dsl.quickUI.impl.ConditionImpl#getElement <em>Element</em>}</li>
  *   <li>{@link com.robertkoszewski.dsl.quickUI.impl.ConditionImpl#isNegation <em>Negation</em>}</li>
  *   <li>{@link com.robertkoszewski.dsl.quickUI.impl.ConditionImpl#getCondition <em>Condition</em>}</li>
- *   <li>{@link com.robertkoszewski.dsl.quickUI.impl.ConditionImpl#getSubcondition <em>Subcondition</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ConditionImpl extends MinimalEObjectImpl.Container implements Condition
+public class ConditionImpl extends ConditionDefinitionImpl implements Condition
 {
   /**
    * The cached value of the '{@link #getElement() <em>Element</em>}' reference.
@@ -76,16 +74,6 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * @ordered
    */
   protected ConditionType condition;
-
-  /**
-   * The cached value of the '{@link #getSubcondition() <em>Subcondition</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSubcondition()
-   * @generated
-   * @ordered
-   */
-  protected Condition subcondition;
 
   /**
    * <!-- begin-user-doc -->
@@ -227,54 +215,6 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * <!-- end-user-doc -->
    * @generated
    */
-  public Condition getSubcondition()
-  {
-    return subcondition;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetSubcondition(Condition newSubcondition, NotificationChain msgs)
-  {
-    Condition oldSubcondition = subcondition;
-    subcondition = newSubcondition;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QuickUIPackage.CONDITION__SUBCONDITION, oldSubcondition, newSubcondition);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSubcondition(Condition newSubcondition)
-  {
-    if (newSubcondition != subcondition)
-    {
-      NotificationChain msgs = null;
-      if (subcondition != null)
-        msgs = ((InternalEObject)subcondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QuickUIPackage.CONDITION__SUBCONDITION, null, msgs);
-      if (newSubcondition != null)
-        msgs = ((InternalEObject)newSubcondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QuickUIPackage.CONDITION__SUBCONDITION, null, msgs);
-      msgs = basicSetSubcondition(newSubcondition, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, QuickUIPackage.CONDITION__SUBCONDITION, newSubcondition, newSubcondition));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -282,8 +222,6 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
     {
       case QuickUIPackage.CONDITION__CONDITION:
         return basicSetCondition(null, msgs);
-      case QuickUIPackage.CONDITION__SUBCONDITION:
-        return basicSetSubcondition(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -305,8 +243,6 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
         return isNegation();
       case QuickUIPackage.CONDITION__CONDITION:
         return getCondition();
-      case QuickUIPackage.CONDITION__SUBCONDITION:
-        return getSubcondition();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -329,9 +265,6 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
         return;
       case QuickUIPackage.CONDITION__CONDITION:
         setCondition((ConditionType)newValue);
-        return;
-      case QuickUIPackage.CONDITION__SUBCONDITION:
-        setSubcondition((Condition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -356,9 +289,6 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
       case QuickUIPackage.CONDITION__CONDITION:
         setCondition((ConditionType)null);
         return;
-      case QuickUIPackage.CONDITION__SUBCONDITION:
-        setSubcondition((Condition)null);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -379,8 +309,6 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
         return negation != NEGATION_EDEFAULT;
       case QuickUIPackage.CONDITION__CONDITION:
         return condition != null;
-      case QuickUIPackage.CONDITION__SUBCONDITION:
-        return subcondition != null;
     }
     return super.eIsSet(featureID);
   }

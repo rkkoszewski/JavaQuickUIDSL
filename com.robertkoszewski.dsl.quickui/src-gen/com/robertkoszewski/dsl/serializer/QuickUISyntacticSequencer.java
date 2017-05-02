@@ -35,21 +35,9 @@ public class QuickUISyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getFilterRule())
-			return getFilterToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
-	/**
-	 * Filter:
-	 * 	'Filter' ':' FilterExpression
-	 * ;
-	 */
-	protected String getFilterToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "Filter:TODO";
-	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {

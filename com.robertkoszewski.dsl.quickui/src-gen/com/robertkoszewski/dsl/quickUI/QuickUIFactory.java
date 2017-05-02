@@ -114,6 +114,15 @@ public interface QuickUIFactory extends EFactory
   Enabled createEnabled();
 
   /**
+   * Returns a new object of class '<em>Condition Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Condition Definition</em>'.
+   * @generated
+   */
+  ConditionDefinition createConditionDefinition();
+
+  /**
    * Returns a new object of class '<em>Condition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -159,13 +168,22 @@ public interface QuickUIFactory extends EFactory
   Boolean createBoolean();
 
   /**
-   * Returns a new object of class '<em>Filter</em>'.
+   * Returns a new object of class '<em>Condition Branch</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Filter</em>'.
+   * @return a new object of class '<em>Condition Branch</em>'.
    * @generated
    */
-  Filter createFilter();
+  ConditionBranch createConditionBranch();
+
+  /**
+   * Returns a new object of class '<em>Condition Concatenation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Condition Concatenation</em>'.
+   * @generated
+   */
+  ConditionConcatenation createConditionConcatenation();
 
   /**
    * Returns a new object of class '<em>Empty</em>'.

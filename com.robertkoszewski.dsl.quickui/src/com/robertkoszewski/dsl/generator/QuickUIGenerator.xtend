@@ -16,11 +16,15 @@ import com.robertkoszewski.dsl.quickUI.Row
 import com.robertkoszewski.dsl.quickUI.Label
 import com.robertkoszewski.dsl.quickUI.Checked
 import com.robertkoszewski.dsl.quickUI.OnClick
-import com.robertkoszewski.dsl.quickUI.Condition
 import com.robertkoszewski.dsl.quickUI.Enabled
 import java.util.logging.Filter
 import java.util.Set
 import java.util.HashSet
+import com.robertkoszewski.dsl.quickUI.ConditionBranch
+import com.robertkoszewski.dsl.quickUI.ConditionConcatenation
+import com.robertkoszewski.dsl.quickUI.ConditionDefinition
+import com.robertkoszewski.dsl.quickUI.Condition
+import com.robertkoszewski.dsl.quickUI.Empty
 
 /**
  * Generates code from your model files on save.
@@ -31,7 +35,7 @@ class QuickUIGenerator extends AbstractGenerator {
 	
 	HashMap<CharSequence, CharSequence> aliasMap
 	Set<CharSequence> callbackMap
-	HashMap<CharSequence, Condition> conditionMap
+	HashMap<CharSequence, ConditionDefinition> conditionMap
 
 	// Generate Files
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
@@ -61,7 +65,9 @@ class QuickUIGenerator extends AbstractGenerator {
 	
 	// Initialize Variables (Per Window)
 	def void initializeVariables(){
-		conditionMap = new HashMap<CharSequence, Condition>()
+		counter = 1;
+		condCounter = 1;
+		conditionMap = new HashMap<CharSequence, ConditionDefinition>()
 		callbackMap = new HashSet<CharSequence>()
 	}
 	
@@ -231,20 +237,69 @@ class QuickUIGenerator extends AbstractGenerator {
 	
 	// Build Option - Disabled -> Build Conditions
 	def CharSequence buildConditions() '''
-		// Conditions
+		// ---- Conditions ----
 		«FOR cond: conditionMap.entrySet»
-		java.util.HashMap<Object, Condition> «cond.key»_conditions = new java.util.HashMap<Object, Condition>();
-		«cond.value.processCondition(cond.key+"_conditions")»
-		mediatorAddDisableOn(«cond.key», «cond.key»_conditions);
+		// Condition for Enable: «cond.key»
+		«cond.value.processCondition(cond.key, null, null)»
 		
 		«ENDFOR»
 	'''
-	
-	// Build Option - Disabled -> Process Condition
-	def CharSequence processCondition(Condition cond, CharSequence parent_condition_var)'''
-	«parent_condition_var».put(«cond.element.name.getVariableName», «IF cond.negation»Condition.NONEMPTY«ELSE»Condition.EMPTY«ENDIF»);
-	«IF cond.subcondition !== null»«cond.subcondition.processCondition(parent_condition_var)»«ENDIF»
+
+	// Disable - Condition -> Condition Branch (OR)
+	def dispatch CharSequence processCondition(ConditionBranch cond, CharSequence target_var, CharSequence parent_or_var, CharSequence parent_and_var)'''
+	«var or_var = parent_or_var»
+	«IF parent_or_var === null»
+	«getOrMap(or_var = getCondVariableName("or"))»
+	«ENDIF»
+	«IF cond.left !== null»
+	«cond.left.processCondition(target_var, or_var, parent_and_var)»
+	«ENDIF»
+	«IF cond.right !== null»
+	«cond.right.processCondition(target_var, or_var, parent_and_var)»
+	«ENDIF»
+	«IF parent_or_var === null»
+	mediatorAddDisableOn(«target_var», «or_var»);
+	«ENDIF»
 	'''
+
+	// Disable - Condition -> Condition Concatenation (AND)
+	def dispatch CharSequence processCondition(ConditionConcatenation cond, CharSequence target_var, CharSequence parent_or_var, CharSequence parent_and_var)'''
+	«var or_var = parent_or_var»
+	«IF parent_or_var === null»
+	«getOrMap(or_var = getCondVariableName("or"))»
+	«ENDIF»
+	«var and_var = getCondVariableName("and")»
+	«getAndMap(and_var)»
+	«IF cond.left !== null»
+	«cond.left.processCondition(target_var, or_var, and_var)»
+	«ENDIF»
+	«IF cond.right !== null»
+	«cond.right.processCondition(target_var, or_var, and_var)»
+	«ENDIF»
+	«or_var».add(«and_var»); // Add AND to OR
+	«IF parent_or_var === null»
+	mediatorAddDisableOn(«target_var», «or_var»);
+	«ENDIF»
+	'''
+
+	// Disable - Condition -> Condition
+	def dispatch CharSequence processCondition(Condition cond, CharSequence target_var, CharSequence parent_or_var, CharSequence parent_and_var)'''
+	«var or_var = parent_or_var»«var and_var = parent_and_var»
+	«IF parent_or_var === null»
+	«getOrMap(or_var = getCondVariableName("or"))»
+	«ENDIF»
+	«IF parent_and_var === null»
+	«getAndMap(and_var = getCondVariableName("and"))»
+	«or_var».add(«and_var»); // Add AND to OR
+	«ENDIF»
+	«and_var».put(«cond.element.name.getVariableName», Condition.«cond.condition.processConditionType(cond.negation)»);
+	«IF parent_or_var === null»
+	mediatorAddDisableOn(«target_var», «or_var»);
+	«ENDIF»
+	'''
+	
+	def dispatch CharSequence processConditionType(Empty type, boolean negation)'''«IF negation»NONEMPTY«ELSE»EMPTY«ENDIF»'''
+	def dispatch CharSequence processConditionType(Checked type, boolean negation)'''«IF !negation»NONEMPTY«ELSE»EMPTY«ENDIF»'''
 
 	// Build Option - OnClick
 	def dispatch CharSequence buildElement(OnClick onclick, CharSequence parent_var) '''
@@ -254,6 +309,14 @@ class QuickUIGenerator extends AbstractGenerator {
 			action_«onclick.callback»(e);
 		}
 	});
+	'''
+	
+	def CharSequence getOrMap(CharSequence or_var)'''
+	java.util.ArrayList<java.util.Map<Object, Condition>> «or_var» = new java.util.ArrayList<java.util.Map<Object, Condition>>(); // OR	
+	'''
+	
+	def CharSequence getAndMap(CharSequence and_var)'''
+	java.util.HashMap<Object, Condition> «and_var» = new java.util.HashMap<Object, Condition>(); // AND
 	'''
 	
 	// Build Option - OnClick -> Build Callbacks
@@ -290,58 +353,81 @@ class QuickUIGenerator extends AbstractGenerator {
 	def CharSequence buildMediator() '''
 	/**
 	 * Mediator Function
-	 * @param element
-	 * @param conditions
+	 * @param Target Element
+	 * @param Condition List
 	 */
-	private void mediatorAddDisableOn(final Object element, java.util.Map<Object, Condition> conditions){
+	private void mediatorAddDisableOn(final Object element, java.util.ArrayList<java.util.Map<Object, Condition>> condition_list){
 		JComponent component = (JComponent) element;
 		
 		Runnable callback = new Runnable(){
 			@Override
 			public void run() {
 				boolean enabled = true;
-				java.util.Iterator<java.util.Map.Entry<Object, Condition>> it = conditions.entrySet().iterator();
-				while(it.hasNext()){ // Check all Conditions
-					java.util.Map.Entry<Object, Condition> cond = it.next();
-					Object target = cond.getKey();
-					boolean empty = false;
+				
+				java.util.Iterator<java.util.Map<Object, Condition>> lit = condition_list.iterator();
+				while(lit.hasNext()){ // OR Condition
 					
-					if(target instanceof javax.swing.text.JTextComponent) // Text Component
-						empty = ((javax.swing.text.JTextComponent) target).getText().equals("");
-					else if (target instanceof AbstractButton) // Abstract Button (CheckBoxes)
-						empty = !((AbstractButton) target).isSelected();
-					
-					switch(cond.getValue()){
-					case EMPTY:
-						enabled = (empty?false:enabled);
-						break;
-					case NONEMPTY:
-						enabled = (!empty?false:enabled);
-						break;
+					java.util.Iterator<java.util.Map.Entry<Object, Condition>> it = lit.next().entrySet().iterator();
+					while(it.hasNext()){ // AND Condition
+						
+						java.util.Map.Entry<Object, Condition> cond = it.next();
+						Object target = cond.getKey();
+						boolean empty = false;
+						
+						if(target instanceof javax.swing.text.JTextComponent) // Text Component
+							empty = ((javax.swing.text.JTextComponent) target).getText().equals("");
+						else if (target instanceof AbstractButton) // Abstract Button (CheckBoxes)
+							empty = !((AbstractButton) target).isSelected();
+						
+						switch(cond.getValue()){
+						case EMPTY:
+							enabled = (!empty?false:enabled);
+							break;
+						case NONEMPTY:
+							enabled = (empty?false:enabled);
+							break;
+						}
 					}
+					
+					if(enabled){
+						component.setEnabled(true); // Enable Element
+						return;
+					}
+					
+					enabled = true;
 				}
-				// Set Enabled
-				component.setEnabled(enabled); // Set Enabled State
+				
+				component.setEnabled(false); // Disable Element
 			}
 		};
 		
-		java.util.Iterator<Object> doi = conditions.keySet().iterator();
+		// Only Register Each Element Once
+		java.util.HashSet<Object> uniqueObject = new java.util.HashSet<Object>();
+		java.util.Iterator<java.util.Map<Object, Condition>> lit = condition_list.iterator();
+		while(lit.hasNext()){
+			java.util.Iterator<Object> vit = lit.next().keySet().iterator();
+			while(vit.hasNext())
+				uniqueObject.add(vit.next());
+		}
+		
+		// Register Listeners
+		java.util.Iterator<Object> doi = uniqueObject.iterator();
 		while(doi.hasNext()){
-			// Register Listeners
-			Object target = doi.next();
 
+			Object target = doi.next();
+	
 			if(target instanceof javax.swing.text.JTextComponent){
 				((javax.swing.text.JTextComponent)target).getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
 				    @Override
 				    public void insertUpdate(javax.swing.event.DocumentEvent e) {
 				    	callback.run();
 				    }
-
+	
 				    @Override
 				    public void removeUpdate(javax.swing.event.DocumentEvent e) {
 				    	callback.run();
 				    }
-
+	
 				    @Override
 				    public void changedUpdate(javax.swing.event.DocumentEvent e) {
 				    	callback.run();
@@ -358,7 +444,7 @@ class QuickUIGenerator extends AbstractGenerator {
 				System.err.println("ERROR: Object of unsupported type");
 			}
 		}
-
+	
 		callback.run(); // Run Callback On Initialize
 	}
 	
@@ -378,6 +464,13 @@ class QuickUIGenerator extends AbstractGenerator {
 		if(variable !== null)
 			return "item_"+variable;
 		return "uitem_" + counter++;
+	}
+	
+	// Condition Variable Generator
+	int condCounter = 1;
+	
+	def CharSequence getCondVariableName(CharSequence verb){
+		return "cond_" + verb + condCounter++;
 	}
 	
 	// Alias to Java Class

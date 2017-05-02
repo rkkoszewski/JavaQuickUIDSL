@@ -41,15 +41,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Enabled" eSuperTypes="#//Option">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//ConditionDefinition"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Condition">
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionDefinition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition" eSuperTypes="#//ConditionDefinition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="#//Element"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="negation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//ConditionType"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subcondition" eType="#//Condition"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionType"/>
@@ -63,6 +62,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="Boolean">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isTrue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Filter" eSuperTypes="#//Option"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionBranch" eSuperTypes="#//ConditionDefinition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//ConditionDefinition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//ConditionDefinition"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionConcatenation" eSuperTypes="#//ConditionDefinition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//ConditionDefinition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//ConditionDefinition"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Empty" eSuperTypes="#//ConditionType"/>
 </ecore:EPackage>

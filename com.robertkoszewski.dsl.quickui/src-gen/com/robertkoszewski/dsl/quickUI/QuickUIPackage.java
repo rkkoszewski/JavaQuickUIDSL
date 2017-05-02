@@ -428,6 +428,25 @@ public interface QuickUIPackage extends EPackage
   int ENABLED_FEATURE_COUNT = OPTION_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link com.robertkoszewski.dsl.quickUI.impl.ConditionDefinitionImpl <em>Condition Definition</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robertkoszewski.dsl.quickUI.impl.ConditionDefinitionImpl
+   * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getConditionDefinition()
+   * @generated
+   */
+  int CONDITION_DEFINITION = 10;
+
+  /**
+   * The number of structural features of the '<em>Condition Definition</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITION_DEFINITION_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link com.robertkoszewski.dsl.quickUI.impl.ConditionImpl <em>Condition</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -435,7 +454,7 @@ public interface QuickUIPackage extends EPackage
    * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getCondition()
    * @generated
    */
-  int CONDITION = 10;
+  int CONDITION = 11;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' reference.
@@ -444,7 +463,7 @@ public interface QuickUIPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION__ELEMENT = 0;
+  int CONDITION__ELEMENT = CONDITION_DEFINITION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Negation</b></em>' attribute.
@@ -453,7 +472,7 @@ public interface QuickUIPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION__NEGATION = 1;
+  int CONDITION__NEGATION = CONDITION_DEFINITION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -462,16 +481,7 @@ public interface QuickUIPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION__CONDITION = 2;
-
-  /**
-   * The feature id for the '<em><b>Subcondition</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONDITION__SUBCONDITION = 3;
+  int CONDITION__CONDITION = CONDITION_DEFINITION_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Condition</em>' class.
@@ -480,7 +490,7 @@ public interface QuickUIPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION_FEATURE_COUNT = 4;
+  int CONDITION_FEATURE_COUNT = CONDITION_DEFINITION_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link com.robertkoszewski.dsl.quickUI.impl.ConditionTypeImpl <em>Condition Type</em>}' class.
@@ -490,7 +500,7 @@ public interface QuickUIPackage extends EPackage
    * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getConditionType()
    * @generated
    */
-  int CONDITION_TYPE = 11;
+  int CONDITION_TYPE = 12;
 
   /**
    * The number of structural features of the '<em>Condition Type</em>' class.
@@ -509,7 +519,7 @@ public interface QuickUIPackage extends EPackage
    * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getChecked()
    * @generated
    */
-  int CHECKED = 12;
+  int CHECKED = 13;
 
   /**
    * The feature id for the '<em><b>Checked</b></em>' containment reference.
@@ -537,7 +547,7 @@ public interface QuickUIPackage extends EPackage
    * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getOnClick()
    * @generated
    */
-  int ON_CLICK = 13;
+  int ON_CLICK = 14;
 
   /**
    * The feature id for the '<em><b>Callback</b></em>' attribute.
@@ -565,7 +575,7 @@ public interface QuickUIPackage extends EPackage
    * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getBoolean()
    * @generated
    */
-  int BOOLEAN = 14;
+  int BOOLEAN = 15;
 
   /**
    * The feature id for the '<em><b>Is True</b></em>' attribute.
@@ -586,23 +596,78 @@ public interface QuickUIPackage extends EPackage
   int BOOLEAN_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link com.robertkoszewski.dsl.quickUI.impl.FilterImpl <em>Filter</em>}' class.
+   * The meta object id for the '{@link com.robertkoszewski.dsl.quickUI.impl.ConditionBranchImpl <em>Condition Branch</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.robertkoszewski.dsl.quickUI.impl.FilterImpl
-   * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getFilter()
+   * @see com.robertkoszewski.dsl.quickUI.impl.ConditionBranchImpl
+   * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getConditionBranch()
    * @generated
    */
-  int FILTER = 15;
+  int CONDITION_BRANCH = 16;
 
   /**
-   * The number of structural features of the '<em>Filter</em>' class.
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FILTER_FEATURE_COUNT = OPTION_FEATURE_COUNT + 0;
+  int CONDITION_BRANCH__LEFT = CONDITION_DEFINITION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITION_BRANCH__RIGHT = CONDITION_DEFINITION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Condition Branch</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITION_BRANCH_FEATURE_COUNT = CONDITION_DEFINITION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link com.robertkoszewski.dsl.quickUI.impl.ConditionConcatenationImpl <em>Condition Concatenation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robertkoszewski.dsl.quickUI.impl.ConditionConcatenationImpl
+   * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getConditionConcatenation()
+   * @generated
+   */
+  int CONDITION_CONCATENATION = 17;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITION_CONCATENATION__LEFT = CONDITION_DEFINITION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITION_CONCATENATION__RIGHT = CONDITION_DEFINITION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Condition Concatenation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITION_CONCATENATION_FEATURE_COUNT = CONDITION_DEFINITION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link com.robertkoszewski.dsl.quickUI.impl.EmptyImpl <em>Empty</em>}' class.
@@ -612,7 +677,7 @@ public interface QuickUIPackage extends EPackage
    * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getEmpty()
    * @generated
    */
-  int EMPTY = 16;
+  int EMPTY = 18;
 
   /**
    * The number of structural features of the '<em>Empty</em>' class.
@@ -901,6 +966,16 @@ public interface QuickUIPackage extends EPackage
   EReference getEnabled_Condition();
 
   /**
+   * Returns the meta object for class '{@link com.robertkoszewski.dsl.quickUI.ConditionDefinition <em>Condition Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Condition Definition</em>'.
+   * @see com.robertkoszewski.dsl.quickUI.ConditionDefinition
+   * @generated
+   */
+  EClass getConditionDefinition();
+
+  /**
    * Returns the meta object for class '{@link com.robertkoszewski.dsl.quickUI.Condition <em>Condition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -942,17 +1017,6 @@ public interface QuickUIPackage extends EPackage
    * @generated
    */
   EReference getCondition_Condition();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.robertkoszewski.dsl.quickUI.Condition#getSubcondition <em>Subcondition</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Subcondition</em>'.
-   * @see com.robertkoszewski.dsl.quickUI.Condition#getSubcondition()
-   * @see #getCondition()
-   * @generated
-   */
-  EReference getCondition_Subcondition();
 
   /**
    * Returns the meta object for class '{@link com.robertkoszewski.dsl.quickUI.ConditionType <em>Condition Type</em>}'.
@@ -1028,14 +1092,68 @@ public interface QuickUIPackage extends EPackage
   EAttribute getBoolean_IsTrue();
 
   /**
-   * Returns the meta object for class '{@link com.robertkoszewski.dsl.quickUI.Filter <em>Filter</em>}'.
+   * Returns the meta object for class '{@link com.robertkoszewski.dsl.quickUI.ConditionBranch <em>Condition Branch</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Filter</em>'.
-   * @see com.robertkoszewski.dsl.quickUI.Filter
+   * @return the meta object for class '<em>Condition Branch</em>'.
+   * @see com.robertkoszewski.dsl.quickUI.ConditionBranch
    * @generated
    */
-  EClass getFilter();
+  EClass getConditionBranch();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robertkoszewski.dsl.quickUI.ConditionBranch#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see com.robertkoszewski.dsl.quickUI.ConditionBranch#getLeft()
+   * @see #getConditionBranch()
+   * @generated
+   */
+  EReference getConditionBranch_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robertkoszewski.dsl.quickUI.ConditionBranch#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.robertkoszewski.dsl.quickUI.ConditionBranch#getRight()
+   * @see #getConditionBranch()
+   * @generated
+   */
+  EReference getConditionBranch_Right();
+
+  /**
+   * Returns the meta object for class '{@link com.robertkoszewski.dsl.quickUI.ConditionConcatenation <em>Condition Concatenation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Condition Concatenation</em>'.
+   * @see com.robertkoszewski.dsl.quickUI.ConditionConcatenation
+   * @generated
+   */
+  EClass getConditionConcatenation();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robertkoszewski.dsl.quickUI.ConditionConcatenation#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see com.robertkoszewski.dsl.quickUI.ConditionConcatenation#getLeft()
+   * @see #getConditionConcatenation()
+   * @generated
+   */
+  EReference getConditionConcatenation_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robertkoszewski.dsl.quickUI.ConditionConcatenation#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.robertkoszewski.dsl.quickUI.ConditionConcatenation#getRight()
+   * @see #getConditionConcatenation()
+   * @generated
+   */
+  EReference getConditionConcatenation_Right();
 
   /**
    * Returns the meta object for class '{@link com.robertkoszewski.dsl.quickUI.Empty <em>Empty</em>}'.
@@ -1299,6 +1417,16 @@ public interface QuickUIPackage extends EPackage
     EReference ENABLED__CONDITION = eINSTANCE.getEnabled_Condition();
 
     /**
+     * The meta object literal for the '{@link com.robertkoszewski.dsl.quickUI.impl.ConditionDefinitionImpl <em>Condition Definition</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robertkoszewski.dsl.quickUI.impl.ConditionDefinitionImpl
+     * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getConditionDefinition()
+     * @generated
+     */
+    EClass CONDITION_DEFINITION = eINSTANCE.getConditionDefinition();
+
+    /**
      * The meta object literal for the '{@link com.robertkoszewski.dsl.quickUI.impl.ConditionImpl <em>Condition</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1331,14 +1459,6 @@ public interface QuickUIPackage extends EPackage
      * @generated
      */
     EReference CONDITION__CONDITION = eINSTANCE.getCondition_Condition();
-
-    /**
-     * The meta object literal for the '<em><b>Subcondition</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONDITION__SUBCONDITION = eINSTANCE.getCondition_Subcondition();
 
     /**
      * The meta object literal for the '{@link com.robertkoszewski.dsl.quickUI.impl.ConditionTypeImpl <em>Condition Type</em>}' class.
@@ -1405,14 +1525,56 @@ public interface QuickUIPackage extends EPackage
     EAttribute BOOLEAN__IS_TRUE = eINSTANCE.getBoolean_IsTrue();
 
     /**
-     * The meta object literal for the '{@link com.robertkoszewski.dsl.quickUI.impl.FilterImpl <em>Filter</em>}' class.
+     * The meta object literal for the '{@link com.robertkoszewski.dsl.quickUI.impl.ConditionBranchImpl <em>Condition Branch</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.robertkoszewski.dsl.quickUI.impl.FilterImpl
-     * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getFilter()
+     * @see com.robertkoszewski.dsl.quickUI.impl.ConditionBranchImpl
+     * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getConditionBranch()
      * @generated
      */
-    EClass FILTER = eINSTANCE.getFilter();
+    EClass CONDITION_BRANCH = eINSTANCE.getConditionBranch();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONDITION_BRANCH__LEFT = eINSTANCE.getConditionBranch_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONDITION_BRANCH__RIGHT = eINSTANCE.getConditionBranch_Right();
+
+    /**
+     * The meta object literal for the '{@link com.robertkoszewski.dsl.quickUI.impl.ConditionConcatenationImpl <em>Condition Concatenation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robertkoszewski.dsl.quickUI.impl.ConditionConcatenationImpl
+     * @see com.robertkoszewski.dsl.quickUI.impl.QuickUIPackageImpl#getConditionConcatenation()
+     * @generated
+     */
+    EClass CONDITION_CONCATENATION = eINSTANCE.getConditionConcatenation();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONDITION_CONCATENATION__LEFT = eINSTANCE.getConditionConcatenation_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONDITION_CONCATENATION__RIGHT = eINSTANCE.getConditionConcatenation_Right();
 
     /**
      * The meta object literal for the '{@link com.robertkoszewski.dsl.quickUI.impl.EmptyImpl <em>Empty</em>}' class.

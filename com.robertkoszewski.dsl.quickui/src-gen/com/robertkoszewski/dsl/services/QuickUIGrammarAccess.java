@@ -379,9 +379,6 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEnabledParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cCheckedParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cOnClickParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
-		private final Action cFilterAction_4_0 = (Action)cGroup_4.eContents().get(0);
-		private final RuleCall cFilterParserRuleCall_4_1 = (RuleCall)cGroup_4.eContents().get(1);
 		
 		//// Static Options
 		//// - Filter
@@ -389,10 +386,10 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		//// - Checked
 		//// - OnClick
 		//Option:
-		//	Label | Enabled | Checked | OnClick | {Filter} Filter;
+		//	Label | Enabled | Checked | OnClick /*|{Filter}Filter*/;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Label | Enabled | Checked | OnClick | {Filter} Filter
+		//Label | Enabled | Checked | OnClick
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Label
@@ -406,15 +403,6 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//OnClick
 		public RuleCall getOnClickParserRuleCall_3() { return cOnClickParserRuleCall_3; }
-		
-		//{Filter} Filter
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//{Filter}
-		public Action getFilterAction_4_0() { return cFilterAction_4_0; }
-		
-		//Filter
-		public RuleCall getFilterParserRuleCall_4_1() { return cFilterParserRuleCall_4_1; }
 	}
 	public class LabelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.robertkoszewski.dsl.QuickUI.Label");
@@ -453,13 +441,13 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEnabledKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cConditionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cConditionConditionParserRuleCall_2_0 = (RuleCall)cConditionAssignment_2.eContents().get(0);
+		private final RuleCall cConditionConditionBranchParserRuleCall_2_0 = (RuleCall)cConditionAssignment_2.eContents().get(0);
 		
 		//Enabled:
-		//	'Enabled' ':' condition=Condition;
+		//	'Enabled' ':' condition=ConditionBranch;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Enabled' ':' condition=Condition
+		//'Enabled' ':' condition=ConditionBranch
 		public Group getGroup() { return cGroup; }
 		
 		//'Enabled'
@@ -468,11 +456,92 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		//':'
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
 		
-		//condition=Condition
+		//condition=ConditionBranch
 		public Assignment getConditionAssignment_2() { return cConditionAssignment_2; }
 		
+		//ConditionBranch
+		public RuleCall getConditionConditionBranchParserRuleCall_2_0() { return cConditionConditionBranchParserRuleCall_2_0; }
+	}
+	public class ConditionBranchElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.robertkoszewski.dsl.QuickUI.ConditionBranch");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cConditionConcatenationParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cConditionBranchLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cOrKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightConditionConcatenationParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//ConditionBranch ConditionDefinition:
+		//	ConditionConcatenation ({ConditionBranch.left=current} 'or' right=ConditionConcatenation)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ConditionConcatenation ({ConditionBranch.left=current} 'or' right=ConditionConcatenation)*
+		public Group getGroup() { return cGroup; }
+		
+		//ConditionConcatenation
+		public RuleCall getConditionConcatenationParserRuleCall_0() { return cConditionConcatenationParserRuleCall_0; }
+		
+		//({ConditionBranch.left=current} 'or' right=ConditionConcatenation)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{ConditionBranch.left=current}
+		public Action getConditionBranchLeftAction_1_0() { return cConditionBranchLeftAction_1_0; }
+		
+		//'or'
+		public Keyword getOrKeyword_1_1() { return cOrKeyword_1_1; }
+		
+		//right=ConditionConcatenation
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//ConditionConcatenation
+		public RuleCall getRightConditionConcatenationParserRuleCall_1_2_0() { return cRightConditionConcatenationParserRuleCall_1_2_0; }
+	}
+	public class ConditionConcatenationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.robertkoszewski.dsl.QuickUI.ConditionConcatenation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cConditionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cConditionConcatenationLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cAndKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightConditionValueParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//ConditionConcatenation ConditionDefinition:
+		//	Condition ({ConditionConcatenation.left=current} 'and' right=ConditionValue)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Condition ({ConditionConcatenation.left=current} 'and' right=ConditionValue)*
+		public Group getGroup() { return cGroup; }
+		
 		//Condition
-		public RuleCall getConditionConditionParserRuleCall_2_0() { return cConditionConditionParserRuleCall_2_0; }
+		public RuleCall getConditionParserRuleCall_0() { return cConditionParserRuleCall_0; }
+		
+		//({ConditionConcatenation.left=current} 'and' right=ConditionValue)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{ConditionConcatenation.left=current}
+		public Action getConditionConcatenationLeftAction_1_0() { return cConditionConcatenationLeftAction_1_0; }
+		
+		//'and'
+		public Keyword getAndKeyword_1_1() { return cAndKeyword_1_1; }
+		
+		//right=ConditionValue
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//ConditionValue
+		public RuleCall getRightConditionValueParserRuleCall_1_2_0() { return cRightConditionValueParserRuleCall_1_2_0; }
+	}
+	public class ConditionValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.robertkoszewski.dsl.QuickUI.ConditionValue");
+		private final RuleCall cConditionParserRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//ConditionValue ConditionDefinition:
+		//	Condition;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Condition
+		public RuleCall getConditionParserRuleCall() { return cConditionParserRuleCall; }
 	}
 	public class ConditionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.robertkoszewski.dsl.QuickUI.Condition");
@@ -486,16 +555,12 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cNegationNotKeyword_3_0 = (Keyword)cNegationAssignment_3.eContents().get(0);
 		private final Assignment cConditionAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cConditionConditionTypeParserRuleCall_4_0 = (RuleCall)cConditionAssignment_4.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cAndKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cSubconditionAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cSubconditionConditionParserRuleCall_5_1_0 = (RuleCall)cSubconditionAssignment_5_1.eContents().get(0);
 		
 		//Condition:
-		//	'if'? element=[Element] 'is'? negation?='not'? condition=ConditionType ('and' subcondition=Condition)?;
+		//	'if'? element=[Element] 'is'? negation?='not'? condition=ConditionType;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'if'? element=[Element] 'is'? negation?='not'? condition=ConditionType ('and' subcondition=Condition)?
+		//'if'? element=[Element] 'is'? negation?='not'? condition=ConditionType
 		public Group getGroup() { return cGroup; }
 		
 		//'if'?
@@ -524,18 +589,6 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ConditionType
 		public RuleCall getConditionConditionTypeParserRuleCall_4_0() { return cConditionConditionTypeParserRuleCall_4_0; }
-		
-		//('and' subcondition=Condition)?
-		public Group getGroup_5() { return cGroup_5; }
-		
-		//'and'
-		public Keyword getAndKeyword_5_0() { return cAndKeyword_5_0; }
-		
-		//subcondition=Condition
-		public Assignment getSubconditionAssignment_5_1() { return cSubconditionAssignment_5_1; }
-		
-		//Condition
-		public RuleCall getSubconditionConditionParserRuleCall_5_1_0() { return cSubconditionConditionParserRuleCall_5_1_0; }
 	}
 	public class ConditionTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.robertkoszewski.dsl.QuickUI.ConditionType");
@@ -626,40 +679,6 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getCallbackIDTerminalRuleCall_2_0() { return cCallbackIDTerminalRuleCall_2_0; }
 	}
-	public class FilterElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.robertkoszewski.dsl.QuickUI.Filter");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cFilterKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final RuleCall cFilterExpressionParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		
-		//Filter:
-		//	'Filter' ':' FilterExpression;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'Filter' ':' FilterExpression
-		public Group getGroup() { return cGroup; }
-		
-		//'Filter'
-		public Keyword getFilterKeyword_0() { return cFilterKeyword_0; }
-		
-		//':'
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
-		
-		//FilterExpression
-		public RuleCall getFilterExpressionParserRuleCall_2() { return cFilterExpressionParserRuleCall_2; }
-	}
-	public class FilterExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.robertkoszewski.dsl.QuickUI.FilterExpression");
-		private final Keyword cTODOKeyword = (Keyword)rule.eContents().get(1);
-		
-		//FilterExpression:
-		//	'TODO';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'TODO'
-		public Keyword getTODOKeyword() { return cTODOKeyword; }
-	}
 	public class BooleanElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.robertkoszewski.dsl.QuickUI.Boolean");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -669,7 +688,15 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIsTrueTrueKeyword_1_0_0 = (Keyword)cIsTrueAssignment_1_0.eContents().get(0);
 		private final Keyword cFalseKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
 		
-		//Boolean:
+		///*
+		//Filter:
+		//	'Filter' ':' FilterExpression
+		//;
+		//
+		//FilterExpression:
+		//	'TODO'
+		//;
+		//*/ Boolean:
 		//	{Boolean} (isTrue?='true' | 'false');
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -703,12 +730,13 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 	private final OptionElements pOption;
 	private final LabelElements pLabel;
 	private final EnabledElements pEnabled;
+	private final ConditionBranchElements pConditionBranch;
+	private final ConditionConcatenationElements pConditionConcatenation;
+	private final ConditionValueElements pConditionValue;
 	private final ConditionElements pCondition;
 	private final ConditionTypeElements pConditionType;
 	private final CheckedElements pChecked;
 	private final OnClickElements pOnClick;
-	private final FilterElements pFilter;
-	private final FilterExpressionElements pFilterExpression;
 	private final BooleanElements pBoolean;
 	
 	private final Grammar grammar;
@@ -730,12 +758,13 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		this.pOption = new OptionElements();
 		this.pLabel = new LabelElements();
 		this.pEnabled = new EnabledElements();
+		this.pConditionBranch = new ConditionBranchElements();
+		this.pConditionConcatenation = new ConditionConcatenationElements();
+		this.pConditionValue = new ConditionValueElements();
 		this.pCondition = new ConditionElements();
 		this.pConditionType = new ConditionTypeElements();
 		this.pChecked = new CheckedElements();
 		this.pOnClick = new OnClickElements();
-		this.pFilter = new FilterElements();
-		this.pFilterExpression = new FilterExpressionElements();
 		this.pBoolean = new BooleanElements();
 	}
 	
@@ -844,7 +873,7 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 	//// - Checked
 	//// - OnClick
 	//Option:
-	//	Label | Enabled | Checked | OnClick | {Filter} Filter;
+	//	Label | Enabled | Checked | OnClick /*|{Filter}Filter*/;
 	public OptionElements getOptionAccess() {
 		return pOption;
 	}
@@ -868,7 +897,7 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Enabled:
-	//	'Enabled' ':' condition=Condition;
+	//	'Enabled' ':' condition=ConditionBranch;
 	public EnabledElements getEnabledAccess() {
 		return pEnabled;
 	}
@@ -877,8 +906,38 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		return getEnabledAccess().getRule();
 	}
 	
+	//ConditionBranch ConditionDefinition:
+	//	ConditionConcatenation ({ConditionBranch.left=current} 'or' right=ConditionConcatenation)*;
+	public ConditionBranchElements getConditionBranchAccess() {
+		return pConditionBranch;
+	}
+	
+	public ParserRule getConditionBranchRule() {
+		return getConditionBranchAccess().getRule();
+	}
+	
+	//ConditionConcatenation ConditionDefinition:
+	//	Condition ({ConditionConcatenation.left=current} 'and' right=ConditionValue)*;
+	public ConditionConcatenationElements getConditionConcatenationAccess() {
+		return pConditionConcatenation;
+	}
+	
+	public ParserRule getConditionConcatenationRule() {
+		return getConditionConcatenationAccess().getRule();
+	}
+	
+	//ConditionValue ConditionDefinition:
+	//	Condition;
+	public ConditionValueElements getConditionValueAccess() {
+		return pConditionValue;
+	}
+	
+	public ParserRule getConditionValueRule() {
+		return getConditionValueAccess().getRule();
+	}
+	
 	//Condition:
-	//	'if'? element=[Element] 'is'? negation?='not'? condition=ConditionType ('and' subcondition=Condition)?;
+	//	'if'? element=[Element] 'is'? negation?='not'? condition=ConditionType;
 	public ConditionElements getConditionAccess() {
 		return pCondition;
 	}
@@ -917,27 +976,15 @@ public class QuickUIGrammarAccess extends AbstractGrammarElementFinder {
 		return getOnClickAccess().getRule();
 	}
 	
+	///*
 	//Filter:
-	//	'Filter' ':' FilterExpression;
-	public FilterElements getFilterAccess() {
-		return pFilter;
-	}
-	
-	public ParserRule getFilterRule() {
-		return getFilterAccess().getRule();
-	}
-	
+	//	'Filter' ':' FilterExpression
+	//;
+	//
 	//FilterExpression:
-	//	'TODO';
-	public FilterExpressionElements getFilterExpressionAccess() {
-		return pFilterExpression;
-	}
-	
-	public ParserRule getFilterExpressionRule() {
-		return getFilterExpressionAccess().getRule();
-	}
-	
-	//Boolean:
+	//	'TODO'
+	//;
+	//*/ Boolean:
 	//	{Boolean} (isTrue?='true' | 'false');
 	public BooleanElements getBooleanAccess() {
 		return pBoolean;

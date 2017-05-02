@@ -6,11 +6,13 @@ package com.robertkoszewski.dsl.quickUI.impl;
 import com.robertkoszewski.dsl.quickUI.Alias;
 import com.robertkoszewski.dsl.quickUI.Checked;
 import com.robertkoszewski.dsl.quickUI.Condition;
+import com.robertkoszewski.dsl.quickUI.ConditionBranch;
+import com.robertkoszewski.dsl.quickUI.ConditionConcatenation;
+import com.robertkoszewski.dsl.quickUI.ConditionDefinition;
 import com.robertkoszewski.dsl.quickUI.ConditionType;
 import com.robertkoszewski.dsl.quickUI.Element;
 import com.robertkoszewski.dsl.quickUI.Empty;
 import com.robertkoszewski.dsl.quickUI.Enabled;
-import com.robertkoszewski.dsl.quickUI.Filter;
 import com.robertkoszewski.dsl.quickUI.JavaElement;
 import com.robertkoszewski.dsl.quickUI.Label;
 import com.robertkoszewski.dsl.quickUI.OnClick;
@@ -111,6 +113,13 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass conditionDefinitionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass conditionEClass = null;
 
   /**
@@ -146,7 +155,14 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass filterEClass = null;
+  private EClass conditionBranchEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass conditionConcatenationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -483,6 +499,16 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getConditionDefinition()
+  {
+    return conditionDefinitionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getCondition()
   {
     return conditionEClass;
@@ -516,16 +542,6 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
   public EReference getCondition_Condition()
   {
     return (EReference)conditionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCondition_Subcondition()
-  {
-    return (EReference)conditionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -603,9 +619,59 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFilter()
+  public EClass getConditionBranch()
   {
-    return filterEClass;
+    return conditionBranchEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConditionBranch_Left()
+  {
+    return (EReference)conditionBranchEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConditionBranch_Right()
+  {
+    return (EReference)conditionBranchEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getConditionConcatenation()
+  {
+    return conditionConcatenationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConditionConcatenation_Left()
+  {
+    return (EReference)conditionConcatenationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConditionConcatenation_Right()
+  {
+    return (EReference)conditionConcatenationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -684,11 +750,12 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
     enabledEClass = createEClass(ENABLED);
     createEReference(enabledEClass, ENABLED__CONDITION);
 
+    conditionDefinitionEClass = createEClass(CONDITION_DEFINITION);
+
     conditionEClass = createEClass(CONDITION);
     createEReference(conditionEClass, CONDITION__ELEMENT);
     createEAttribute(conditionEClass, CONDITION__NEGATION);
     createEReference(conditionEClass, CONDITION__CONDITION);
-    createEReference(conditionEClass, CONDITION__SUBCONDITION);
 
     conditionTypeEClass = createEClass(CONDITION_TYPE);
 
@@ -701,7 +768,13 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
     booleanEClass = createEClass(BOOLEAN);
     createEAttribute(booleanEClass, BOOLEAN__IS_TRUE);
 
-    filterEClass = createEClass(FILTER);
+    conditionBranchEClass = createEClass(CONDITION_BRANCH);
+    createEReference(conditionBranchEClass, CONDITION_BRANCH__LEFT);
+    createEReference(conditionBranchEClass, CONDITION_BRANCH__RIGHT);
+
+    conditionConcatenationEClass = createEClass(CONDITION_CONCATENATION);
+    createEReference(conditionConcatenationEClass, CONDITION_CONCATENATION__LEFT);
+    createEReference(conditionConcatenationEClass, CONDITION_CONCATENATION__RIGHT);
 
     emptyEClass = createEClass(EMPTY);
   }
@@ -739,10 +812,12 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
     rowEClass.getESuperTypes().add(this.getElement());
     labelEClass.getESuperTypes().add(this.getOption());
     enabledEClass.getESuperTypes().add(this.getOption());
+    conditionEClass.getESuperTypes().add(this.getConditionDefinition());
     checkedEClass.getESuperTypes().add(this.getOption());
     checkedEClass.getESuperTypes().add(this.getConditionType());
     onClickEClass.getESuperTypes().add(this.getOption());
-    filterEClass.getESuperTypes().add(this.getOption());
+    conditionBranchEClass.getESuperTypes().add(this.getConditionDefinition());
+    conditionConcatenationEClass.getESuperTypes().add(this.getConditionDefinition());
     emptyEClass.getESuperTypes().add(this.getConditionType());
 
     // Initialize classes and features; add operations and parameters
@@ -780,13 +855,14 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
     initEAttribute(getLabel_Value(), ecorePackage.getEString(), "value", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(enabledEClass, Enabled.class, "Enabled", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEnabled_Condition(), this.getCondition(), null, "condition", null, 0, 1, Enabled.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEnabled_Condition(), this.getConditionDefinition(), null, "condition", null, 0, 1, Enabled.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(conditionDefinitionEClass, ConditionDefinition.class, "ConditionDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(conditionEClass, Condition.class, "Condition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCondition_Element(), this.getElement(), null, "element", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCondition_Negation(), ecorePackage.getEBoolean(), "negation", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCondition_Condition(), this.getConditionType(), null, "condition", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCondition_Subcondition(), this.getCondition(), null, "subcondition", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(conditionTypeEClass, ConditionType.class, "ConditionType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -799,7 +875,13 @@ public class QuickUIPackageImpl extends EPackageImpl implements QuickUIPackage
     initEClass(booleanEClass, com.robertkoszewski.dsl.quickUI.Boolean.class, "Boolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getBoolean_IsTrue(), ecorePackage.getEBoolean(), "isTrue", null, 0, 1, com.robertkoszewski.dsl.quickUI.Boolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(filterEClass, Filter.class, "Filter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(conditionBranchEClass, ConditionBranch.class, "ConditionBranch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConditionBranch_Left(), this.getConditionDefinition(), null, "left", null, 0, 1, ConditionBranch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConditionBranch_Right(), this.getConditionDefinition(), null, "right", null, 0, 1, ConditionBranch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(conditionConcatenationEClass, ConditionConcatenation.class, "ConditionConcatenation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConditionConcatenation_Left(), this.getConditionDefinition(), null, "left", null, 0, 1, ConditionConcatenation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConditionConcatenation_Right(), this.getConditionDefinition(), null, "right", null, 0, 1, ConditionConcatenation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(emptyEClass, Empty.class, "Empty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

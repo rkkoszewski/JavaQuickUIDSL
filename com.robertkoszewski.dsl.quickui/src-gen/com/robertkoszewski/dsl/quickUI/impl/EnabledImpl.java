@@ -3,7 +3,7 @@
  */
 package com.robertkoszewski.dsl.quickUI.impl;
 
-import com.robertkoszewski.dsl.quickUI.Condition;
+import com.robertkoszewski.dsl.quickUI.ConditionDefinition;
 import com.robertkoszewski.dsl.quickUI.Enabled;
 import com.robertkoszewski.dsl.quickUI.QuickUIPackage;
 
@@ -38,7 +38,7 @@ public class EnabledImpl extends OptionImpl implements Enabled
    * @generated
    * @ordered
    */
-  protected Condition condition;
+  protected ConditionDefinition condition;
 
   /**
    * <!-- begin-user-doc -->
@@ -66,7 +66,7 @@ public class EnabledImpl extends OptionImpl implements Enabled
    * <!-- end-user-doc -->
    * @generated
    */
-  public Condition getCondition()
+  public ConditionDefinition getCondition()
   {
     return condition;
   }
@@ -76,9 +76,9 @@ public class EnabledImpl extends OptionImpl implements Enabled
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCondition(Condition newCondition, NotificationChain msgs)
+  public NotificationChain basicSetCondition(ConditionDefinition newCondition, NotificationChain msgs)
   {
-    Condition oldCondition = condition;
+    ConditionDefinition oldCondition = condition;
     condition = newCondition;
     if (eNotificationRequired())
     {
@@ -93,7 +93,7 @@ public class EnabledImpl extends OptionImpl implements Enabled
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCondition(Condition newCondition)
+  public void setCondition(ConditionDefinition newCondition)
   {
     if (newCondition != condition)
     {
@@ -152,7 +152,7 @@ public class EnabledImpl extends OptionImpl implements Enabled
     switch (featureID)
     {
       case QuickUIPackage.ENABLED__CONDITION:
-        setCondition((Condition)newValue);
+        setCondition((ConditionDefinition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -169,7 +169,7 @@ public class EnabledImpl extends OptionImpl implements Enabled
     switch (featureID)
     {
       case QuickUIPackage.ENABLED__CONDITION:
-        setCondition((Condition)null);
+        setCondition((ConditionDefinition)null);
         return;
     }
     super.eUnset(featureID);

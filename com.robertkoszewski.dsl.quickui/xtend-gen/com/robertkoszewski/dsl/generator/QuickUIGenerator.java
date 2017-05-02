@@ -8,7 +8,12 @@ import com.google.common.collect.Iterators;
 import com.robertkoszewski.dsl.quickUI.Alias;
 import com.robertkoszewski.dsl.quickUI.Checked;
 import com.robertkoszewski.dsl.quickUI.Condition;
+import com.robertkoszewski.dsl.quickUI.ConditionBranch;
+import com.robertkoszewski.dsl.quickUI.ConditionConcatenation;
+import com.robertkoszewski.dsl.quickUI.ConditionDefinition;
+import com.robertkoszewski.dsl.quickUI.ConditionType;
 import com.robertkoszewski.dsl.quickUI.Element;
+import com.robertkoszewski.dsl.quickUI.Empty;
 import com.robertkoszewski.dsl.quickUI.Enabled;
 import com.robertkoszewski.dsl.quickUI.JavaElement;
 import com.robertkoszewski.dsl.quickUI.Label;
@@ -42,7 +47,7 @@ public class QuickUIGenerator extends AbstractGenerator {
   
   private Set<CharSequence> callbackMap;
   
-  private HashMap<CharSequence, Condition> conditionMap;
+  private HashMap<CharSequence, ConditionDefinition> conditionMap;
   
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -83,7 +88,9 @@ public class QuickUIGenerator extends AbstractGenerator {
   }
   
   public void initializeVariables() {
-    HashMap<CharSequence, Condition> _hashMap = new HashMap<CharSequence, Condition>();
+    this.counter = 1;
+    this.condCounter = 1;
+    HashMap<CharSequence, ConditionDefinition> _hashMap = new HashMap<CharSequence, ConditionDefinition>();
     this.conditionMap = _hashMap;
     HashSet<CharSequence> _hashSet = new HashSet<CharSequence>();
     this.callbackMap = _hashSet;
@@ -530,7 +537,7 @@ public class QuickUIGenerator extends AbstractGenerator {
   
   protected CharSequence _buildElement(final Enabled dis, final CharSequence parent_var) {
     StringConcatenation _builder = new StringConcatenation();
-    Condition _put = this.conditionMap.put(parent_var, dis.getCondition());
+    ConditionDefinition _put = this.conditionMap.put(parent_var, dis.getCondition());
     _builder.append(_put);
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -538,29 +545,17 @@ public class QuickUIGenerator extends AbstractGenerator {
   
   public CharSequence buildConditions() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("// Conditions");
+    _builder.append("// ---- Conditions ----");
     _builder.newLine();
     {
-      Set<Map.Entry<CharSequence, Condition>> _entrySet = this.conditionMap.entrySet();
-      for(final Map.Entry<CharSequence, Condition> cond : _entrySet) {
-        _builder.append("java.util.HashMap<Object, Condition> ");
+      Set<Map.Entry<CharSequence, ConditionDefinition>> _entrySet = this.conditionMap.entrySet();
+      for(final Map.Entry<CharSequence, ConditionDefinition> cond : _entrySet) {
+        _builder.append("// Condition for Enable: ");
         CharSequence _key = cond.getKey();
         _builder.append(_key);
-        _builder.append("_conditions = new java.util.HashMap<Object, Condition>();");
         _builder.newLineIfNotEmpty();
-        Condition _value = cond.getValue();
-        CharSequence _key_1 = cond.getKey();
-        String _plus = (_key_1 + "_conditions");
-        CharSequence _processCondition = this.processCondition(_value, _plus);
+        CharSequence _processCondition = this.processCondition(cond.getValue(), cond.getKey(), null, null);
         _builder.append(_processCondition);
-        _builder.newLineIfNotEmpty();
-        _builder.append("mediatorAddDisableOn(");
-        CharSequence _key_2 = cond.getKey();
-        _builder.append(_key_2);
-        _builder.append(", ");
-        CharSequence _key_3 = cond.getKey();
-        _builder.append(_key_3);
-        _builder.append("_conditions);");
         _builder.newLineIfNotEmpty();
         _builder.newLine();
       }
@@ -568,32 +563,167 @@ public class QuickUIGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence processCondition(final Condition cond, final CharSequence parent_condition_var) {
+  protected CharSequence _processCondition(final ConditionBranch cond, final CharSequence target_var, final CharSequence parent_or_var, final CharSequence parent_and_var) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append(parent_condition_var);
+    CharSequence or_var = parent_or_var;
+    _builder.newLineIfNotEmpty();
+    {
+      if ((parent_or_var == null)) {
+        CharSequence _orMap = this.getOrMap(or_var = this.getCondVariableName("or"));
+        _builder.append(_orMap);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      ConditionDefinition _left = cond.getLeft();
+      boolean _tripleNotEquals = (_left != null);
+      if (_tripleNotEquals) {
+        CharSequence _processCondition = this.processCondition(cond.getLeft(), target_var, or_var, parent_and_var);
+        _builder.append(_processCondition);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      ConditionDefinition _right = cond.getRight();
+      boolean _tripleNotEquals_1 = (_right != null);
+      if (_tripleNotEquals_1) {
+        CharSequence _processCondition_1 = this.processCondition(cond.getRight(), target_var, or_var, parent_and_var);
+        _builder.append(_processCondition_1);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((parent_or_var == null)) {
+        _builder.append("mediatorAddDisableOn(");
+        _builder.append(target_var);
+        _builder.append(", ");
+        _builder.append(or_var);
+        _builder.append(");");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  protected CharSequence _processCondition(final ConditionConcatenation cond, final CharSequence target_var, final CharSequence parent_or_var, final CharSequence parent_and_var) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence or_var = parent_or_var;
+    _builder.newLineIfNotEmpty();
+    {
+      if ((parent_or_var == null)) {
+        CharSequence _orMap = this.getOrMap(or_var = this.getCondVariableName("or"));
+        _builder.append(_orMap);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    CharSequence and_var = this.getCondVariableName("and");
+    _builder.newLineIfNotEmpty();
+    CharSequence _andMap = this.getAndMap(and_var);
+    _builder.append(_andMap);
+    _builder.newLineIfNotEmpty();
+    {
+      ConditionDefinition _left = cond.getLeft();
+      boolean _tripleNotEquals = (_left != null);
+      if (_tripleNotEquals) {
+        CharSequence _processCondition = this.processCondition(cond.getLeft(), target_var, or_var, and_var);
+        _builder.append(_processCondition);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      ConditionDefinition _right = cond.getRight();
+      boolean _tripleNotEquals_1 = (_right != null);
+      if (_tripleNotEquals_1) {
+        CharSequence _processCondition_1 = this.processCondition(cond.getRight(), target_var, or_var, and_var);
+        _builder.append(_processCondition_1);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append(or_var);
+    _builder.append(".add(");
+    _builder.append(and_var);
+    _builder.append("); // Add AND to OR");
+    _builder.newLineIfNotEmpty();
+    {
+      if ((parent_or_var == null)) {
+        _builder.append("mediatorAddDisableOn(");
+        _builder.append(target_var);
+        _builder.append(", ");
+        _builder.append(or_var);
+        _builder.append(");");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  protected CharSequence _processCondition(final Condition cond, final CharSequence target_var, final CharSequence parent_or_var, final CharSequence parent_and_var) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence or_var = parent_or_var;
+    CharSequence and_var = parent_and_var;
+    _builder.newLineIfNotEmpty();
+    {
+      if ((parent_or_var == null)) {
+        CharSequence _orMap = this.getOrMap(or_var = this.getCondVariableName("or"));
+        _builder.append(_orMap);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((parent_and_var == null)) {
+        CharSequence _andMap = this.getAndMap(and_var = this.getCondVariableName("and"));
+        _builder.append(_andMap);
+        _builder.newLineIfNotEmpty();
+        _builder.append(or_var);
+        _builder.append(".add(");
+        _builder.append(and_var);
+        _builder.append("); // Add AND to OR");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append(and_var);
     _builder.append(".put(");
     CharSequence _variableName = this.getVariableName(cond.getElement().getName());
     _builder.append(_variableName);
-    _builder.append(", ");
-    {
-      boolean _isNegation = cond.isNegation();
-      if (_isNegation) {
-        _builder.append("Condition.NONEMPTY");
-      } else {
-        _builder.append("Condition.EMPTY");
-      }
-    }
+    _builder.append(", Condition.");
+    CharSequence _processConditionType = this.processConditionType(cond.getCondition(), cond.isNegation());
+    _builder.append(_processConditionType);
     _builder.append(");");
     _builder.newLineIfNotEmpty();
     {
-      Condition _subcondition = cond.getSubcondition();
-      boolean _tripleNotEquals = (_subcondition != null);
-      if (_tripleNotEquals) {
-        CharSequence _processCondition = this.processCondition(cond.getSubcondition(), parent_condition_var);
-        _builder.append(_processCondition);
+      if ((parent_or_var == null)) {
+        _builder.append("mediatorAddDisableOn(");
+        _builder.append(target_var);
+        _builder.append(", ");
+        _builder.append(or_var);
+        _builder.append(");");
+        _builder.newLineIfNotEmpty();
       }
     }
-    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  protected CharSequence _processConditionType(final Empty type, final boolean negation) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      if (negation) {
+        _builder.append("NONEMPTY");
+      } else {
+        _builder.append("EMPTY");
+      }
+    }
+    return _builder;
+  }
+  
+  protected CharSequence _processConditionType(final Checked type, final boolean negation) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      if ((!negation)) {
+        _builder.append("NONEMPTY");
+      } else {
+        _builder.append("EMPTY");
+      }
+    }
     return _builder;
   }
   
@@ -621,6 +751,24 @@ public class QuickUIGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("});");
     _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence getOrMap(final CharSequence or_var) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("java.util.ArrayList<java.util.Map<Object, Condition>> ");
+    _builder.append(or_var);
+    _builder.append(" = new java.util.ArrayList<java.util.Map<Object, Condition>>(); // OR\t");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence getAndMap(final CharSequence and_var) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("java.util.HashMap<Object, Condition> ");
+    _builder.append(and_var);
+    _builder.append(" = new java.util.HashMap<Object, Condition>(); // AND");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
@@ -688,15 +836,15 @@ public class QuickUIGenerator extends AbstractGenerator {
     _builder.append("* Mediator Function");
     _builder.newLine();
     _builder.append(" ");
-    _builder.append("* @param element");
+    _builder.append("* @param Target Element");
     _builder.newLine();
     _builder.append(" ");
-    _builder.append("* @param conditions");
+    _builder.append("* @param Condition List");
     _builder.newLine();
     _builder.append(" ");
     _builder.append("*/");
     _builder.newLine();
-    _builder.append("private void mediatorAddDisableOn(final Object element, java.util.Map<Object, Condition> conditions){");
+    _builder.append("private void mediatorAddDisableOn(final Object element, java.util.ArrayList<java.util.Map<Object, Condition>> condition_list){");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("JComponent component = (JComponent) element;");
@@ -716,68 +864,101 @@ public class QuickUIGenerator extends AbstractGenerator {
     _builder.append("boolean enabled = true;");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("java.util.Iterator<java.util.Map.Entry<Object, Condition>> it = conditions.entrySet().iterator();");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("while(it.hasNext()){ // Check all Conditions");
+    _builder.append("java.util.Iterator<java.util.Map<Object, Condition>> lit = condition_list.iterator();");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("while(lit.hasNext()){ // OR Condition");
     _builder.newLine();
     _builder.append("\t\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("java.util.Iterator<java.util.Map.Entry<Object, Condition>> it = lit.next().entrySet().iterator();");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("while(it.hasNext()){ // AND Condition");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
     _builder.append("java.util.Map.Entry<Object, Condition> cond = it.next();");
     _builder.newLine();
-    _builder.append("\t\t\t\t");
+    _builder.append("\t\t\t\t\t");
     _builder.append("Object target = cond.getKey();");
     _builder.newLine();
-    _builder.append("\t\t\t\t");
+    _builder.append("\t\t\t\t\t");
     _builder.append("boolean empty = false;");
     _builder.newLine();
-    _builder.append("\t\t\t\t");
+    _builder.append("\t\t\t\t\t");
     _builder.newLine();
-    _builder.append("\t\t\t\t");
+    _builder.append("\t\t\t\t\t");
     _builder.append("if(target instanceof javax.swing.text.JTextComponent) // Text Component");
     _builder.newLine();
-    _builder.append("\t\t\t\t\t");
+    _builder.append("\t\t\t\t\t\t");
     _builder.append("empty = ((javax.swing.text.JTextComponent) target).getText().equals(\"\");");
     _builder.newLine();
-    _builder.append("\t\t\t\t");
+    _builder.append("\t\t\t\t\t");
     _builder.append("else if (target instanceof AbstractButton) // Abstract Button (CheckBoxes)");
     _builder.newLine();
-    _builder.append("\t\t\t\t\t");
+    _builder.append("\t\t\t\t\t\t");
     _builder.append("empty = !((AbstractButton) target).isSelected();");
     _builder.newLine();
-    _builder.append("\t\t\t\t");
+    _builder.append("\t\t\t\t\t");
     _builder.newLine();
-    _builder.append("\t\t\t\t");
+    _builder.append("\t\t\t\t\t");
     _builder.append("switch(cond.getValue()){");
     _builder.newLine();
-    _builder.append("\t\t\t\t");
+    _builder.append("\t\t\t\t\t");
     _builder.append("case EMPTY:");
     _builder.newLine();
-    _builder.append("\t\t\t\t\t");
-    _builder.append("enabled = (empty?false:enabled);");
-    _builder.newLine();
-    _builder.append("\t\t\t\t\t");
-    _builder.append("break;");
-    _builder.newLine();
-    _builder.append("\t\t\t\t");
-    _builder.append("case NONEMPTY:");
-    _builder.newLine();
-    _builder.append("\t\t\t\t\t");
+    _builder.append("\t\t\t\t\t\t");
     _builder.append("enabled = (!empty?false:enabled);");
     _builder.newLine();
-    _builder.append("\t\t\t\t\t");
+    _builder.append("\t\t\t\t\t\t");
     _builder.append("break;");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("case NONEMPTY:");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t");
+    _builder.append("enabled = (empty?false:enabled);");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t");
+    _builder.append("break;");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("}");
     _builder.newLine();
     _builder.append("\t\t\t\t");
     _builder.append("}");
     _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("if(enabled){");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("component.setEnabled(true); // Enable Element");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("return;");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("enabled = true;");
+    _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("}");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("// Set Enabled");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("component.setEnabled(enabled); // Set Enabled State");
+    _builder.append("component.setEnabled(false); // Disable Element");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("}");
@@ -788,13 +969,40 @@ public class QuickUIGenerator extends AbstractGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("java.util.Iterator<Object> doi = conditions.keySet().iterator();");
+    _builder.append("// Only Register Each Element Once");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("java.util.HashSet<Object> uniqueObject = new java.util.HashSet<Object>();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("java.util.Iterator<java.util.Map<Object, Condition>> lit = condition_list.iterator();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("while(lit.hasNext()){");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("java.util.Iterator<Object> vit = lit.next().keySet().iterator();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("while(vit.hasNext())");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("uniqueObject.add(vit.next());");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("// Register Listeners");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("java.util.Iterator<Object> doi = uniqueObject.iterator();");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("while(doi.hasNext()){");
     _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("// Register Listeners");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("Object target = doi.next();");
@@ -917,6 +1125,13 @@ public class QuickUIGenerator extends AbstractGenerator {
     return ("uitem_" + Integer.valueOf(_plusPlus));
   }
   
+  private int condCounter = 1;
+  
+  public CharSequence getCondVariableName(final CharSequence verb) {
+    int _plusPlus = this.condCounter++;
+    return (("cond_" + verb) + Integer.valueOf(_plusPlus));
+  }
+  
   public CharSequence toClassPath(final Alias alias) {
     return this.aliasMap.get(alias.getName());
   }
@@ -939,6 +1154,30 @@ public class QuickUIGenerator extends AbstractGenerator {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(check, parent_var).toString());
+    }
+  }
+  
+  public CharSequence processCondition(final ConditionDefinition cond, final CharSequence target_var, final CharSequence parent_or_var, final CharSequence parent_and_var) {
+    if (cond instanceof Condition) {
+      return _processCondition((Condition)cond, target_var, parent_or_var, parent_and_var);
+    } else if (cond instanceof ConditionBranch) {
+      return _processCondition((ConditionBranch)cond, target_var, parent_or_var, parent_and_var);
+    } else if (cond instanceof ConditionConcatenation) {
+      return _processCondition((ConditionConcatenation)cond, target_var, parent_or_var, parent_and_var);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(cond, target_var, parent_or_var, parent_and_var).toString());
+    }
+  }
+  
+  public CharSequence processConditionType(final ConditionType type, final boolean negation) {
+    if (type instanceof Checked) {
+      return _processConditionType((Checked)type, negation);
+    } else if (type instanceof Empty) {
+      return _processConditionType((Empty)type, negation);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(type, negation).toString());
     }
   }
 }

@@ -40,7 +40,7 @@ Row:
 // - OnClick
 
 Option:
-	Label|Enabled|Checked|OnClick|{Filter}Filter
+	Label|Enabled|Checked|OnClick/*|{Filter}Filter*/
 ;
 
 /* 
@@ -54,11 +54,23 @@ Label:
 ;
 
 Enabled:
-	'Enabled' ':' condition=Condition
+	'Enabled' ':' condition=ConditionBranch
+;
+
+ConditionBranch returns ConditionDefinition:
+	ConditionConcatenation ({ConditionBranch.left = current} 'or' right=ConditionConcatenation)*
+;
+
+ConditionConcatenation returns ConditionDefinition:
+	Condition ({ConditionConcatenation.left = current}  'and' right=ConditionValue)*
+;
+
+ConditionValue returns ConditionDefinition:
+	Condition
 ;
 
 Condition:
-	('if')? element=[Element] 'is'? negation?='not'?  condition=ConditionType ('and' subcondition=Condition)? /* OR implementation? */
+	('if')? element=[Element] 'is'? negation?='not'?  condition=ConditionType
 ;
 
 ConditionType:
@@ -73,6 +85,7 @@ OnClick:
 	'OnClick' ':' callback=ID
 ;
 
+/*
 Filter:
 	'Filter' ':' FilterExpression
 ;
@@ -80,11 +93,11 @@ Filter:
 FilterExpression:
 	'TODO'
 ;
+*/
 
 Boolean:
 	{Boolean} (isTrue?='true' | 'false')
 ;
-
 
 // Notes
 /* 

@@ -31,12 +31,12 @@ public interface Enabled extends Option
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Condition</em>' containment reference.
-   * @see #setCondition(Condition)
+   * @see #setCondition(ConditionDefinition)
    * @see com.robertkoszewski.dsl.quickUI.QuickUIPackage#getEnabled_Condition()
    * @model containment="true"
    * @generated
    */
-  Condition getCondition();
+  ConditionDefinition getCondition();
 
   /**
    * Sets the value of the '{@link com.robertkoszewski.dsl.quickUI.Enabled#getCondition <em>Condition</em>}' containment reference.
@@ -46,6 +46,6 @@ public interface Enabled extends Option
    * @see #getCondition()
    * @generated
    */
-  void setCondition(Condition value);
+  void setCondition(ConditionDefinition value);
 
 } // Enabled

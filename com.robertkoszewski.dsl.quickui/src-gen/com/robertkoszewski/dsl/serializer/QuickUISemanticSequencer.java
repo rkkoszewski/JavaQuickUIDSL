@@ -7,9 +7,10 @@ import com.google.inject.Inject;
 import com.robertkoszewski.dsl.quickUI.Alias;
 import com.robertkoszewski.dsl.quickUI.Checked;
 import com.robertkoszewski.dsl.quickUI.Condition;
+import com.robertkoszewski.dsl.quickUI.ConditionBranch;
+import com.robertkoszewski.dsl.quickUI.ConditionConcatenation;
 import com.robertkoszewski.dsl.quickUI.Empty;
 import com.robertkoszewski.dsl.quickUI.Enabled;
-import com.robertkoszewski.dsl.quickUI.Filter;
 import com.robertkoszewski.dsl.quickUI.JavaElement;
 import com.robertkoszewski.dsl.quickUI.Label;
 import com.robertkoszewski.dsl.quickUI.OnClick;
@@ -63,14 +64,17 @@ public class QuickUISemanticSequencer extends AbstractDelegatingSemanticSequence
 			case QuickUIPackage.CONDITION:
 				sequence_Condition(context, (Condition) semanticObject); 
 				return; 
+			case QuickUIPackage.CONDITION_BRANCH:
+				sequence_ConditionBranch(context, (ConditionBranch) semanticObject); 
+				return; 
+			case QuickUIPackage.CONDITION_CONCATENATION:
+				sequence_ConditionConcatenation(context, (ConditionConcatenation) semanticObject); 
+				return; 
 			case QuickUIPackage.EMPTY:
 				sequence_ConditionType(context, (Empty) semanticObject); 
 				return; 
 			case QuickUIPackage.ENABLED:
 				sequence_Enabled(context, (Enabled) semanticObject); 
-				return; 
-			case QuickUIPackage.FILTER:
-				sequence_Option(context, (Filter) semanticObject); 
 				return; 
 			case QuickUIPackage.JAVA_ELEMENT:
 				sequence_JavaElement(context, (JavaElement) semanticObject); 
@@ -152,6 +156,52 @@ public class QuickUISemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
+	 *     ConditionBranch returns ConditionBranch
+	 *     ConditionBranch.ConditionBranch_1_0 returns ConditionBranch
+	 *
+	 * Constraint:
+	 *     (left=ConditionBranch_ConditionBranch_1_0 right=ConditionConcatenation)
+	 */
+	protected void sequence_ConditionBranch(ISerializationContext context, ConditionBranch semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, QuickUIPackage.Literals.CONDITION_BRANCH__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QuickUIPackage.Literals.CONDITION_BRANCH__LEFT));
+			if (transientValues.isValueTransient(semanticObject, QuickUIPackage.Literals.CONDITION_BRANCH__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QuickUIPackage.Literals.CONDITION_BRANCH__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getConditionBranchAccess().getConditionBranchLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getConditionBranchAccess().getRightConditionConcatenationParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ConditionBranch returns ConditionConcatenation
+	 *     ConditionBranch.ConditionBranch_1_0 returns ConditionConcatenation
+	 *     ConditionConcatenation returns ConditionConcatenation
+	 *     ConditionConcatenation.ConditionConcatenation_1_0 returns ConditionConcatenation
+	 *
+	 * Constraint:
+	 *     (left=ConditionConcatenation_ConditionConcatenation_1_0 right=ConditionValue)
+	 */
+	protected void sequence_ConditionConcatenation(ISerializationContext context, ConditionConcatenation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, QuickUIPackage.Literals.CONDITION_CONCATENATION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QuickUIPackage.Literals.CONDITION_CONCATENATION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, QuickUIPackage.Literals.CONDITION_CONCATENATION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QuickUIPackage.Literals.CONDITION_CONCATENATION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getConditionConcatenationAccess().getConditionConcatenationLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getConditionConcatenationAccess().getRightConditionValueParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     ConditionType returns Checked
 	 *
 	 * Constraint:
@@ -176,10 +226,15 @@ public class QuickUISemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
+	 *     ConditionBranch returns Condition
+	 *     ConditionBranch.ConditionBranch_1_0 returns Condition
+	 *     ConditionConcatenation returns Condition
+	 *     ConditionConcatenation.ConditionConcatenation_1_0 returns Condition
+	 *     ConditionValue returns Condition
 	 *     Condition returns Condition
 	 *
 	 * Constraint:
-	 *     (element=[Element|ID] negation?='not'? condition=ConditionType subcondition=Condition?)
+	 *     (element=[Element|ID] negation?='not'? condition=ConditionType)
 	 */
 	protected void sequence_Condition(ISerializationContext context, Condition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -192,7 +247,7 @@ public class QuickUISemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Enabled returns Enabled
 	 *
 	 * Constraint:
-	 *     condition=Condition
+	 *     condition=ConditionBranch
 	 */
 	protected void sequence_Enabled(ISerializationContext context, Enabled semanticObject) {
 		if (errorAcceptor != null) {
@@ -200,7 +255,7 @@ public class QuickUISemanticSequencer extends AbstractDelegatingSemanticSequence
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QuickUIPackage.Literals.ENABLED__CONDITION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getEnabledAccess().getConditionConditionParserRuleCall_2_0(), semanticObject.getCondition());
+		feeder.accept(grammarAccess.getEnabledAccess().getConditionConditionBranchParserRuleCall_2_0(), semanticObject.getCondition());
 		feeder.finish();
 	}
 	
@@ -253,18 +308,6 @@ public class QuickUISemanticSequencer extends AbstractDelegatingSemanticSequence
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getOnClickAccess().getCallbackIDTerminalRuleCall_2_0(), semanticObject.getCallback());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Option returns Filter
-	 *
-	 * Constraint:
-	 *     {Filter}
-	 */
-	protected void sequence_Option(ISerializationContext context, Filter semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

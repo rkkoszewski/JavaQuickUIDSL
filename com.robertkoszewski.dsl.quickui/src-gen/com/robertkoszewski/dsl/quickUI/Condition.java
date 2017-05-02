@@ -3,7 +3,6 @@
  */
 package com.robertkoszewski.dsl.quickUI;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,14 +16,13 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.robertkoszewski.dsl.quickUI.Condition#getElement <em>Element</em>}</li>
  *   <li>{@link com.robertkoszewski.dsl.quickUI.Condition#isNegation <em>Negation</em>}</li>
  *   <li>{@link com.robertkoszewski.dsl.quickUI.Condition#getCondition <em>Condition</em>}</li>
- *   <li>{@link com.robertkoszewski.dsl.quickUI.Condition#getSubcondition <em>Subcondition</em>}</li>
  * </ul>
  *
  * @see com.robertkoszewski.dsl.quickUI.QuickUIPackage#getCondition()
  * @model
  * @generated
  */
-public interface Condition extends EObject
+public interface Condition extends ConditionDefinition
 {
   /**
    * Returns the value of the '<em><b>Element</b></em>' reference.
@@ -103,31 +101,5 @@ public interface Condition extends EObject
    * @generated
    */
   void setCondition(ConditionType value);
-
-  /**
-   * Returns the value of the '<em><b>Subcondition</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Subcondition</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Subcondition</em>' containment reference.
-   * @see #setSubcondition(Condition)
-   * @see com.robertkoszewski.dsl.quickUI.QuickUIPackage#getCondition_Subcondition()
-   * @model containment="true"
-   * @generated
-   */
-  Condition getSubcondition();
-
-  /**
-   * Sets the value of the '{@link com.robertkoszewski.dsl.quickUI.Condition#getSubcondition <em>Subcondition</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Subcondition</em>' containment reference.
-   * @see #getSubcondition()
-   * @generated
-   */
-  void setSubcondition(Condition value);
 
 } // Condition

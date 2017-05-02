@@ -685,23 +685,6 @@ ruleOption returns [EObject current=null]
 			$current = $this_OnClick_3.current;
 			afterParserOrEnumRuleCall();
 		}
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getOptionAccess().getFilterAction_4_0(),
-						$current);
-				}
-			)
-			{
-				newCompositeNode(grammarAccess.getOptionAccess().getFilterParserRuleCall_4_1());
-			}
-			ruleFilter
-			{
-				afterParserOrEnumRuleCall();
-			}
-		)
 	)
 ;
 
@@ -777,9 +760,9 @@ ruleEnabled returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getEnabledAccess().getConditionConditionParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getEnabledAccess().getConditionConditionBranchParserRuleCall_2_0());
 				}
-				lv_condition_2_0=ruleCondition
+				lv_condition_2_0=ruleConditionBranch
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getEnabledRule());
@@ -788,12 +771,155 @@ ruleEnabled returns [EObject current=null]
 						$current,
 						"condition",
 						lv_condition_2_0,
-						"com.robertkoszewski.dsl.QuickUI.Condition");
+						"com.robertkoszewski.dsl.QuickUI.ConditionBranch");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 	)
+;
+
+// Entry rule entryRuleConditionBranch
+entryRuleConditionBranch returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getConditionBranchRule()); }
+	iv_ruleConditionBranch=ruleConditionBranch
+	{ $current=$iv_ruleConditionBranch.current; }
+	EOF;
+
+// Rule ConditionBranch
+ruleConditionBranch returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getConditionBranchAccess().getConditionConcatenationParserRuleCall_0());
+		}
+		this_ConditionConcatenation_0=ruleConditionConcatenation
+		{
+			$current = $this_ConditionConcatenation_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		(
+			(
+				{
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getConditionBranchAccess().getConditionBranchLeftAction_1_0(),
+						$current);
+				}
+			)
+			otherlv_2='or'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getConditionBranchAccess().getOrKeyword_1_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getConditionBranchAccess().getRightConditionConcatenationParserRuleCall_1_2_0());
+					}
+					lv_right_3_0=ruleConditionConcatenation
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getConditionBranchRule());
+						}
+						set(
+							$current,
+							"right",
+							lv_right_3_0,
+							"com.robertkoszewski.dsl.QuickUI.ConditionConcatenation");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleConditionConcatenation
+entryRuleConditionConcatenation returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getConditionConcatenationRule()); }
+	iv_ruleConditionConcatenation=ruleConditionConcatenation
+	{ $current=$iv_ruleConditionConcatenation.current; }
+	EOF;
+
+// Rule ConditionConcatenation
+ruleConditionConcatenation returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getConditionConcatenationAccess().getConditionParserRuleCall_0());
+		}
+		this_Condition_0=ruleCondition
+		{
+			$current = $this_Condition_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		(
+			(
+				{
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getConditionConcatenationAccess().getConditionConcatenationLeftAction_1_0(),
+						$current);
+				}
+			)
+			otherlv_2='and'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getConditionConcatenationAccess().getAndKeyword_1_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getConditionConcatenationAccess().getRightConditionValueParserRuleCall_1_2_0());
+					}
+					lv_right_3_0=ruleConditionValue
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getConditionConcatenationRule());
+						}
+						set(
+							$current,
+							"right",
+							lv_right_3_0,
+							"com.robertkoszewski.dsl.QuickUI.ConditionValue");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleConditionValue
+entryRuleConditionValue returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getConditionValueRule()); }
+	iv_ruleConditionValue=ruleConditionValue
+	{ $current=$iv_ruleConditionValue.current; }
+	EOF;
+
+// Rule ConditionValue
+ruleConditionValue returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	{
+		newCompositeNode(grammarAccess.getConditionValueAccess().getConditionParserRuleCall());
+	}
+	this_Condition_0=ruleCondition
+	{
+		$current = $this_Condition_0.current;
+		afterParserOrEnumRuleCall();
+	}
 ;
 
 // Entry rule entryRuleCondition
@@ -870,31 +996,6 @@ ruleCondition returns [EObject current=null]
 				}
 			)
 		)
-		(
-			otherlv_5='and'
-			{
-				newLeafNode(otherlv_5, grammarAccess.getConditionAccess().getAndKeyword_5_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getConditionAccess().getSubconditionConditionParserRuleCall_5_1_0());
-					}
-					lv_subcondition_6_0=ruleCondition
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getConditionRule());
-						}
-						set(
-							$current,
-							"subcondition",
-							lv_subcondition_6_0,
-							"com.robertkoszewski.dsl.QuickUI.Condition");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
 	)
 ;
 
@@ -1033,67 +1134,6 @@ ruleOnClick returns [EObject current=null]
 			)
 		)
 	)
-;
-
-// Entry rule entryRuleFilter
-entryRuleFilter returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getFilterRule()); }
-	iv_ruleFilter=ruleFilter
-	{ $current=$iv_ruleFilter.current.getText(); }
-	EOF;
-
-// Rule Filter
-ruleFilter returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		kw='Filter'
-		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getFilterAccess().getFilterKeyword_0());
-		}
-		kw=':'
-		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getFilterAccess().getColonKeyword_1());
-		}
-		{
-			newCompositeNode(grammarAccess.getFilterAccess().getFilterExpressionParserRuleCall_2());
-		}
-		this_FilterExpression_2=ruleFilterExpression
-		{
-			$current.merge(this_FilterExpression_2);
-		}
-		{
-			afterParserOrEnumRuleCall();
-		}
-	)
-;
-
-// Entry rule entryRuleFilterExpression
-entryRuleFilterExpression returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getFilterExpressionRule()); }
-	iv_ruleFilterExpression=ruleFilterExpression
-	{ $current=$iv_ruleFilterExpression.current.getText(); }
-	EOF;
-
-// Rule FilterExpression
-ruleFilterExpression returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	kw='TODO'
-	{
-		$current.merge(kw);
-		newLeafNode(kw, grammarAccess.getFilterExpressionAccess().getTODOKeyword());
-	}
 ;
 
 // Entry rule entryRuleBoolean

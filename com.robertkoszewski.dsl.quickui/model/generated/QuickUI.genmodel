@@ -40,11 +40,11 @@
     <genClasses ecoreClass="QuickUI.ecore#//Enabled">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference QuickUI.ecore#//Enabled/condition"/>
     </genClasses>
+    <genClasses ecoreClass="QuickUI.ecore#//ConditionDefinition"/>
     <genClasses ecoreClass="QuickUI.ecore#//Condition">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference QuickUI.ecore#//Condition/element"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute QuickUI.ecore#//Condition/negation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference QuickUI.ecore#//Condition/condition"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference QuickUI.ecore#//Condition/subcondition"/>
     </genClasses>
     <genClasses ecoreClass="QuickUI.ecore#//ConditionType"/>
     <genClasses ecoreClass="QuickUI.ecore#//Checked">
@@ -56,7 +56,14 @@
     <genClasses ecoreClass="QuickUI.ecore#//Boolean">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute QuickUI.ecore#//Boolean/isTrue"/>
     </genClasses>
-    <genClasses ecoreClass="QuickUI.ecore#//Filter"/>
+    <genClasses ecoreClass="QuickUI.ecore#//ConditionBranch">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference QuickUI.ecore#//ConditionBranch/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference QuickUI.ecore#//ConditionBranch/right"/>
+    </genClasses>
+    <genClasses ecoreClass="QuickUI.ecore#//ConditionConcatenation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference QuickUI.ecore#//ConditionConcatenation/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference QuickUI.ecore#//ConditionConcatenation/right"/>
+    </genClasses>
     <genClasses ecoreClass="QuickUI.ecore#//Empty"/>
   </genPackages>
 </genmodel:GenModel>
