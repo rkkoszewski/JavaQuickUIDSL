@@ -616,11 +616,15 @@ public class QuickUIGenerator extends AbstractGenerator {
         _builder.newLineIfNotEmpty();
       }
     }
-    CharSequence and_var = this.getCondVariableName("and");
+    CharSequence and_var = parent_and_var;
     _builder.newLineIfNotEmpty();
-    CharSequence _andMap = this.getAndMap(and_var);
-    _builder.append(_andMap);
-    _builder.newLineIfNotEmpty();
+    {
+      if ((parent_and_var == null)) {
+        CharSequence _andMap = this.getAndMap(and_var = this.getCondVariableName("and"));
+        _builder.append(_andMap);
+        _builder.newLineIfNotEmpty();
+      }
+    }
     {
       ConditionDefinition _left = cond.getLeft();
       boolean _tripleNotEquals = (_left != null);

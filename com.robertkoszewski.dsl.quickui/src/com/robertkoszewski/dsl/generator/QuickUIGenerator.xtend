@@ -268,8 +268,10 @@ class QuickUIGenerator extends AbstractGenerator {
 	«IF parent_or_var === null»
 	«getOrMap(or_var = getCondVariableName("or"))»
 	«ENDIF»
-	«var and_var = getCondVariableName("and")»
-	«getAndMap(and_var)»
+	«var and_var = parent_and_var»
+	«IF parent_and_var === null»
+	«getAndMap(and_var = getCondVariableName("and"))»
+	«ENDIF»
 	«IF cond.left !== null»
 	«cond.left.processCondition(target_var, or_var, and_var)»
 	«ENDIF»
